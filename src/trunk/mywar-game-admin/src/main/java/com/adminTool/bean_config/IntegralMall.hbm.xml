@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.adminTool.bo.IntegralMall" table="system_integrate_mall">
+		<id name="mall_id" type="java.lang.Integer">
+			<column name="mall_id"></column>
+			<!-- <generator class="identity"></generator> -->
+			<generator class="assigned"></generator>
+		</id>
+
+		<property name="type" type="java.lang.Integer">
+			<column name="type" not-null="true"></column>
+		</property>
+
+		<property name="tool_type" type="java.lang.Integer">
+			<column name="tool_type" not-null="true"></column>
+		</property>
+		<property name="tool_id" type="java.lang.Integer">
+			<column name="tool_id" not-null="true"></column>
+		</property>
+		<property name="need_integrate" type="java.lang.Integer">
+			<column name="need_integrate" not-null="true"></column>
+		</property>
+		<property name="num" type="java.lang.Integer">
+			<column name="num" not-null="true"></column>
+		</property>
+		<property name="discount" type="java.lang.Double">
+			<column name="discount"></column>
+		</property>
+</class>
+
+
+
+
+</hibernate-mapping>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	 	http://www.springframework.org/schema/aop 
+	 	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+     	http://www.springframework.org/schema/tx 
+     	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+        <!-- dao config -->
+        <bean id="activeCodeDao" class="com.fantingame.game.gamecenter.dao.impl.mysql.ActiveCodeDaoMysqlImpl"></bean>
+		<bean id="paymentOrderDao" class="com.fantingame.game.gamecenter.dao.impl.mysql.PaymentOrderDaoMysqlImpl"></bean>
+		<bean id="versionServerDao" class="com.fantingame.game.gamecenter.dao.impl.mysql.VersionServerDaoMysqlImpl"></bean>
+		<bean id="serverListDaoMysqlImpl" class="com.fantingame.game.gamecenter.dao.impl.mysql.ServerListDaoMysqlImpl"></bean>
+		<bean id="serverListDao" class="com.fantingame.game.gamecenter.dao.impl.cache.ServerListDaoCacheImpl" init-method="init">
+		  <property name="serverListDaoMysqlImpl" ref="serverListDaoMysqlImpl"></property>
+		</bean>
+		<bean id="noticeDao" class="com.fantingame.game.gamecenter.dao.impl.mysql.NoticeDaoMysqlImpl"></bean>
+		<bean id="domoUserDao" class="com.fantingame.game.gamecenter.dao.impl.mysql.DomoUserDaoMysqlImpl"></bean>
+		<bean id="userInfoDao" class="com.fantingame.game.gamecenter.dao.impl.mysql.UserInfoDaoMysqlImpl"></bean>
+		
+		<bean id="partnerRateDaoMysqlImpl" class="com.fantingame.game.gamecenter.dao.impl.mysql.PartnerRateDaoMysqlImpl"></bean>
+		<bean id="partnerRateDao" class="com.fantingame.game.gamecenter.dao.impl.cache.PartnerRateDaoCacheImpl" init-method="init">
+		  <property name="partnerRateDaoMysqlImpl" ref="partnerRateDaoMysqlImpl"></property>
+		</bean>		
+		
+	<!-- service config -->
+	<bean id="fantinPartner" class="com.fantingame.game.gamecenter.service.impl.FantinServiceImpl" scope="singleton"></bean>
+	<bean id="ucPartner" class="com.fantingame.game.gamecenter.service.impl.UcServiceImpl" scope="singleton"></bean>
+	<bean id="qiHooPartner" class="com.fantingame.game.gamecenter.service.impl.QiHooServiceImpl" scope="singleton"></bean>
+	<bean id="lenovoPartner" class="com.fantingame.game.gamecenter.service.impl.LenovoServiceImpl" scope="singleton"></bean>
+	<bean id="baiduPartner" class="com.fantingame.game.gamecenter.service.impl.BaiduServiceImpl" scope="singleton"></bean>
+	<bean id="baiduZsPartner" class="com.fantingame.game.gamecenter.service.impl.BaiduZsServiceImpl" scope="singleton"></bean>
+	<bean id="xiaomiPartner" class="com.fantingame.game.gamecenter.service.impl.XiaomiServiceImpl" scope="singleton"></bean>
+	<bean id="newDanglePartner" class="com.fantingame.game.gamecenter.service.impl.NewDangleServiceImpl" scope="singleton"></bean>
+	<bean id="applePartner" class="com.fantingame.game.gamecenter.service.impl.AppleServiceImpl" scope="singleton"></bean>
+	<bean id="anZhiPartner" class="com.fantingame.game.gamecenter.service.impl.AnZhiServiceImpl" scope="singleton"/>
+	<bean id="anZhiAdPartner" class="com.fantingame.game.gamecenter.service.impl.AnZhiAdServiceImpl" scope="singleton"/>
+	<bean id="appChinaPartner" class="com.fantingame.game.gamecenter.service.impl.AppChinaServiceImpl" scope="singleton"/>
+	<bean id="changWanPartner" class="com.fantingame.game.gamecenter.service.impl.ChangWanServiceImpl" scope="singleton"/>
+	<bean id="chinaMobilePartner" class="com.fantingame.game.gamecenter.service.impl.ChinaMobileServiceImpl" scope="singleton"/>
+	<bean id="shiJiaPartner" class="com.fantingame.game.gamecenter.service.impl.ShiJiaServiceImpl" scope="singleton"/>
+	<bean id="duoKuPartner" class="com.fantingame.game.gamecenter.service.impl.DuoKuServiceImpl" scope="singleton"/>
+	<bean id="guGuoPartner" class="com.fantingame.game.gamecenter.service.impl.GuGuoServiceImpl" scope="singleton"/>
+	<bean id="hucnPartner" class="com.fantingame.game.gamecenter.service.impl.HucnServiceImpl" scope="singleton"/>
+	<bean id="sanqiWanwanPartner" class="com.fantingame.game.gamecenter.service.impl.SanqiWanwanServiceImpl" scope="singleton"/>
+	<bean id="kuaiBoPartner" class="com.fantingame.game.gamecenter.service.impl.KuaiBoServiceImpl" scope="singleton"/>
+	<bean id="kuaiYongPartner" class="com.fantingame.game.gamecenter.service.impl.KuaiYongServiceImpl" scope="singleton"/>
+	<bean id="ppsPartner" class="com.fantingame.game.gamecenter.service.impl.PPSServiceImpl" scope="singleton"/>
+	<bean id="kuWoPartner" class="com.fantingame.game.gamecenter.service.impl.KuWoServiceImpl" scope="singleton"/>
+	<bean id="dianJinPartner" class="com.fantingame.game.gamecenter.service.impl.DianJinServiceImpl" scope="singleton"/>
+	<bean id="dianJinIOSPartner" class="com.fantingame.game.gamecenter.service.impl.DianJinIOSServiceImpl" scope="singleton"/>
+	<bean id="appleParkPartner" class="com.fantingame.game.gamecenter.service.impl.AppleParkServiceImpl" scope="singleton"/>
+	<bean id="googlePlayPartner" class="com.fantingame.game.gamecenter.service.impl.GooGlePlayServiceImpl" scope="singleton"/>
+	<!-- <bean id="hongKongPartner" class="com.fantingame.game.gamecenter.service.impl.HongKongServiceImpl" scope="singleton"/> -->
+	<bean id="itoolsPartner" class="com.fantingame.game.gamecenter.service.impl.ItoolsIOSServiceImpl" scope="singleton"/>
+	<bean id="ppAssistantPartner" class="com.fantingame.game.gamecenter.service.impl.PPAssistantServiceImpl" scope="singleton"></bean>
+	<bean id="tongBuPartner" class="com.fantingame.game.gamecenter.service.impl.TongBuServiceImpl" scope="singleton"></bean>
+	<bean id="serviceFactory" class="com.fantingame.game.gamecenter.factory.PartnerServiceFactory" scope="singleton"></bean>
+	<bean id="appFameIosPartner" class="com.fantingame.game.gamecenter.service.impl.AppFameIosServiceImpl" scope="singleton"></bean>
+	<bean id="oppoPartner" class="com.fantingame.game.gamecenter.service.impl.OppoServiceImpl" scope="singleton"></bean>
+	<bean id="huaweiPartner" class="com.fantingame.game.gamecenter.service.impl.HuaWeiServiceImpl" scope="singleton"></bean>
+	<bean id="wanDouJiaPartner" class="com.fantingame.game.gamecenter.service.impl.WanDouJiaServiceImpl" scope="singleton"></bean>
+	<bean id="vivoPartner" class="com.fantingame.game.gamecenter.service.impl.VivoServiceImpl" scope="singleton"></bean>
+	<bean id="kaiYingPartner" class="com.fantingame.game.gamecenter.service.impl.KaiYingTwServiceImpl" scope="singleton"></bean>
+	<bean id="kaiYingAndrPartner" class="com.fantingame.game.gamecenter.service.impl.KaiYingTwAndrServiceImpl" scope="singleton"></bean>
+	<bean id="kaiYingSAPartner" class="com.fantingame.game.gamecenter.service.impl.KaiYingSAServiceImpl" scope="singleton"></bean>
+	<bean id="kaiYingSAAndrPartner" class="com.fantingame.game.gamecenter.service.impl.KaiYingSAAndrServiceImpl" scope="singleton"></bean>
+	<bean id="yueNanAndroidPartner" class="com.fantingame.game.gamecenter.service.impl.YueNanAndroidServiceImpl" scope="singleton"></bean>
+	<bean id="yueNanIOSPartner" class="com.fantingame.game.gamecenter.service.impl.YueNanIOSServiceImpl" scope="singleton"></bean>
+	<bean id="yueNanPartner" class="com.fantingame.game.gamecenter.service.impl.YueNanServiceImpl" scope="singleton"></bean>
+	
+	<bean id="amigoPartner" class="com.fantingame.game.gamecenter.service.impl.AmigoServiceImpl" scope="singleton"></bean>
+	<bean id="mzwPartner" class="com.fantingame.game.gamecenter.service.impl.MzwServiceImpl" scope="singleton"></bean>
+	<bean id="meizuPartner" class="com.fantingame.game.gamecenter.service.impl.MeizuServiceImpl" scope="singleton"></bean>
+	<bean id="legamePartner" class="com.fantingame.game.gamecenter.service.impl.yxcq.LegameServiceImpl" scope="singleton"></bean>
+
+	<bean id="padaPartner" class="com.fantingame.game.gamecenter.service.impl.PadaServiceImpl" scope="singleton"></bean>
+	<bean id="kudongPartner" class="com.fantingame.game.gamecenter.service.impl.KudongServiceImpl" scope="singleton"></bean>
+
+	<bean id="appStoreWeb" class="com.fantingame.game.gamecenter.service.impl.AppleWebServiceImpl" scope="singleton"></bean>
+
+	<!-- 英雄传奇 -->
+	<bean id="yxcqAmigoPartner" class="com.fantingame.game.gamecenter.service.impl.yxcq.YXCQAmigoServiceImpl" scope="singleton"></bean>
+	<bean id="yxcqAnzhiPartner" class="com.fantingame.game.gamecenter.service.impl.yxcq.YXCQAnZhiServiceImpl" scope="singleton"></bean>
+	
+	<bean id="yxcqAppChinaPartner" class="com.fantingame.game.gamecenter.service.impl.yxcq.YXCQAppChinaServiceImpl" scope="singleton"></bean>
+	<bean id="yxcqBaiduPartner" class="com.fantingame.game.gamecenter.service.impl.yxcq.YXCQBaiduServiceImpl" scope="singleton"></bean>
+	<bean id="yxcqChangWanPartner" class="com.fantingame.game.gamecenter.service.impl.yxcq.YXCQChangWanServiceImpl" scope="singleton"></bean>
+	<bean id="yxcqChinaMobilePartner" class="com.fantingame.game.gamecenter.service.impl.yxcq.YXCQChinaMobileServiceImpl" scope="singleton"></bean>
+	<bean id="yxcqDuoKuPartner" class="com.fantingame.game.gamecenter.service.impl.yxcq.YXCQDuoKuServiceImpl" scope="singleton"></bean>
+	<bean id="yxcqHuaWeiPartner" class="com.fantingame.game.gamecenter.service.impl.yxcq.YXCQHuaWeiServiceImpl" scope="singleton"></bean>
+	<bean id="yxcqQiHooPartner" class="com.fantingame.game.gamecenter.service.impl.yxcq.YXCQQiHooServiceImpl" scope="singleton"></bean>
+	<bean id="yxcqXiaomiPartner" class="com.fantingame.game.gamecenter.service.impl.yxcq.YXCQXiaomiServiceImpl" scope="singleton"></bean>
+	<bean id="yxcqTengxunPartner" class="com.fantingame.game.gamecenter.service.impl.yxcq.YXCQTengxunServiceImpl" scope="singleton"></bean>
+	<bean id="yxcqApplePartner" class="com.fantingame.game.gamecenter.service.impl.yxcq.YXCQAppleServiceImpl" scope="singleton"></bean>
+	
+	
+</beans>

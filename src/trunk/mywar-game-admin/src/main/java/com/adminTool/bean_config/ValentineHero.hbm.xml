@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+     <class name="com.adminTool.bo.ValentineHero" table="system_valentine_match">
+      <composite-id>
+       <key-property name="hero_id1" type="java.lang.Integer">  
+                <column name="hero_id1" />  
+            </key-property> 
+       <key-property name="hero_id2" type="java.lang.Integer">  
+                <column name="hero_id2" />  
+            </key-property> 
+      </composite-id>
+     </class>
+</hibernate-mapping>

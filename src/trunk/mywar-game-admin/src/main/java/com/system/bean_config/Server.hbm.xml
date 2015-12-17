@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-3-5 11:29:04 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.system.bo.Server" table="serverlist">
+		<composite-id>
+			<key-property name="serverId" type="java.lang.String">
+				<column name="server_id" length="10" not-null="true" />
+			</key-property>
+			<key-property name="serverName" type="java.lang.String">
+				<column name="server_name" length="64" not-null="true" />
+			</key-property>
+			<key-property name="status" type="java.lang.Integer">
+				<column name="status" not-null="true" />
+			</key-property>
+			<key-property name="partenerId" type="java.lang.String">
+				<column name="partener_id" not-null="true" />
+			</key-property>
+			<key-property name="openTime" type="java.sql.Timestamp">
+				<column name="open_time" length="19" not-null="true" />
+			</key-property>
+			<key-property name="aliaServerId" type="java.lang.String">
+				<column name="alia_server_id" length="10" not-null="true" />
+			</key-property>
+		</composite-id>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	 	http://www.springframework.org/schema/aop 
+	 	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+     	http://www.springframework.org/schema/tx 
+     	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+        
+	<bean id="logicChannelBridgeEntry" class="com.fantingame.game.mywar.logic.client.bridge.LogicChannelBridgeEntry"></bean>
+	<bean id="logicHandler" class="com.fantingame.game.mywar.logic.client.handler.LogicNettyHandler">
+	   <property name="bridgeEntry" ref="logicChannelBridgeEntry"></property>
+	</bean>
+	<!--<bean id="logicCodecFactory" class="com.fantingame.game.server.socket.mina.codefactory.CodeFactory"/> -->
+	
+	<bean id="connector1" class="com.fantingame.game.server.channel.manager.ClientConfigContext">
+                <property name="connectorId" value="connector1"></property>
+                <property name="ip" value="${server.gateway.ip}"></property>
+                <property name="port" value="${server.gateway.port}"></property>
+                <property name="handler" ref="logicHandler"></property>
+                <property name="channelType" value="logicChannel"></property>
+                <property name="nums" value="${server.socketclient.num}"></property>
+     </bean>
+     <!-- <bean id="connector2" class="com.easou.game.framework.server.channle.manager.ClientConfigContext">
+                <property name="connectorId" value="connector2"></property>
+                <property name="ip" value="127.0.0.1"></property>
+                <property name="port" value="10000"></property>
+                <property name="handlers" ref="logicHandler"></property>
+                <property name="codeFactory" ref="logicCodeFactory"></property>
+                <property name="type" value="0"></property>
+                <property name="nums" value="200"></property>
+     </bean>
+     <bean id="connector3" class="com.easou.game.framework.server.channle.manager.ClientConfigContext">
+                <property name="connectorId" value="connector3"></property>
+                <property name="ip" value="127.0.0.1"></property>
+                <property name="port" value="10000"></property>
+                <property name="handlers" ref="logicHandler"></property>
+                <property name="codeFactory" ref="logicCodeFactory"></property>
+                <property name="type" value="0"></property>
+                <property name="nums" value="200"></property>
+     </bean>
+      -->
+     <bean id="initClientContex" class="com.fantingame.game.server.plugin.InitClientContext">
+       <property name="list">
+			<list>
+				<ref bean="connector1"/>
+			</list>
+		</property>
+     </bean>
+     <bean id="initAction" class="com.fantingame.game.server.plugin.InitAction">
+     </bean>
+     <bean id="threadService" class="com.fantingame.game.mywar.logic.client.service.ThreadService">
+         <constructor-arg name="userThreadCount" value="${logic.userthreadcount}" />
+         <constructor-arg name="otherThreadCount" value="${logic.otherthreadcount}" />
+         <constructor-arg name="actionGlobThreadCount" value="${logic.actionGlobThreadCount}" />
+     </bean>
+</beans>

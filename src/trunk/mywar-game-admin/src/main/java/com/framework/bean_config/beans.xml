@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- 注入sessionFactory到dao中 -->
+	<bean id="sessionFactoryAutoInsertDao"
+		class="com.framework.servicemanager.SessionFactoryAutoInsertDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- 任务管理器 -->
+	<bean id="taskManager" class="com.framework.task.TaskManager"></bean>
+
+	<!-- 注入memcache客户端到bean中
+   <bean id="mecacheClientAutoInsert"
+		class="com.framework.cache.memcache.MecacheClientAutoInsert">
+		<property name="xmemcachedClientBuilder" ref="memcachedClientBuilder" />
+	</bean> -->
+	<!-- memcached客户端
+	<bean name="memcachedClientBuilder"
+		class="net.rubyeye.xmemcached.XMemcachedClientBuilder">
+		<constructor-arg>
+			<list>
+				<bean class="java.net.InetSocketAddress">
+					<constructor-arg>
+						<value>222.175.114.75</value>
+					</constructor-arg>
+					<constructor-arg>
+						<value>11211</value>
+					</constructor-arg>
+				</bean>
+			</list>
+		</constructor-arg>
+		<constructor-arg>
+			<list>
+				<value>1</value>
+			</list>
+		</constructor-arg>
+		<property name="connectionPoolSize" value="2"></property>
+		<property name="commandFactory">
+			<bean
+				class="net.rubyeye.xmemcached.command.TextCommandFactory">
+			</bean>
+		</property>
+		<property name="sessionLocator">
+			<bean
+				class="net.rubyeye.xmemcached.impl.KetamaMemcachedSessionLocator">
+			</bean>
+		</property>
+		<property name="transcoder">
+			<bean
+				class="net.rubyeye.xmemcached.transcoders.SerializingTranscoder" />
+		</property>
+	</bean> -->
+	
+	
+	<!-- 应用插件工厂，服务器启动类将调用该工厂获取插件执行，按配置顺序启动，按倒序关闭
+		自动加载实现IAppPlugin的类 -->
+	<bean id="appPluginFactory"
+		class="com.framework.plugin.AppPluginFactory" />
+
+	<!-- 服务器管理器 -->
+	<bean id="serverManager"
+		class="com.framework.server.manager.ServerManager">
+		<property name="serverList">
+			<list>
+				<!-- <ref bean="minaServer" /> 
+				<ref bean="nettyServer" />-->
+			</list>
+		</property>
+	</bean>
+   <!-- DAO异步处理插件 -->
+   <bean id="writeThreadStart" class="com.framework.dao.DaoWriteThreadStart" >
+     <!-- 单次处理的操作消息数量 -->
+     <property name="maxNum" value="200"></property>
+   </bean>
+	<!-- Mina服务器之间通信线程池bean,通过它可以获取线程池 -->
+	<bean id="minaThreadPoolBean"
+		class="com.framework.server.threadpool.ThreadPoolBean">
+		<!-- coreSize线程核心大小 -->
+		<constructor-arg value="10" />
+		<!-- maxSize线程最大大小 -->
+		<constructor-arg value="30" />
+		<!-- maxQueneLength最大队列长度 -->
+		<constructor-arg value="30" />
+		<!-- aliveTime超标线程存活时间 -->
+		<constructor-arg value="10000" />
+	</bean>
+
+	<!-- mina逻辑执行器 -->
+	<bean id="minaHandler" class="com.framework.server.socket.mina.MinaHandler" >
+	 		<property name="bridgeEntry" ref="bridgeEntry"></property>
+	</bean>
+	<!-- mina编解码协议 -->
+	<bean id="protocolCodecFactory" class="com.framework.server.socket.mina.codefactory.CodeFactory" />
+    <!-- mina服务器 -->
+	<bean id="minaServer"
+		class="com.framework.server.socket.mina.MinaServer">
+		<property name="port" value="12369"></property>
+		<property name="maxReadBufferSize" value="2048"></property>
+		<property name="handler" ref="minaHandler"></property>
+		<property name="pool" ref="minaThreadPoolBean"></property>
+		<property name="codeFactory"
+			ref="protocolCodecFactory">
+		</property>
+	</bean>
+	<!-- Netty服务器之间通信线程池bean,通过它可以获取线程池 -->
+	<bean id="nettyThreadPoolBean"
+		class="com.framework.server.threadpool.ThreadPoolBean">
+		<!-- coreSize线程核心大小 -->
+		<constructor-arg value="10" />
+		<!-- maxSize线程最大大小 -->
+		<constructor-arg value="30" />
+		<!-- maxQueneLength最大队列长度 -->
+		<constructor-arg value="30" />
+		<!-- aliveTime超标线程存活时间 -->
+		<constructor-arg value="10000" />
+	</bean>
+	<!-- netty逻辑执行器 -->
+	<bean id="nettyHandler" class="com.framework.server.socket.netty.NettyHandler" >
+			<property name="bridgeEntry" ref="bridgeEntry"></property>
+	</bean>
+	    <!-- mina服务器 -->
+	<bean id="nettyServer"
+		class="com.framework.server.socket.netty.NettyServer">
+		<!-- <property name="port" value="12368"></property>-->
+		<property name="hander" ref="nettyHandler"></property>
+		<property name="pool" ref="nettyThreadPoolBean"></property>
+	</bean>
+
+	<!-- 消息处理器 -->
+	<bean id="msgManager" class="com.framework.server.msg.manager.MsgManagerImp">
+	  <property name="bridgeExit" ref="bridgeExit"></property>
+	</bean>
+	<!-- 网络数据入口 -->
+	<bean id="bridgeEntry" class="com.framework.server.bridge.ChannelBridgeEntry">
+		  <property name="msgManager" ref="msgManager"></property>
+	</bean>
+	<!-- 网络数据出口 -->
+	<bean id="bridgeExit" class="com.framework.server.bridge.ChannelBridgeExit"></bean>
+	
+	<!-- 消息头解析拦截器 -->
+	<bean id="msgHeadDecodeInterceptor"
+		class="com.framework.server.msg.manager.MsgHeadDecodeInterceptor" />
+
+	<!-- 在消息处理之前，log消息头拦截器 -->
+	<bean id="logBeforeMsgManagerInterceptor"
+		class="com.framework.server.msg.manager.LogBeforeMsgManagerInterceptor" />
+
+	<!-- 消息头解析Advisor -->
+	<bean id="msgHeadDecodeAdvisor"
+		class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+		<property name="mappedNames">
+			<list>
+				<value>msgManage</value>
+			</list>
+		</property>
+		<property name="advice">
+			<ref bean="msgHeadDecodeInterceptor" />
+		</property>
+	</bean>
+	<!-- 在消息处理之前，log消息头Advisor -->
+	<bean id="logBeforeMsgManagerAdvisor"
+		class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+		<property name="mappedNames">
+			<list>
+				<value>msgManage</value>
+			</list>
+		</property>
+		<property name="advice">
+			<ref bean="logBeforeMsgManagerInterceptor" />
+		</property>
+	</bean>
+
+	<!-- 消息处理器代理 -->
+	<bean id="msgManagerProxy"
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<list>
+				<value>msgManager</value>
+			</list>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>msgHeadDecodeAdvisor</value>
+				<value>logBeforeMsgManagerAdvisor</value>
+			</list>
+		</property>
+	</bean>
+   <!-- webservice拦截器 -->
+   <bean id="authBeforeWebServiceInterceptor" class="com.framework.webservice.AuthBeforeWebServiceInterceptor"></bean>
+	<bean id="autoClassTypeProxyCreator"
+        class="com.framework.webservice.BeanClassTypeAutoProxyCreator">
+             <property name="interceptorNames">
+                <value>authBeforeWebServiceInterceptor</value>
+               </property>
+               <property name="classTypes">
+               <list>
+               <value>com.framework.webservice.IWebServiceBase</value>
+               </list>
+             </property>
+     </bean>
+</beans>

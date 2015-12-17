@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	 	http://www.springframework.org/schema/aop 
+	 	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+     	http://www.springframework.org/schema/tx 
+     	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+       <bean id="systemTaskDaoMysql" class="com.fantingame.game.mywar.logic.task.dao.mysql.SystemTaskDaoMysql"></bean>
+       <bean id="systemTaskDaoCache" class="com.fantingame.game.mywar.logic.task.dao.cache.SystemTaskDaoCache"></bean>
+       <bean id="systemDailyTaskDaoCache" class="com.fantingame.game.mywar.logic.task.dao.cache.SystemDailyTaskDaoCache"></bean>
+       
+       <bean id="userTaskDao" class="com.fantingame.game.mywar.logic.task.dao.cache.UserTaskCacheImpl">
+          <property name="userTaskDaoMysqlImpl" ref="userTaskDaoMysqlImpl"></property>
+       </bean>
+       <bean id="userTaskDaoMysqlImpl" class="com.fantingame.game.mywar.logic.task.dao.mysql.UserTaskDaoMysqlImpl"></bean>
+       
+       <bean id="userDailyTaskInfoDaoMysql" class="com.fantingame.game.mywar.logic.task.dao.mysql.UserDailyTaskInfoDaoMysql"></bean>
+       <bean id="userDailyTaskInfoDao" class="com.fantingame.game.mywar.logic.task.dao.cache.UserDailyTaskInfoDaoCache">
+       		<property name="userDailyTaskInfoDaoMysql" ref="userDailyTaskInfoDaoMysql"></property>
+       </bean>
+       
+       <bean id="userDailyTaskListDaoMysql" class="com.fantingame.game.mywar.logic.task.dao.mysql.UserDailyTaskListDaoMysql"></bean>
+       <bean id="userDailyTaskListDao" class="com.fantingame.game.mywar.logic.task.dao.cache.UserDailyTaskListDaoCache">
+       		<property name="userDailyTaskListDaoMysql" ref="userDailyTaskListDaoMysql"></property>
+       </bean>
+       
+       <bean id="userTaskService" class="com.fantingame.game.mywar.logic.task.service.UserTaskService"></bean>
+       <bean id="taskAction" class="com.fantingame.game.mywar.logic.task.action.TaskAction"></bean>
+       
+</beans>

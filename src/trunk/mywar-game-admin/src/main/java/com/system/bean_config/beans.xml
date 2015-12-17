@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- 数据源初始化插件 -->
+	<bean id="dataSourceRefreshPlugin" class="com.system.plugin.DataSourceRefreshPlugin"></bean>
+
+	<!-- 读取游戏主服务器配置文件 -->
+	<bean id="tGameServerDao" class="com.system.dao.TGameServerDao"></bean>
+	<bean id="tGameServerService" class="com.system.service.TGameServerService">
+		<property name="tGameServerDao" ref="tGameServerDao" />
+	</bean>
+
+	<!-- 读取从服务器配置文件 -->
+	<bean id="tDbServerDao" class="com.system.dao.TDbServerDao"></bean>
+	<bean id="tDbServerService" class="com.system.service.TDbServerService">
+		<property name="tDbServerDao" ref="tDbServerDao" />
+	</bean>
+
+	<!-- 读取数据库及缓存服务器配置文件 -->
+	<bean id="tSecondaryServerDao" class="com.system.dao.TSecondaryServerDao"></bean>
+	<bean id="tSecondaryServerService" class="com.system.service.TSecondaryServerService">
+		<property name="tSecondaryServerDao" ref="tSecondaryServerDao" />
+	</bean>
+
+	<!-- GameWeb服务器 -->
+	<bean id="gameWebServerDao" class="com.system.dao.GameWebServerDao"></bean>
+	<bean id="gameWebServerService" class="com.system.service.GameWebServerService">
+		<property name="gameWebServerDao" ref="gameWebServerDao" />
+	</bean>
+
+	<!--服务器 -->
+	<bean id="serverDao" class="com.system.dao.ServerDao"></bean>
+	<bean id="serverService" class="com.system.service.ServerService">
+		<property name="serverDao" ref="serverDao" />
+	</bean>
+
+	<!-- 区服务器 -->
+	<bean id="gameWebDao" class="com.system.dao.GameWebDao"></bean>
+	<bean id="gameWebService" class="com.system.service.GameWebService">
+		<property name="gameWebDao" ref="gameWebDao" />
+	</bean>
+
+	<!-- 黑名单 -->
+	<bean id="blackInfoDao" class="com.system.dao.BlackInfoDao"></bean>
+	<bean id="blackInfoService" class="com.system.service.BlackInfoService">
+		<property name="blackInfoDao" ref="blackInfoDao" />
+	</bean>
+
+	<!-- 游戏包信息 -->
+	<bean id="packageInfoDao" class="com.system.dao.PackageInfoDao" ></bean>
+	<bean id="packageInfoService" class="com.system.service.PackageInfoService">
+		<property name="packageInfoDao" ref="packageInfoDao" />
+	</bean>
+	
+	<!-- 通知 -->
+	<bean id="noticeDao" class="com.system.dao.NoticeDao" ></bean>
+	<bean id="noticeService" class="com.system.service.NoticeService">
+		<property name="noticeDao" ref="noticeDao" />
+	</bean>
+
+	<!-- 服务器列表状态 -->
+	<bean id="gameServerStatusDao" class="com.system.dao.GameServerStatusDao" ></bean>
+	<bean id="gameServerStatusService" class="com.system.service.GameServerStatusService" >
+		<property name="gameServerStatusDao" ref="gameServerStatusDao" />
+	</bean>
+
+	<!-- 登陆服务器列表状态 -->
+	<bean id="loginServerStatusDao" class="com.system.dao.LoginServerStatusDao" ></bean>
+	<bean id="loginServerStatusService" class="com.system.service.LoginServerStatusService" >
+		<property name="loginServerStatusDao" ref="loginServerStatusDao" />
+	</bean>
+
+	<!-- Apk版本管理 -->
+	<bean id="versionManagerApkDao" class="com.system.dao.VersionManagerApkDao" ></bean>
+	<bean id="versionManagerApkService" class="com.system.service.VersionManagerApkService" >
+		<property name="versionManagerApkDao" ref="versionManagerApkDao" />
+	</bean>
+	
+	<!-- 资源版本管理 -->
+	<bean id="versionManagerResDao" class="com.system.dao.VersionManagerResDao" ></bean>
+	<bean id="versionManagerResService" class="com.system.service.VersionManagerResService" >
+		<property name="versionManagerResDao" ref="versionManagerResDao" />
+	</bean>
+	
+	<!-- 命令 -->
+	<bean id="commandDao" class="com.system.dao.CommandDao"></bean>
+	<bean id="commandService" class="com.system.service.CommandService">
+		<property name="commandDao" ref="commandDao"></property>
+	</bean>
+	
+	<!-- 修正通知 -->
+	<bean id="amendNoticeDao" class="com.system.dao.AmendNoticeDao" ></bean>
+	<bean id="amendNoticeService" class="com.system.service.AmendNoticeService">
+		<property name="amendNoticeDao" ref="amendNoticeDao" />
+	</bean>
+	
+	<!-- 特殊通知 -->
+	<bean id="specialNoticeDao" class="com.system.dao.SpecialNoticeDao" ></bean>
+	<bean id="specialNoticeService" class="com.system.service.SpecialNoticeService">
+		<property name="specialNoticeDao" ref="specialNoticeDao" />
+	</bean>
+</beans>

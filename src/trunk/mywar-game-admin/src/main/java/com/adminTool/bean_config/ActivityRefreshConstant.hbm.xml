@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.adminTool.bo.ActivityRefreshConstant" table="activity_refresh_constant">
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="activityId" type="int">
+            <column name="activity_id" not-null="true">
+            </column>
+        </property>
+        <property name="refreshClassName" type="java.lang.String">
+        	<column name="refresh_class_name">
+        	</column>
+        </property>
+	</class>
+</hibernate-mapping>

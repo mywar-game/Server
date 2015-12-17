@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-4-22 14:40:07 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.system.bo.GameServerStatus" table="game_server_status">
+        <id name="serverId" type="string">
+            <column name="server_id" length="11" />
+            <generator class="assigned" />
+        </id>
+        <property name="status" type="int">
+            <column name="status" not-null="true">
+                <comment>状态 0 关闭 1开启</comment>
+            </column>
+        </property>
+        <property name="notice" type="string">
+            <column name="notice" length="512" not-null="true">
+                <comment>游戏服务器关服公告</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

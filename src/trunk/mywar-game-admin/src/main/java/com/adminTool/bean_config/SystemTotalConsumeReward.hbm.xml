@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+<class name="com.adminTool.bo.SystemTotalConsumeReward" table="system_total_consume_reward">
+
+	<id name="id" type="java.lang.Integer">
+		<column name="id" />
+		<generator class="identity" />
+	</id>
+	<property name="diamond" type="java.lang.Integer">
+		<column name="diamond" />
+	</property>
+	<property name="rewards" type="java.lang.String">
+		<column name="rewards" />
+	</property>
+	<property name="activityId" type="java.lang.Integer">
+		<column name="activity_id"></column>
+	</property>
+</class>
+</hibernate-mapping>

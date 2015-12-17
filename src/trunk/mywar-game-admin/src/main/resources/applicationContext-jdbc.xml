@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="commonPropertyConfigurer" 
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:jdbcCommon.properties</value>
+			</list>
+		</property>
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+	</bean>
+
+	<bean id="springDSN" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${jdbcCommon.driverClassName}">
+		</property>
+		<property name="url" value="${jdbcCommon.url}">
+		</property>
+		<property name="username" value="${jdbcCommon.username}"></property>
+		<property name="password" value="${jdbcCommon.password}"></property>
+		<property name="maxActive" value="${jdbcCommon.maxActive}"></property>
+		<property name="timeBetweenEvictionRunsMillis" value="${jdbcCommon.timeBetweenEvictionRunsMillis}" />
+		<property name="minEvictableIdleTimeMillis" value="${jdbcCommon.minEvictableIdleTimeMillis}" />
+	</bean>
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" abstract="false" lazy-init="false" autowire="default"
+		dependency-check="default">
+		<property name="dataSource">
+			<ref bean="springDSN" />
+		</property>
+	</bean>
+
+	<bean id="jdbc" class="com.fantingame.common.jdbc.JdbcImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+
+</beans>

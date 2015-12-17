@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+		<class name="com.adminTool.bo.ActivityTaskReward" table="system_activity_task_reward">
+		<composite-id>
+		
+			<key-property name="activityTaskRewardId" type="java.lang.Integer">
+				<column name="activity_task_reward_id" not-null="true">
+				</column>				
+			</key-property>
+			<key-property name="point" type="java.lang.Integer">
+           		<column name="point" not-null="true">
+            	</column>
+        	</key-property>
+        	<key-property name="rewards" type="java.lang.String">
+            	<column name="rewards" not-null="true">
+            	</column>
+        	</key-property>
+    	
+    	</composite-id>
+    </class>
+ </hibernate-mapping>

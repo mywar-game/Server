@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.adminTool.bo.PaymentOrder" table="payment_order">
+		<id name ="orderId" type="java.lang.String">
+			<column name="order_id"></column>
+			<generator class="assigned"></generator>
+		</id>
+		<property name="userName" type="java.lang.String">
+			<column name="username"></column>
+		</property>
+		<property name="userId" type="java.lang.String">
+			<column name="user_id"></column>
+		</property>
+		<property name="partnerOrderId" type="java.lang.String">
+			<column name="partner_order_id"></column>
+		</property>
+		<property name="amount" type="java.lang.Double">
+			<column name="amount"></column>
+		</property>
+		<property name="status" type="java.lang.Integer">
+			<column name="status"></column>
+		</property>
+		<property name="createdTime" type="java.sql.Timestamp">
+			<column name="created_time"></column>
+		</property>
+		<property name="gameServerId" type="java.lang.Integer">
+			<column name="game_server_id"></column>
+		</property>
+	</class>
+</hibernate-mapping>

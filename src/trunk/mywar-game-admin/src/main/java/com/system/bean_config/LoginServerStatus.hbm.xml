@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-4-22 14:40:07 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.system.bo.LoginServerStatus" table="login_server_status">
+		<id name="status" type="int">
+			<column name="status" />
+			<generator class="assigned" />
+		</id>
+		<property name="notice" type="string">
+			<column name="notice" length="65535" not-null="true">
+				<comment>关服公告内容</comment>
+			</column>
+		</property>
+	</class>
+</hibernate-mapping>

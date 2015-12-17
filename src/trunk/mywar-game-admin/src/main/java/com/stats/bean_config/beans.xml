@@ -1,0 +1,714 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+ 	<!-- 玩家每天登入统计dao -->
+	<bean id="userEverydayLoginStatsDao" class="com.stats.dao.UserEverydayLoginStatsDao"></bean>
+	<!-- 玩家每天登入统计service -->
+	<bean id="userEverydayLoginStatsService" class="com.stats.service.UserEverydayLoginStatsService">
+		<property name="userEverydayLoginStatsDao" ref="userEverydayLoginStatsDao"></property>
+	</bean>
+  	
+ 	<!-- 玩家创建角色流失统计dao -->
+	<bean id="userCreateRoleLossStatsDao" class="com.stats.dao.UserCreateRoleLossStatsDao"></bean>
+	<!-- 玩家创建角色流失统计service -->
+	<bean id="userCreateRoleLossStatsService" class="com.stats.service.UserCreateRoleLossStatsService">
+		<property name="userCreateRoleLossStatsDao" ref="userCreateRoleLossStatsDao"></property>
+	</bean>
+	
+ 	<!-- 玩家活跃统计dao -->
+	<bean id="userActiveStatsDao" class="com.stats.dao.UserActiveStatsDao"></bean>
+	<!-- 玩家活跃统计service -->
+	<bean id="userActiveStatsService" class="com.stats.service.UserActiveStatsService">
+		<property name="userActiveStatsDao" ref="userActiveStatsDao"></property>
+	</bean>
+	
+ 	<!-- 在线人数统计dao -->
+	<bean id="userOnlineStatsDao" class="com.stats.dao.UserOnlineStatsDao"></bean>
+	<!-- 在线人数统计service -->
+	<bean id="userOnlineStatsService" class="com.stats.service.UserOnlineStatsService">
+		<property name="userOnlineStatsDao" ref="userOnlineStatsDao"></property>
+	</bean>
+	
+ 	<!-- 随着时间玩家流失统计dao -->
+	<bean id="userTimeLossStatsDao" class="com.stats.dao.UserTimeLossStatsDao"></bean>
+	<!-- 随着时间玩家流失统计service -->
+	<bean id="userTimeLossStatsService" class="com.stats.service.UserTimeLossStatsService">
+		<property name="userTimeLossStatsDao" ref="userTimeLossStatsDao"></property>
+	</bean>
+	
+ 	<!-- 玩家钻石统计dao -->
+	<bean id="userDiamondStatsDao" class="com.stats.dao.UserDiamondStatsDao"></bean>
+	<!-- 玩家钻石统计service -->
+	<bean id="userDiamondStatsService" class="com.stats.service.UserDiamondStatsService">
+		<property name="userDiamondStatsDao" ref="userDiamondStatsDao"></property>
+	</bean>
+	
+ 	<!-- 玩家充值统计dao -->
+	<bean id="userPayStatsDao" class="com.stats.dao.UserPayStatsDao"></bean>
+	<!-- 平台充值详情dao -->
+	<bean id="userPayDetailDao" class="com.stats.dao.UserPayDetailDao"></bean>
+	<!-- 玩家充值统计service -->
+	<bean id="userPayStatsService" class="com.stats.service.UserPayStatsService">
+		<property name="userPayStatsDao" ref="userPayStatsDao"></property>
+		<property name="userPayDetailDao" ref="userPayDetailDao"></property>
+	</bean>
+	
+ 	<!-- 玩家消费统计dao -->
+	<bean id="userConsumeStatsDao" class="com.stats.dao.UserConsumeStatsDao"></bean>
+	<!-- 玩家消费统计service -->
+	<bean id="userConsumeStatsService" class="com.stats.service.UserConsumeStatsService">
+		<property name="userConsumeStatsDao" ref="userConsumeStatsDao"></property>
+	</bean>
+	
+ 	<!-- 玩家刷新英雄统计dao -->
+	<bean id="userRefreshHeroStatsDao" class="com.stats.dao.UserRefreshHeroStatsDao"></bean>
+	<!-- 玩家刷新英雄统计service -->
+	<bean id="userRefreshHeroStatsService" class="com.stats.service.UserRefreshHeroStatsService">
+		<property name="userRefreshHeroStatsDao" ref="userRefreshHeroStatsDao"></property>
+	</bean>
+	
+ 	<!-- 好友拜访统计dao -->
+	<bean id="userFriendVisitStatsDao" class="com.stats.dao.UserFriendVisitStatsDao"></bean>
+	<!-- 好友拜访统计service -->
+	<bean id="userFriendVisitStatsService" class="com.stats.service.UserFriendVisitStatsService">
+		<property name="userFriendVisitStatsDao" ref="userFriendVisitStatsDao"></property>
+	</bean>
+	
+ 	<!-- 玩家等级区间各类型消费统计dao -->
+	<bean id="userLevelIntervalConsumeTypeStatsDao" class="com.stats.dao.UserLevelIntervalConsumeTypeStatsDao"></bean>
+	<!-- 玩家等级区间各类型消费统计service -->
+	<bean id="userLevelIntervalConsumeTypeStatsService" class="com.stats.service.UserLevelIntervalConsumeTypeStatsService">
+		<property name="userLevelIntervalConsumeTypeStatsDao" ref="userLevelIntervalConsumeTypeStatsDao"></property>
+	</bean>
+	
+ 	<!-- 玩家IP统计dao -->
+	<bean id="userIPStatsDao" class="com.stats.dao.UserIPStatsDao"></bean>
+	<!-- 玩家IP统计service -->
+	<bean id="userIPStatsService" class="com.stats.service.UserIPStatsService">
+		<property name="userIPStatsDao" ref="userIPStatsDao"></property>
+	</bean>
+	
+ 	<!-- 付费用户信息统计dao -->
+	<bean id="payUserInfoStatsDao" class="com.stats.dao.PayUserInfoStatsDao"></bean>
+	<!-- 付费用户信息service -->
+	<bean id="payUserInfoStatsService" class="com.stats.service.PayUserInfoStatsService">
+		<property name="payUserInfoStatsDao" ref="payUserInfoStatsDao"></property>
+	</bean>
+	
+ 	<!-- 充值区间统计dao -->
+	<bean id="payIntervalStatsDao" class="com.stats.dao.PayIntervalStatsDao"></bean>
+	<!-- 充值区间service -->
+	<bean id="payIntervalStatsService" class="com.stats.service.PayIntervalStatsService">
+		<property name="payIntervalStatsDao" ref="payIntervalStatsDao"></property>
+	</bean>
+	
+ 	<!-- 玩家性别统计dao -->
+	<bean id="userSexStatsDao" class="com.stats.dao.UserSexStatsDao"></bean>
+	<!-- 玩家性别统计service -->
+	<bean id="userSexStatsService" class="com.stats.service.UserSexStatsService">
+		<property name="userSexStatsDao" ref="userSexStatsDao"></property>
+	</bean>
+	
+ 	<!-- 玩家问卷统计dao -->
+	<bean id="userQuestionnaireStatsDao" class="com.stats.dao.UserQuestionnaireStatsDao"></bean>
+	<!-- 玩家问卷统计service -->
+	<bean id="userQuestionnaireStatsService" class="com.stats.service.UserQuestionnaireStatsService">
+		<property name="userQuestionnaireStatsDao" ref="userQuestionnaireStatsDao"></property>
+	</bean>
+	
+ 	<!-- 玩家留存统计dao -->
+	<bean id="userRemainStatsDao" class="com.stats.dao.UserRemainStatsDao"></bean>
+	<!-- 玩家留存统计service -->
+	<bean id="userRemainStatsService" class="com.stats.service.UserRemainStatsService">
+		<property name="userRemainStatsDao" ref="userRemainStatsDao"></property>
+	</bean>
+	
+	<!-- 玩家留存统计(by idfa) dao -->
+	<bean id="userRemainByIdfaStatsDao" class="com.stats.dao.UserRemainByIdfaStatsDao"></bean>
+	<bean id="userRemainByIdfaStatsService" class="com.stats.service.UserRemainByIdfaStatsService">
+		<property name="userRemainByIdfaStatsDao" ref="userRemainByIdfaStatsDao"></property>
+	</bean>
+	
+	<!-- 玩家留存统计(by ip) dao -->
+	<bean id="userRemainByIpStatsDao" class="com.stats.dao.UserRemainByIpStatsDao"></bean>
+	<bean id="userRemainByIpStatsService" class="com.stats.service.UserRemainByIpStatsService">
+		<property name="userRemainByIpStatsDao" ref="userRemainByIpStatsDao"></property>
+	</bean>
+	
+	<!-- 玩家留存统计(by channel) dao -->
+	<bean id="userRemainByChannelStatsDao" class="com.stats.dao.UserRemainByChannelStatsDao"></bean>
+	<bean id="userRemainByChannelStatsService" class="com.stats.service.UserRemainByChannelStatsService">
+		<property name="userRemainByChannelStatsDao" ref="userRemainByChannelStatsDao"></property>
+	</bean>
+	
+ 	<!-- 玩家pve关卡统计dao -->
+	<bean id="userPveStatsDao" class="com.stats.dao.UserPveStatsDao"></bean>
+	<!-- 玩家pve关卡统计service -->
+	<bean id="userPveStatsService" class="com.stats.service.UserPveStatsService">
+		<property name="userPveStatsDao" ref="userPveStatsDao"></property>
+	</bean>
+	
+	<!-- 每周玩家在线统计dao -->
+	<bean id="weekUserOnlineStatsDao" class="com.stats.dao.WeekUserOnlineStatsDao"></bean>
+	<!-- 每周玩家在线统计service -->
+	<bean id="weekUserOnlineStatsService" class="com.stats.service.WeekUserOnlineStatsService">
+		<property name="weekUserOnlineStatsDao" ref="weekUserOnlineStatsDao"></property>
+	</bean>
+	
+	<!-- 每周玩家充值统计dao -->
+	<bean id="weekUserPayStatsDao" class="com.stats.dao.WeekUserPayStatsDao"></bean>
+	<!-- 每周玩家充值统计service -->
+	<bean id="weekUserPayStatsService" class="com.stats.service.WeekUserPayStatsService">
+		<property name="weekUserPayStatsDao" ref="weekUserPayStatsDao"></property>
+	</bean>
+	
+	<!-- 玩家节点流失统计dao -->
+	<bean id="userNodeLossStatsDao" class="com.stats.dao.UserNodeLossStatsDao"></bean>
+	<!-- 玩家节点流失统计service -->
+	<bean id="userNodeLossStatsService" class="com.stats.service.UserNodeLossStatsService">
+		<property name="userNodeLossStatsDao" ref="userNodeLossStatsDao"></property>
+	</bean>
+	
+	<!-- 玩家节点流失统计dao -->
+	<bean id="normalDataStatsDao" class="com.stats.dao.NormalDataStatsDao"></bean>
+	<!-- 玩家节点流失统计service -->
+	<bean id="normalDataStatsService" class="com.stats.service.NormalDataStatsService">
+		<property name="normalDataStatsDao" ref="normalDataStatsDao"></property>
+	</bean>
+	
+	<!-- 充值统计dao -->
+	<bean id="rechargeStatsDao" class="com.stats.dao.RechargeStatsDao"></bean>
+	<!-- 充值统计service -->
+	<bean id="rechargeStatsService" class="com.stats.service.RechargeStatsService">
+		<property name="rechargeStatsDao" ref="rechargeStatsDao"></property>
+	</bean>
+	
+	<!-- 玩家vip统计dao(分天统计) -->
+	<bean id="userVipStatsDao" class="com.stats.dao.UserVipStatsDao"></bean>
+	<!-- 玩家vip统计统计service(分天) -->
+	<bean id="userVipStatsService" class="com.stats.service.UserVipStatsService">
+		<property name="userVipStatsDao" ref="userVipStatsDao"></property>
+	</bean>
+	
+	<!-- 玩家vip统计dao(汇总统计) -->
+	<bean id="userVipTotalStatsDao" class="com.stats.dao.UserVipTotalStatsDao"></bean>
+	<!-- 玩家vip统计统计service(汇总) -->
+	<bean id="userVipTotalStatsService" class="com.stats.service.UserVipTotalStatsService">
+		<property name="userVipTotalStatsDao" ref="userVipTotalStatsDao"></property>
+	</bean>
+	
+	<!-- 商城TOP10统计dao -->
+	<bean id="userMallRankStatsDao" class="com.stats.dao.UserMallRankStatsDao"></bean>
+	<!-- 商城TOP10统计service -->
+	<bean id="userMallRankStatsService" class="com.stats.service.UserMallRankStatsService">
+		<property name="userMallRankStatsDao" ref="userMallRankStatsDao"></property>
+	</bean>
+	<!-- 玩家银币统计dao -->
+	<bean id="userCopperStatsDao" class="com.stats.dao.UserCopperStatsDao"></bean>
+	<!-- 玩家银币统计service -->
+	<bean id="userCopperStatsService" class="com.stats.service.UserCopperStatsService">
+		<property name="userCopperStatsDao" ref="userCopperStatsDao"></property>
+	</bean>
+	
+	<!-- 玩家等级统计dao -->
+	<bean id="userLevelStatsDao" class="com.stats.dao.UserLevelStatsDao"></bean>
+	<bean id="levelStatsDao" class="com.stats.dao.LevelStatsDao"></bean>
+	<!-- 玩家等级统计service -->
+	<bean id="userLevelStatsService" class="com.stats.service.UserLevelStatsService">
+		<property name="userLevelStatsDao" ref="userLevelStatsDao"></property>
+		<property name="levelStatsDao" ref="levelStatsDao"></property>
+	</bean>
+	
+	<!-- 玩家装备统计dao -->
+	<bean id="userEquipStatsDao" class="com.stats.dao.UserEquipStatsDao"></bean>
+	<!-- 玩家装备统计service -->
+	<bean id="userEquipStatsService" class="com.stats.service.UserEquipStatsService">
+		<property name="userEquipStatsDao" ref="userEquipStatsDao"></property>
+	</bean>
+	
+	<!-- 在线数据详情统计dao -->
+	<bean id="onlineDetailStatsDao" class="com.stats.dao.OnlineDetailStatsDao"></bean>
+	<!-- 在线数据详情统计service -->
+	<bean id="onlineDetailStatsService" class="com.stats.service.OnlineDetailStatsService">
+		<property name="onlineDetailStatsDao" ref="onlineDetailStatsDao"></property>
+	</bean>
+	
+	<!-- 平台汇总数据dao -->
+	<bean id="summaryStatsDao" class="com.stats.dao.SummaryStatsDao"></bean>
+	<!-- 平台汇总数据service -->
+	<bean id="summaryStatsService" class="com.stats.service.SummaryStatsService">
+		<property name="summaryStatsDao" ref="summaryStatsDao"></property>
+	</bean>
+	
+	<!-- 注册数据dao -->
+	<bean id="registerStatsDao" class="com.stats.dao.RegisterStatsDao"></bean>
+	<!-- 注册数据service -->
+	<bean id="registerStatsService" class="com.stats.service.RegisterStatsService">
+		<property name="registerStatsDao" ref="registerStatsDao"></property>
+	</bean>
+	
+	<!-- 登陆数据dao -->
+	<bean id="loginStatsDao" class="com.stats.dao.LoginStatsDao"></bean>
+	<!-- 登陆数据service -->
+	<bean id="loginStatsService" class="com.stats.service.LoginStatsService">
+		<property name="loginStatsDao" ref="loginStatsDao"></property>
+	</bean>
+	
+	<!-- 商城数据dao -->
+	<bean id="mallStatsDao" class="com.stats.dao.MallStatsDao"></bean>
+	<!-- 商城数据service -->
+	<bean id="mallStatsService" class="com.stats.service.MallStatsService">
+		<property name="mallStatsDao" ref="mallStatsDao"></property>
+	</bean>
+	
+	<!-- 首页数据dao -->
+	<bean id="homePageStatsDao" class="com.stats.dao.HomePageStatsDao"></bean>
+	<!-- 首页数据service -->
+	<bean id="homePageService" class="com.stats.service.HomePageService">
+		<property name="homePageStatsDao" ref="homePageStatsDao"></property>
+	</bean>
+	
+	<!-- 玩家每天登入统计Collector -->
+	<bean id="userEverydayLoginStatsCollector" class="com.stats.collector.UserEverydayLoginStatsCollector" />
+	
+	<!-- 玩家创建角色流失统计Collector -->
+	<bean id="userCreateRoleLossStatsCollector" class="com.stats.collector.UserCreateRoleLossStatsCollector" />
+	
+	<!-- 玩家活跃统计Collector -->
+	<bean id="userActiveStatsCollector" class="com.stats.collector.UserActiveStatsCollector" />
+	
+	<!-- 在线人数统计Collector -->
+	<bean id="userOnlineStatsCollector" class="com.stats.collector.UserOnlineStatsCollector" />
+	
+	<!-- 随着时间玩家流失统计Collector -->
+	<bean id="userTimeLossStatsCollector" class="com.stats.collector.UserTimeLossStatsCollector" />
+	
+	<!-- 玩家钻石统计Collector -->
+	<bean id="userDiamondStatsCollector" class="com.stats.collector.UserDiamondStatsCollector" />
+	
+	<!-- 玩家充值统计Collector -->
+	<bean id="userPayStatsCollector" class="com.stats.collector.UserPayStatsCollector" />
+	
+	<!-- 玩家消费统计Collector -->
+	<bean id="userConsumeStatsCollector" class="com.stats.collector.UserConsumeStatsCollector" />
+	
+	<!-- 玩家刷新英雄统计Collector -->
+	<bean id="userRefreshHeroStatsCollector" class="com.stats.collector.UserRefreshHeroStatsCollector" />
+	
+	<!-- 好友拜访统计Collector -->
+	<bean id="userFriendVisitStatsCollector" class="com.stats.collector.UserFriendVisitStatsCollector" />
+	
+	<!-- 玩家等级区间各类型消费统计Collector -->
+	<bean id="userLevelIntervalConsumeTypeStatsCollector" class="com.stats.collector.UserLevelIntervalConsumeTypeStatsCollector" />
+	
+	<!-- 玩家IP统计Collector -->
+	<bean id="userIPStatsCollector" class="com.stats.collector.UserIPStatsCollector" />
+	
+	<!-- 付费用户信息统计Collector -->
+	<bean id="payUserInfoStatsCollector" class="com.stats.collector.PayUserInfoStatsCollector" />
+	
+	<!-- 充值区间统计Collector -->
+	<bean id="payIntervalStatsCollector" class="com.stats.collector.PayIntervalStatsCollector" />
+	
+	<!-- 玩家性别统计Collector -->
+	<bean id="userSexStatsCollector" class="com.stats.collector.UserSexStatsCollector" />
+	
+	<!-- 玩家问卷统计Collector -->
+	<bean id="userQuestionnaireStatsCollector" class="com.stats.collector.UserQuestionnaireStatsCollector" />
+	
+	<!-- 玩家留存统计Collector -->
+	<bean id="userRemainStatsCollector" class="com.stats.collector.UserRemainStatsCollector" />
+	
+	<!-- 新增 -->
+	<!-- 玩家留存统计Collector (根据idfa) -->
+	<bean id="userRemainStatsByIdfaCollector" class="com.stats.collector.UserRemainStatsByIdfaCollector" />
+	
+	<!-- 玩家留存统计Collector (根据ip)-->
+	<bean id="userRemainStastsByipCollector" class="com.stats.collector.UserRemainStatsByIpCollector" />
+	
+	<!-- 玩家留存统计Collector (根据channel)-->
+	<bean id="userRemainStastsByChannelCollector" class="com.stats.collector.UserRemainStatsByChannelCollector" />
+	<!-- end 新增 -->
+	
+	
+	
+	<!-- 玩家pve关卡统计Collector -->
+	<bean id="pveStatsCollector" class="com.stats.collector.PveStatsCollector" />
+	
+	<!-- 玩家节点流失统计Collector -->
+	<bean id="userNodeLossStatsCollector" class="com.stats.collector.UserNodeLossStatsCollector" />
+  	
+  	<!-- 常规数据统计Collector -->
+	<bean id="normalDataStatsCollector" class="com.stats.collector.NormalDataStatsCollector" />
+	
+	<!-- 充值统计Collector -->
+	<bean id="rechargeStatsCollector" class="com.stats.collector.RechargeStatsCollector" />
+	
+	<!-- 玩家vip统计Collector -->
+	<bean id="userVipStatsCollector" class="com.stats.collector.UserVipStatsCollector" />
+	
+	<!-- 玩家vip统计(汇总)Collector -->
+	<bean id="userVipTotalStatsCollector" class="com.stats.collector.UserVipTotalStatsCollector" />
+	
+	<!-- 商城TOP10统计Collector -->
+	<bean id="userMallRankStatsCollector" class="com.stats.collector.UserMallRankStatsCollector" />
+	
+	<!--玩家银币统计Collector -->
+	<bean id="userCopperStatsCollector" class="com.stats.collector.UserCopperStatsCollector" />
+	
+	<!--玩家等级统计Collector -->
+	<bean id="userLevelStatsCollector" class="com.stats.collector.UserLevelStatsCollector" />
+	
+	<!--装备统计Collector -->
+	<bean id="userEquipStatsCollector" class="com.stats.collector.UserEquipStatsCollector" />
+	
+	<!--汇总数据Collector -->
+	<bean id="summaryDataCollector" class="com.stats.collector.SummaryDataCollector" />
+	
+	<!--注册数据Collector -->
+	<bean id="registerStatsCollector" class="com.stats.collector.RegisterStatsCollector" />
+	
+	<!--登陆数据Collector -->
+	<bean id="loginStatsCollector" class="com.stats.collector.LoginStatsCollector" />
+	
+	<!--商城数据Collector -->
+	<bean id="mallStatsCollector" class="com.stats.collector.MallStatsCollector" />
+	
+	<!--等级数据Collector -->
+	<bean id="levelStatsCollector" class="com.stats.collector.LevelStatsCollector" />
+	
+	<!--首页数据Collector -->
+	<bean id="homePageStatsCollector" class="com.stats.collector.HomePageStatsCollector" />
+	
+	<!-- 声望兑换Collector -->
+	<bean id="prestigeCollector" class="com.stats.collector.PrestigeCollector" />
+	
+	<!-- 夺宝统计Collector -->
+	<bean id="plunderStatsCollector" class="com.stats.collector.PlunderStatsCollector" />
+	
+	<!-- 争霸统计Collector -->
+	<bean id="zhengbaStatsCollector" class="com.stats.collector.ZhengbaStatsCollector" />
+	
+	<!-- 世界boss统计Collector -->
+	<bean id="bossStatsCollector" class="com.stats.collector.BossStatsCollector" />
+	
+	<!-- 大富翁 -->
+	<bean id="userLoginDrawStatsCollector" class="com.stats.collector.UserLoginDrawStatsCollector" />
+	
+	<!--  用户充值统计 -->
+	<bean id="paymentLogStatsCollector" class="com.stats.collector.PaymentLogStatsCollector"/>
+	
+	<!-- 军团统计 -->
+	<bean id="legionStatsCollector" class="com.stats.collector.LegionStatsCollector" />
+	
+	<!-- 战魂统计 -->
+	<bean id="equipStatsCollector" class="com.stats.collector.EquipStatsCollector" />
+	
+	<!-- 天界统计 -->
+	<bean id="competitionStatsCollector" class="com.stats.collector.CompetitionStatsCollector" />
+	
+  	<!-- 顺序不能打乱，因为有些统计是根据上面类统计的结果进行统计的 -->
+	<!-- 日采集数据调用链 -->
+	<bean id="dayInvocationCollector" class="com.stats.collector.InvocationCollector"  scope="prototype">
+		<constructor-arg>
+			<list>
+				<!-- 玩家每天登入统计Collector -->
+				<value>com.stats.collector.UserEverydayLoginStatsCollector</value>
+				<!-- 玩家创建角色流失统计Collector -->
+				<value>com.stats.collector.UserCreateRoleLossStatsCollector</value>
+				<!-- 玩家活跃统计Collector -->
+				<value>com.stats.collector.UserActiveStatsCollector</value>
+				<!-- 在线人数统计Collector -->
+				<value>com.stats.collector.UserOnlineStatsCollector</value>
+				<!-- 随着时间玩家流失统计Collector -->
+				<value>com.stats.collector.UserTimeLossStatsCollector</value>
+				<!-- 玩家钻石统计Collector -->
+				<value>com.stats.collector.UserDiamondStatsCollector</value>
+				<!-- 玩家充值统计Collector -->
+				<value>com.stats.collector.UserPayStatsCollector</value>
+				<!-- 玩家消费统计Collector -->
+				<value>com.stats.collector.UserConsumeStatsCollector</value>
+				<!-- 玩家刷新英雄统计Collector -->
+				<value>com.stats.collector.UserRefreshHeroStatsCollector</value>
+				<!-- 好友拜访统计Collector -->
+				<value>com.stats.collector.UserFriendVisitStatsCollector</value>
+				<!-- 玩家等级区间各类型消费统计Collector -->
+				<value>com.stats.collector.UserLevelIntervalConsumeTypeStatsCollector</value>
+				<!-- 玩家IP统计Collector -->
+				<value>com.stats.collector.UserIPStatsCollector</value>
+				<!-- 付费用户信息统计Collector -->
+				<value>com.stats.collector.PayUserInfoStatsCollector</value>
+				<!-- 充值区间统计Collector -->
+				<value>com.stats.collector.PayIntervalStatsCollector</value>
+				<!-- 玩家性别统计Collector 
+				<value>com.stats.collector.UserSexStatsCollector</value>
+				-->
+				<!-- 玩家问卷统计Collector 
+				<value>com.stats.collector.UserQuestionnaireStatsCollector</value>
+				-->
+				<!-- 玩家留存统计Collector -->
+				<value>com.stats.collector.UserRemainStatsCollector</value>
+				<!-- add -->
+				<!-- 玩家留存统计Collector (by idfa)-->
+				<value>com.stats.collector.UserRemainStatsByIdfaCollector</value>
+				<!-- 玩家留存统计Collector (by ip)-->
+				<value>com.stats.collector.UserRemainStatsByIpCollector</value>
+				<!-- 玩家留存统计Collector (by channel) -->
+				<value>com.stats.collector.UserRemainStatsByChannelCollector</value>
+				
+				<!-- end add -->
+				<!-- 玩家pve关卡统计Collector -->
+				<value>com.stats.collector.PveStatsCollector</value>
+				<!-- 玩家节点流失统计Collector -->
+				<value>com.stats.collector.UserNodeLossStatsCollector</value>
+				<!-- 常规数据统计Collector -->
+				<value>com.stats.collector.NormalDataStatsCollector</value>
+				<!-- 充值统计Collector -->
+				<value>com.stats.collector.RechargeStatsCollector</value>
+				<!-- 玩家vip统计Collector -->
+				<value>com.stats.collector.UserVipStatsCollector</value>
+				<!-- 玩家vip统计(汇总)Collector -->
+				<value>com.stats.collector.UserVipTotalStatsCollector</value>
+				<!-- 商城TOP10统计Collector 
+				<value>com.stats.collector.UserMallRankStatsCollector</value>
+				-->
+				<!-- 玩家银币统计Collector -->
+				<value>com.stats.collector.UserCopperStatsCollector</value>
+				<!-- 玩家等级统计Collector -->
+				<value>com.stats.collector.UserLevelStatsCollector</value>
+				<!-- 渠道等级统计Collector -->
+				<value>com.stats.collector.LevelStatsCollector</value>
+				<!-- 装备统计Collector -->
+				<value>com.stats.collector.UserEquipStatsCollector</value>
+				<!-- 声望兑换Collector -->
+				<value>com.stats.collector.PrestigeCollector</value>
+				
+				<!-- 用户充值统计 -->
+				<value>com.stats.collector.PaymentLogStatsCollector</value>
+				<!-- 作弊统计 -->
+				<value>com.stats.collector.CheatStatsCollector</value>
+				<!-- VIP钻石统计 -->
+				<value>com.stats.collector.VIPUserDiamondStatsCollector</value>
+				
+				<!-- 世界boss统计Collector 
+				<value>com.stats.collector.BossStatsCollector</value>
+				-->
+				<!-- 夺宝统计Collector 
+				<value>com.stats.collector.PlunderStatsCollector</value>
+				-->
+				<!-- 争霸统计Collector 
+				<value>com.stats.collector.ZhengbaStatsCollector</value>
+				-->
+				<!-- 大富翁统计Collector 
+				<value>com.stats.collector.UserLoginDrawStatsCollector</value>
+				-->
+				
+				<!-- 军团统计
+				<value>com.stats.collector.LegionStatsCollector</value>
+				-->
+				<!-- 战魂统计
+				<value>com.stats.collector.EquipStatsCollector</value>
+				 -->
+				<!-- 天界统计
+				<value>com.stats.collector.CompetitionStatsCollector</value>
+				 -->
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<!-- 汇总数据调用链(30分钟执行一次 )-->
+	<bean id="summaryData" class="com.stats.collector.InvocationCollector"  scope="prototype">
+		<constructor-arg>
+			<list>
+				<!-- 汇总数据Collector -->
+				<value>com.stats.collector.SummaryDataCollector</value>
+				<!-- 注册数据Collector -->
+				<value>com.stats.collector.RegisterStatsCollector</value>
+				<!-- 登陆数据Collector -->
+				<value>com.stats.collector.LoginStatsCollector</value>
+				<!-- 商城数据Collector -->
+				<value>com.stats.collector.MallStatsCollector</value>
+				<!-- 首页数据Collector -->
+				<value>com.stats.collector.HomePageStatsCollector</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<!-- 每周玩家在线统计Collector -->
+	<bean id="weekUserOnlineStatsCollector" class="com.stats.collector.WeekUserOnlineStatsCollector"></bean>
+	
+	<!-- 每周玩家充值统计Collector -->
+	<bean id="weekUserPayStatsCollector" class="com.stats.collector.WeekUserPayStatsCollector"></bean>
+	
+	<!-- 周采集数据调用链  -->
+	<bean id="weekInvocationCollector" class="com.stats.collector.InvocationCollector" scope="prototype">
+		<constructor-arg>
+			<list>
+				<!-- 每周玩家在线统计Collector -->
+				<value>com.stats.collector.WeekUserOnlineStatsCollector</value>
+				<!-- 每周玩家充值统计Collector -->
+				<value>com.stats.collector.WeekUserPayStatsCollector</value>
+				
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<!-- 月采集数据调用链 -->
+	<bean id="monthInvocationCollector" class="com.stats.collector.InvocationCollector" scope="prototype">
+		<constructor-arg>
+			<list>
+				<value></value>
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="dayTaskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<!-- 这个size应该根据服务器数量的增加而进行定期改变-->
+		<property name="corePoolSize" value="8" />
+		<property name="maxPoolSize" value="20" />
+		<property name="queueCapacity" value="100" />
+	</bean>
+	<!-- 备份日志调度器,跟日采集数据调度错开10分钟-->
+	<bean id="backupScheduler" class="com.stats.scheduler.BackupScheduler">
+		<property name="cronExpression" value="0 10 0 * * ?"></property>
+		<property name="isTimeZoneDiff" value="true"></property>
+	</bean>
+	
+	<!-- 日采集数据调度器 每天的零点-->
+	<bean id="dayCollectorEntry" class="com.stats.scheduler.DayCollectorEntry">
+		<property name="cronExpression" value="0 0 0 * * ?"></property>
+		<property name="isTimeZoneDiff" value="true"></property>
+	</bean>
+
+	<!-- 周采集数据调度器 每周一的零点-->
+	<bean id="weekCollectorEntry" class="com.stats.scheduler.WeekCollectorEntry">
+		<property name="cronExpression" value="0 0 0 ? * MON"></property>
+		<property name="isTimeZoneDiff" value="true"></property>
+	</bean>
+
+	<!-- 月采集数据调度器  每个月的第一天的零点-->
+	<bean id="monthCollectorEntry" class="com.stats.scheduler.MonthCollectorEntry">
+		<property name="cronExpression" value="0 0 0 1 * ?"></property>
+		<property name="isTimeZoneDiff" value="true"></property>
+	</bean>
+	
+	<!-- 平台数据汇总调度 半小时执行一次-->
+	<bean id="channelDataSch" class="com.stats.scheduler.ChannelDataSch">
+		<property name="cronExpression" value="59 29,59 * * * ?"></property>
+		<property name="isTimeZoneDiff" value="true"></property>
+	</bean>
+	
+	<!--每天早上9点通过eamil发送数据
+	<bean id="sendHomePageDataByEmail" class="com.stats.scheduler.SendHomePageDataByEmail">
+		<property name="cronExpression" value="0 0 9 * * ?"></property>
+		<property name="isTimeZoneDiff" value="true"></property>
+	</bean>
+	-->
+	     <!-- minaClient缓存 -->
+     <bean id="serverClientCache" class="com.stats.cache.ServerClientCache"></bean>
+     
+    <!-- 角色分布统计 service 待修改-->
+    <bean id="userDao" class="com.adminTool.dao.UserDao"></bean>
+	<bean id="userDistributionService" class="com.stats.service.UserDistributionService">
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+	
+	<!-- 玩家每周登入统计 -->
+	<bean id="userEveryWeekLoginStatsDao" class="com.stats.dao.UserEveryWeekLoginStatsDao">
+	</bean>
+	<bean id="userEveryWeekLoginStatsService" class="com.stats.service.UserEveryWeekLoginStatsService">
+		<property name="userEveryWeekLoginStatsDao" ref="userEveryWeekLoginStatsDao"></property>
+	</bean>
+	
+	<!-- 玩家每月登入统计 -->
+	<bean id="userEveryMonthLoginStatsDao" class="com.stats.dao.UserEveryMonthLoginStatsDao">
+	</bean>
+	<bean id="userEveryMonthLoginStatsService" class="com.stats.service.UserEveryMonthLoginStatsService">
+		<property name="userEveryMonthLoginStatsDao" ref="userEveryMonthLoginStatsDao"></property>
+	</bean>
+	
+	<!-- 付费账号数统计 -->
+	<bean id="payListDao" class="com.stats.dao.PayListDao"></bean>
+	<bean id="payListService" class="com.stats.service.PayListService">
+		<property name="payListDao" ref="payListDao"></property>
+	</bean>
+	
+	<!-- 玩家登入实时统计查询 -->
+	<bean id="userLoginSearchDao" class="com.stats.dao.UserLoginSearchDao"></bean>
+	<bean id="userLoginSearchService" class="com.stats.service.UserLoginSearchService">
+		<property name="userLoginSearchDao" ref="userLoginSearchDao"></property>
+	</bean>
+	
+	<!-- 神器统计 -->
+	<bean id="userEquipDao" class="com.stats.dao.UserEquipDao"></bean>
+	<bean id="userEquipService" class="com.stats.service.UserEquipService">
+		<property name="userEquipDao" ref="userEquipDao"></property>
+	</bean>
+	
+	<!-- 声望兑换 -->
+	<bean id="prestigeDao" class="com.stats.dao.PrestigeDao"></bean>
+	<bean id="prestigeService" class="com.stats.service.PrestigeService">
+		<property name="prestigeDao" ref="prestigeDao"></property>
+	</bean>
+	
+	<!-- 夺宝统计 -->
+	<bean id="plunderStatsDao" class="com.stats.dao.PlunderStatsDao"></bean>
+	<bean id="plunderStatsService" class="com.stats.service.PlunderStatsService">
+		<property name="plunderStatsDao" ref="plunderStatsDao"></property>
+	</bean>
+	
+	<!-- 争霸统计 -->
+	<bean id="zhengbaStatsDao" class="com.stats.dao.ZhengbaStatsDao"></bean>
+	<bean id="zhengbaStatsService" class="com.stats.service.ZhengbaStatsService">
+		<property name="zhengbaStatsDao" ref="zhengbaStatsDao"></property>
+	</bean>
+	
+	<!-- boss统计 -->
+	<bean id="bossStatsDao" class="com.stats.dao.BossStatsDao"></bean>
+	<bean id="bossStatsService" class="com.stats.service.BossStatsService">
+		<property name="bossStatsDao" ref="bossStatsDao"></property>
+	</bean>
+	
+	<!-- 大富翁统计 -->
+	<bean id="userLoginDrawDao" class="com.stats.dao.UserLoginDrawDao"></bean>
+	<bean id="userLoginDrawService" class="com.stats.service.UserLoginDrawService">
+		<property name="userLoginDrawDao" ref="userLoginDrawDao"></property>
+	</bean>
+	
+	<!-- 用户充值统计 -->
+	<bean id="paymentLogStatsDao" class="com.stats.dao.PaymentLogStatsDao"></bean>
+	<bean id="userPaymentLogStatsService" class="com.stats.service.UserPaymentLogStatsService">
+		<property name="paymentLogStatsDao" ref="paymentLogStatsDao"></property>
+	</bean>
+	
+	<!-- 作弊统计 -->
+	<bean id="cheatStatsDao" class="com.stats.dao.CheatStatsDao"></bean>
+	<bean id="cheatStatsService" class="com.stats.service.CheatStatsService">
+		<property name="cheatStatsDao" ref="cheatStatsDao"></property>
+	</bean>
+	
+	<!-- VIP 钻石统计 -->
+	<bean id="vipUserDiamondStatsDao" class="com.stats.dao.VipUserDiamondStatsDao"></bean>
+	<bean id="vipUserDiamondStatsService" class="com.stats.service.VipUserDiamondStatsService">
+		<property name="vipUserDiamondStatsDao" ref="vipUserDiamondStatsDao"></property>
+	</bean>
+	
+	<!-- 军团统计 -->
+	<bean id="userLegionDao" class="com.stats.dao.UserLegionDao"></bean>
+	<bean id="legionService" class="com.stats.service.LegionService">
+		<property name="userLegionDao" ref="userLegionDao"></property>
+	</bean>
+	
+	<!-- 战魂统计 -->
+	<bean id="equipDao" class="com.stats.dao.EquipDao"></bean>
+	<bean id="equipService" class="com.stats.service.EquipService">
+		<property name="equipDao" ref="equipDao"></property>
+	</bean>
+	
+	<!-- 天界统计 -->
+	<bean id="competitionDao" class="com.stats.dao.CompetitionDao"></bean>
+	<bean id="competitionService" class="com.stats.service.CompetitionService">
+		<property name="competitionDao" ref="competitionDao"></property>
+	</bean>
+</beans>

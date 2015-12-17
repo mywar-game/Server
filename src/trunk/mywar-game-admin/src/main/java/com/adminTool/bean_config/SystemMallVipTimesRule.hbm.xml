@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.adminTool.bo.SystemMallVipTimesRule" table="system_mall_vip_times_rule">
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="mallId" type="int">
+			<column name="mall_id" />
+		</property>
+		<property name="vipLevel" type="int">
+			<column name="vip_level" />
+		</property>
+		<property name="dailyMaxTimes" type="int">
+			<column name="daily_max_times" />
+		</property>
+	</class>
+</hibernate-mapping>
+		

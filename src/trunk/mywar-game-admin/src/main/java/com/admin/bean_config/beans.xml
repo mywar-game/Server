@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+ 
+   <!-- 菜单DAO -->
+  <bean id="adminMenuDao" class="com.admin.dao.AdminMenuDao" />
+  <!-- 管理用户DAO -->
+  <bean id="adminUserDao" class="com.admin.dao.AdminUserDao" />
+  <!-- 原子操作DAO -->
+  <bean id="adminPowerPhysicsDao" class="com.admin.dao.AdminPowerPhysicsDao" />
+  <!-- 管理员日志DAO -->
+  <bean id="adminUserLogDao" class="com.admin.dao.AdminUserLogDao" />
+  
+  <!-- 菜单service -->
+  <bean id="adminMenuService" class="com.admin.service.AdminMenuService">
+    <property name="adminMenuDao" ref="adminMenuDao"></property>
+  </bean>
+  <!-- 管理用户service -->
+  <bean id="adminUserService" class="com.admin.service.AdminUserService">
+    <property name="adminUserDao" ref="adminUserDao"></property>
+    <property name="adminUserLogDao" ref="adminUserLogDao"></property>
+  </bean>
+  <!-- 原子操作SERVICE -->
+  <bean id="adminPowerPhysicsService" class="com.admin.service.AdminPowerPhysicsService">
+  <property name="adminPowerPhysicsDao" ref="adminPowerPhysicsDao"></property>
+  </bean>
+  
+  <!-- 功能模块DAO -->
+  <bean id="adminPysicsModuleDao" class="com.admin.dao.AdminPysicsModuleDao" />
+  <!-- 功能模块service -->
+  <bean id="adminPysicsModuleService" class="com.admin.service.AdminPysicsModuleService">
+    <property name="adminPysicsModuleDao" ref="adminPysicsModuleDao"></property>
+  </bean>
+  
+  <!-- 角色模块DAO -->
+  <bean id="adminRoleDao" class="com.admin.dao.AdminRoleDao" />
+  <!-- 角色模块service -->
+  <bean id="adminRoleService" class="com.admin.service.AdminRoleService">
+    <property name="adminRoleDao" ref="adminRoleDao"></property>
+  </bean>
+  
+</beans>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+<class name="com.adminTool.bo.SystemStar" table="system_star">
+
+	<id name="starId" type="int">
+		<column name="system_star_id" />
+		<generator class="identity" />
+	</id>
+	<property name="starType" type="java.lang.Integer">
+		<column name="system_star_type" />
+	</property>
+	<property name="imgId" type="java.lang.Integer">
+		<column name="img_id" />
+	</property>
+	<property name="needLevel" type="java.lang.Integer">
+		<column name="need_level" />
+	</property>
+	<property name="rewards" type="java.lang.String">
+		<column name="rewards" />
+	</property>
+</class>
+</hibernate-mapping>

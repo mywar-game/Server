@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-4-10 13:57:12 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.adminTool.bo.AdminMarquee" table="admin_marquee">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="content" type="string">
+			<column name="content" not-null="true"></column>
+		</property>
+		<property name="startTime" type="timestamp">
+			<column name="start_time" length="19" not-null="true"></column>
+		</property>
+		<property name="endTime" type="timestamp">
+			<column name="end_time" length="19" not-null="true"></column>
+		</property>
+		<property name="createdTime" type="timestamp">
+			<column name="created_time" length="19" not-null="true"></column>
+		</property>
+		<property name="playTime" type="timestamp">
+			<column name="play_time" length="19"></column>
+		</property>
+		<property name="playInterval" type="int">
+			<column name="play_interval" not-null="true"></column>
+		</property>
+		<property name="isUse" type="int">
+			<column name="is_use" not-null="true"></column>
+		</property>
+		<property name="serverIds" type="string">
+			<column name="serverIds" length="1000" not-null="true"></column>
+		</property>
+		<property name="loopTime" type="int">
+			<column name="loop_time" not-null="true"></column>
+		</property>
+		<property name="hasLoopTime" type="int">
+			<column name="has_loop_time" not-null="true"></column>
+		</property>
+		<property name="partnerIds" type="string">
+			<column name="partner_ids" not-null="true"></column>
+		</property>
+	</class>
+</hibernate-mapping>

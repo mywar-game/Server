@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.adminTool.bo.SystemGrowthPlanReward" table="system_growth_plan_reward">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="assigned" />
+		</id>
+		<property name="activityId" type="java.lang.Integer">
+			<column name="activity_id" />
+		</property>
+		<property name="userLevel" type="java.lang.Integer">
+			<column name="user_level" />
+		</property>
+		<property name="rewards" type="java.lang.String">
+			<column name="rewards" />
+		</property>
+		<property name="description" type="java.lang.String">
+			<column name="description"/>
+		</property>
+	</class>
+</hibernate-mapping>

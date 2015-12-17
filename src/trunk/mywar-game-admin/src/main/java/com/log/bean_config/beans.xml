@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+ 	 <!-- 用户注册日志dao -->
+	<bean id="userRegLogDao" class="com.log.dao.UserRegLogDao"></bean>
+	<!-- 用户注册日志service -->
+	<bean id="userRegLogService" class="com.log.service.UserRegLogService">
+		<property name="userRegLogDao" ref="userRegLogDao"></property>
+	</bean>
+
+ 	 <!-- 用户动作日志dao -->
+	<bean id="userActionLogDao" class="com.log.dao.UserActionLogDao"></bean>
+	<!-- 用户动作日志service -->
+	<bean id="userActionLogService" class="com.log.service.UserActionLogService">
+		<property name="userActionLogDao" ref="userActionLogDao"></property>
+	</bean>
+  
+  	<!-- 用户买点备份dao -->
+  	<bean id="userActionLogBakDao" class="com.log.dao.UserActionLogBakDao"></bean>
+  	<bean id="userActionLogBakService" class="com.log.service.UserActionLogBakService">
+  		<property name="userActionLogBakDao" ref="userActionLogBakDao"></property>
+  	</bean>
+  
+ 	 <!-- 用户登入日志dao -->
+	<bean id="userLoginLogDao" class="com.log.dao.UserLoginLogDao"></bean>
+	<!-- 用户登入日志service -->
+	<bean id="userLoginLogService" class="com.log.service.UserLoginLogService">
+		<property name="userLoginLogDao" ref="userLoginLogDao"></property>
+	</bean>
+  
+ 	 <!-- 用户登出日志dao -->
+	<bean id="userLogoutLogDao" class="com.log.dao.UserLogoutLogDao"></bean>
+	<!-- 用户登出日志service -->
+	<bean id="userLogoutLogService" class="com.log.service.UserLogoutLogService">
+		<property name="userLogoutLogDao" ref="userLogoutLogDao"></property>
+	</bean>
+  
+ 	 <!-- 玩家提交建议dao -->
+	<bean id="userSuggestLogDao" class="com.log.dao.UserSuggestLogDao"></bean>
+	<!-- 玩家提交建议service -->
+	<bean id="userSuggestLogService" class="com.log.service.UserSuggestLogService">
+		<property name="userSuggestLogDao" ref="userSuggestLogDao"></property>
+	</bean>
+  
+   	 <!-- 充值记录dao -->
+	<bean id="userPayHistoryLogDao" class="com.log.dao.UserPayHistoryLogDao"></bean>
+	<!-- 充值记录service -->
+	<bean id="userPayHistoryLogService" class="com.log.service.UserPayHistoryLogService">
+		<property name="userPayHistoryLogDao" ref="userPayHistoryLogDao"></property>
+	</bean>
+  
+ 	 <!-- 在线玩家数日志dao -->
+	<bean id="userOnlineLogDao" class="com.log.dao.UserOnlineLogDao"></bean>
+	<!-- 在线玩家数日志service -->
+	<bean id="userOnlineLogService" class="com.log.service.UserOnlineLogService">
+		<property name="userOnlineLogDao" ref="userOnlineLogDao"></property>
+	</bean>
+	
+ 	 <!-- 玩家升级日志dao -->
+	<bean id="userLevelupLogDao" class="com.log.dao.UserLevelupLogDao"></bean>
+	<!-- 玩家升级日志service -->
+	<bean id="userLevelupLogService" class="com.log.service.UserLevelupLogService">
+		<property name="userLevelupLogDao" ref="userLevelupLogDao"></property>
+	</bean>
+  
+ 	 <!-- 战斗日志dao -->
+	<bean id="battleLogDao" class="com.log.dao.BattleLogDao"></bean>
+	<bean id="userBattleReportDao" class="com.log.dao.UserBattleReportDao"></bean>
+	<!-- 战斗日志service -->
+	<bean id="battleLogService" class="com.log.service.BattleLogService">
+		<property name="battleLogDao" ref="battleLogDao"></property>
+		<property name="userBattleReportDao" ref="userBattleReportDao"></property>
+	</bean>
+	
+	 	 <!-- 玩家聊天dao -->
+	<bean id="userChatLogDao" class="com.log.dao.UserChatLogDao"></bean>
+	<!-- 战斗日志service -->
+	<bean id="userChatLogService" class="com.log.service.UserChatLogService">
+		<property name="userChatLogDao" ref="userChatLogDao"></property>
+	</bean>
+	
+	 	 <!-- 玩家装备dao -->
+	<bean id="userEquipmentLogDao" class="com.log.dao.UserEquipmentLogDao"></bean>
+	<!-- 战斗日志service -->
+	<bean id="userEquipmentLogService" class="com.log.service.UserEquipmentLogService">
+		<property name="userEquipmentLogDao" ref="userEquipmentLogDao"></property>
+	</bean>
+	
+	 	 <!-- 玩家英雄dao -->
+	<bean id="userHeroLogDao" class="com.log.dao.UserHeroLogDao"></bean>
+	<!-- 战斗日志service -->
+	<bean id="userHeroLogService" class="com.log.service.UserHeroLogService">
+		<property name="userHeroLogDao" ref="userHeroLogDao"></property>
+	</bean>
+	
+	 	 <!-- 玩家好友dao -->
+	<bean id="userFirendLogDao" class="com.log.dao.UserFirendLogDao"></bean>
+	<!-- 战斗日志service -->
+	<bean id="userFirendLogService" class="com.log.service.UserFirendLogService">
+		<property name="userFirendLogDao" ref="userFirendLogDao"></property>
+	</bean>
+	
+	<!-- 玩家道具日志 -->
+	<bean id="userTreasureLogDao" class="com.log.dao.UserTreasureLogDao"></bean>
+	<!-- 玩家道具日志 -->
+	<bean id="userTreasureLogService" class="com.log.service.UserTreasureLogService">
+		<property name="userTreasureLogDao" ref="userTreasureLogDao"></property>
+	</bean>
+	
+	<!-- 玩家邮件日志dao -->
+	<bean id="userMailLogDao" class="com.log.dao.UserMailLogDao"></bean>
+	<!-- 玩家变动日志Service -->
+	<bean id="userMailLogService" class="com.log.service.UserMailLogService">
+		<property name="userMailLogDao" ref="userMailLogDao"></property>
+	</bean>
+	
+	<!-- 玩家邮件变动日志dao -->
+	<bean id="userMailChangeLogDao" class="com.log.dao.UserMailChangeLogDao"></bean>
+	<!-- 玩家邮件变动日志Service -->
+	<bean id="userMailChangeLogService" class="com.log.service.UserMailChangeLogService">
+		<property name="userMailChangeLogDao" ref="userMailChangeLogDao"></property>
+	</bean>
+	
+		<!-- 军团日志dao -->
+	<bean id="guildLogDao" class="com.log.dao.GuildLogDao"></bean>
+	<!-- 玩家道具日志Service -->
+	<bean id="guildLogService" class="com.log.service.GuildLogService">
+		<property name="guildLogDao" ref="guildLogDao"></property>
+	</bean>
+	
+			<!-- 邮件日志 -->
+	<bean id="userBuildingLogDao" class="com.log.dao.UserBuildingLogDao"></bean>
+	<!-- 玩家道具日志Service -->
+	<bean id="userBuildingLogService" class="com.log.service.UserBuildingLogService">
+		<property name="userBuildingLogDao" ref="userBuildingLogDao"></property>
+	</bean>
+	
+	<!-- 玩家资源日志 -->
+	<bean id="userResourceLogDao" class="com.log.dao.UserResourceLogDao"></bean>
+	<!-- 玩家资源日志Service -->
+	<bean id="userResourceLogService" class="com.log.service.UserResourceLogService">
+		<property name="userResourceLogDao" ref="userResourceLogDao"></property>
+	</bean>
+	
+	<!-- 玩家npc日志 -->
+	<bean id="userNpcLogDao" class="com.log.dao.UserNpcLogDao"></bean>
+	<!-- 玩家npc日志Service -->
+	<bean id="userNpcLogService" class="com.log.service.UserNpcLogService">
+		<property name="userNpcLogDao" ref="userNpcLogDao"></property>
+	</bean>
+	
+	<!-- 玩家刷新英雄日志Dao -->
+	<bean id="userRefreshHeroLogDao" class="com.log.dao.UserRefreshHeroLogDao"></bean>
+	<!-- 玩家刷新英雄日志Service -->
+	<bean id="userRefreshHeroLogService" class="com.log.service.UserRefreshHeroLogService">
+		<property name="userRefreshHeroLogDao" ref="userRefreshHeroLogDao"></property>
+	</bean>
+	
+	<!-- 玩家科技日志Dao -->
+	<bean id="userTechnologyLogDao" class="com.log.dao.UserTechnologyLogDao"></bean>
+	<!-- 玩家科技日志Service -->
+	<bean id="userTechnologyLogService" class="com.log.service.UserTechnologyLogService">
+		<property name="userTechnologyLogDao" ref="userTechnologyLogDao"></property>
+	</bean>
+	
+	<!-- 玩家问卷统计Dao -->
+	<bean id="userQuestionnaireLogDao" class="com.log.dao.UserQuestionnaireLogDao"></bean>
+	<!-- 玩家问卷统计Service -->
+	<bean id="userQuestionnaireLogService" class="com.log.service.UserQuestionnaireLogService">
+		<property name="userQuestionnaireLogDao" ref="userQuestionnaireLogDao"></property>
+	</bean>
+	
+	<!-- 玩家金币日志Dao -->
+	<bean id="userGoldLogDao" class="com.log.dao.UserGoldLogDao"></bean>
+	<!-- 玩家金币日志Service -->
+	<bean id="userGoldLogService" class="com.log.service.UserGoldLogService">
+		<property name="userGoldLogDao" ref="userGoldLogDao"></property>
+	</bean>
+	
+	<!-- 激活码日志Dao -->
+	<bean id="userActivationCodeLogDao" class="com.log.dao.UserActivationCodeLogDao"></bean>
+	<!-- 激活码日志Service -->
+	<bean id="userActivationCodeLogService" class="com.log.service.UserActivationCodeLogService">
+		<property name="userActivationCodeLogDao" ref="userActivationCodeLogDao"></property>
+	</bean>
+	
+	<!-- 注册链接日志Dao -->
+	<bean id="userRegLinkLogDao" class="com.log.dao.UserRegLinkLogDao"></bean>
+	<!-- 注册链接日志Service -->
+	<bean id="userRegLinkLogService" class="com.log.service.UserRegLinkLogService">
+		<property name="userRegLinkLogDao" ref="userRegLinkLogDao"></property>
+	</bean>
+	
+	<!-- 建筑点日志Dao -->
+	<bean id="userBuildingPointLogDao" class="com.log.dao.UserBuildingPointLogDao"></bean>
+	<!-- 建筑点日志Service -->
+	<bean id="userBuildingPointLogService" class="com.log.service.UserBuildingPointLogService">
+		<property name="userBuildingPointLogDao" ref="userBuildingPointLogDao"></property>
+	</bean>
+	
+	<!-- 基因点日志Dao -->
+	<bean id="userGenePointLogDao" class="com.log.dao.UserGenePointLogDao"></bean>
+	<!-- 基因点日志Service -->
+	<bean id="userGenePointLogService" class="com.log.service.UserGenePointLogService">
+		<property name="userGenePointLogDao" ref="userGenePointLogDao"></property>
+	</bean>
+	
+	<!-- 科技点日志Dao -->
+	<bean id="userTechnologyPointLogDao" class="com.log.dao.UserTechnologyPointLogDao"></bean>
+	<!-- 科技点日志Service -->
+	<bean id="userTechnologyPointLogService" class="com.log.service.UserTechnologyPointLogService">
+		<property name="userTechnologyPointLogDao" ref="userTechnologyPointLogDao"></property>
+	</bean>
+	
+	<!-- 玩家商城购买日志Dao -->
+	<bean id="userMallLogDao" class="com.log.dao.UserMallLogDao"></bean>
+	<!-- 玩家商城购买日志Service -->
+	<bean id="userMallLogService" class="com.log.service.UserMallLogService">
+		<property name="userMallLogDao" ref="userMallLogDao"></property>
+	</bean>
+	
+	<!-- 玩家vip日志Dao -->
+	<bean id="userVipLogDao" class="com.log.dao.UserVipLogDao"></bean>
+	<!-- 玩家vip日志Service -->
+	<bean id="userVipLogService" class="com.log.service.UserVipLogService">
+		<property name="userVipLogDao" ref="userVipLogDao"></property>
+	</bean>
+	
+	<!-- 玩家神器操作日志Dao -->
+	<bean id="userArtifactLogDao" class="com.log.dao.UserArtifactLogDao"></bean>
+	<!-- 玩家神器操作日志Service -->
+	<bean id ="userArtifactLogService" class="com.log.service.UserArtifactLogService">
+		<property name="userArtifactLogDao" ref="userArtifactLogDao"></property>
+	</bean>
+	
+</beans>

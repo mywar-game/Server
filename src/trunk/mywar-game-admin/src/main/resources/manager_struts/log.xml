@@ -1,0 +1,159 @@
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+        "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<!-- 一个包可以就是一个模块 -->
+	<package name="log" extends="managerInterceptor" namespace="/module/log">
+
+		<!-- 一个包下可以放这个模块下的所有action -->
+		
+		<!-- 玩家好友日志 -->
+		<action name="userFirendLogList" class="com.log.action.UserFirendLogList">
+			<result>userFirendLogList.jsp</result>
+		</action>
+		
+		<!-- 玩家道具日志 -->
+		<action name="userTreasureLogList" class="com.log.action.UserTreasureLogList">
+			<result name="success">userTreasureLogList.jsp</result>
+		</action>
+		
+		<!-- 玩家邮件日志 -->
+		<action name="userMailLogList" class="com.log.action.UserMailLogList">
+			<result name="success">userMailLogList.jsp</result>
+		</action>
+		
+		<!-- 军团日志日志 -->
+		<action name="guildLogList" class="com.log.action.GuildLogList">
+			<result name="success">guildLogList.jsp</result>
+		</action>
+		
+		<!-- 玩家建筑日志 -->
+		<action name="userBuildingLogList" class="com.log.action.UserBuildingLogList">
+			<result name="success">userBuildingLogList.jsp</result>
+		</action>
+		
+		<!-- 玩家资源日志 -->
+		<action name="userResourceLogList" class="com.log.action.UserResourceLogList">
+			<result name="success">userResourceLogList.jsp</result>
+		</action>
+		
+		<!-- 玩家npc日志 -->
+		<action name="userNpcLogList" class="com.log.action.UserNpcLogList">
+			<result name="none">userNpcLogList.jsp</result>
+			<result name="success">userNpcLogList.jsp</result>
+		</action>
+		
+		<!-- 玩家升级日志 -->
+		<action name="userLevelUpLogList" class="com.log.action.UserLevelUpLogList">
+			<result name="none">userLevelUpLogList.jsp</result>
+			<result name="success">userLevelUpLogList.jsp</result>
+		</action>
+		
+		<!-- 玩家充值日志 -->
+		<action name="userPayHistoryLogList" class="com.log.action.UserPayHistoryList">
+			<result name="none">userPayHistoryLogList.jsp</result>
+			<result name="success">userPayHistoryLogList.jsp</result>
+		</action>
+		
+		<!-- 玩家聊天信息的查询操作 -->
+		<action name="userChatLogList*" class="com.log.action.UserChatLogList" method="{1}">
+			<result>userChatLogList.jsp</result>
+			<result name="deal" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum,erroDescrip</param>
+			</result>
+		</action>
+		
+		<!-- 玩家装备的查询操作 -->
+		<action name="userEquipmentLogList" class="com.log.action.UserEquipmentLogList">
+			<result>userEquipmentLogList.jsp</result>
+		</action>
+		
+		<!-- 找回玩家装备 -->
+		<action name="getEquipmentBack" class="com.log.action.GetEquipmentBack">
+			<result name="success" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum,erroDescrip</param>
+			</result>
+			<result name="error" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum,erroDescrip</param>
+			</result>
+		</action>
+		
+		<!-- 玩家英雄的查询操作 -->
+		<action name="userHeroLogList" class="com.log.action.UserHeroLogList">
+			<result>userHeroLogList.jsp</result>
+		</action>
+		
+		<!-- 找回玩家英雄 -->
+		<action name="getHeroBack" class="com.log.action.GetHeroBack">
+			<result name="success" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum,erroDescrip</param>
+			</result>
+			<result name="error" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum,erroDescrip</param>
+			</result>
+		</action>
+		
+		<!-- 战斗日志的查询操作 -->
+		<action name="battleLogList" class="com.log.action.BattleLogList">
+			<result>battleLogList.jsp</result>
+		</action>
+		
+		<!-- 玩家科技日志的查询操作 -->
+		<action name="userTechnologyLogList" class="com.log.action.UserTechnologyLogList">
+			<result>userTechnologyLogList.jsp</result>
+		</action>
+		
+		<!-- 玩家金币日志的查询操作 -->
+		<action name="userGoldLogList" class="com.log.action.UserGoldLogList">
+			<result>userGoldLogList.jsp</result>
+		</action>
+		
+		<!-- 建筑点日志 -->
+		<action name="userBuildingPointLogList" class="com.log.action.UserBuildingPointLogList">
+			<result>userBuildingPointLogList.jsp</result>
+		</action>
+		
+		<!-- 基因点日志 -->
+		<action name="userGenePointLogList" class="com.log.action.UserGenePointLogList">
+			<result>userGenePointLogList.jsp</result>
+		</action>
+		
+		<!-- 科技点日志 -->
+		<action name="userTechnologyPointLogList" class="com.log.action.UserTechnologyPointLogList">
+			<result>userTechnologyPointLogList.jsp</result>
+		</action>
+		
+		<!-- 玩家登入日志 -->
+		<action name="userLoginLogList" class="com.log.action.UserLoginLogList">
+			<result>userLoginLogList.jsp</result>
+		</action>
+		
+		<!-- 玩家登出日志 -->
+		<action name="userLogoutLogList" class="com.log.action.UserLogoutLogList">
+			<result>userLogoutLogList.jsp</result>
+		</action>
+		
+		<!-- 玩家神器操作日志 -->
+		<action name="userArtifactLogList" class="com.log.action.UserArtifactLogList">
+			<result>userArtifactLogList.jsp</result>
+		</action>
+		
+		<!-- 用户登陆id查询 -->
+		<action name="userLoginIdList" class="com.log.action.UserLoginIdList">
+			<result>userLoginIdList.jsp</result>
+		</action>
+		
+		<!-- 充值用户数据即时查询 -->
+		<action name="userPayLogList" class="com.log.action.UserPayLogList">
+			<result>userPayLogList.jsp</result>
+		</action>
+		
+	
+	</package>
+</struts>

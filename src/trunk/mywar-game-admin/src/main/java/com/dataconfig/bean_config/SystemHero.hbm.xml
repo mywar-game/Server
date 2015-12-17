@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-3-25 20:21:17 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.dataconfig.bo.SystemHero" table="system_hero">
+		<id name="systemHeroId" type="int">
+			<column name="system_hero_id" />
+			<generator class="assigned" />
+		</id>
+		<property name="heroId" type="int">
+			<column name="hero_id" not-null="true"></column>
+		</property>
+		<property name="heroName" type="string">
+			<column name="hero_name" length="20" not-null="true"></column>
+		</property>
+		<property name="heroDesc" type="string">
+			<column name="hero_desc" length="200" not-null="true"></column>
+		</property>
+		<property name="heroColor" type="java.lang.Integer">
+			<column name="hero_color"></column>
+		</property>
+		<property name="careerId" type="int">
+			<column name="career_id" not-null="true"></column>
+		</property>
+		<property name="nationId" type="java.lang.Integer">
+			<column name="nation_id"></column>
+		</property>
+		<property name="raceId" type="java.lang.Integer">
+			<column name="race_id"></column>
+		</property>
+		<property name="sexId" type="java.lang.Integer">
+			<column name="sex_id"></column>
+		</property>
+		<property name="resId" type="string">
+			<column name="res_id"></column>
+		</property>
+		<property name="maxLevel" type="java.lang.Integer">
+			<column name="max_level"></column>
+		</property>
+		<property name="frame" type="java.lang.Integer">
+			<column name="frame"></column>
+		</property>
+		<property name="standId" type="java.lang.Integer">
+			<column name="stand_id"></column>
+		</property>
+		<property name="skill01" type="java.lang.Integer">
+			<column name="skill01"></column>
+		</property>
+		<property name="skill02" type="java.lang.Integer">
+			<column name="skill02"></column>
+		</property>
+		<property name="skill03" type="java.lang.Integer">
+			<column name="skill03"></column>
+		</property>
+		<property name="skill04" type="java.lang.Integer">
+			<column name="skill04"></column>
+		</property>
+		<property name="objectSkill01" type="java.lang.Integer">
+			<column name="object_skill01"></column>
+		</property>
+		<property name="objectSkill02" type="java.lang.Integer">
+			<column name="object_skill02"></column>
+		</property>
+		<property name="objectSkill03" type="java.lang.Integer">
+			<column name="object_skill03"></column>
+		</property>
+		<property name="objectSkill04" type="java.lang.Integer">
+			<column name="object_skill04"></column>
+		</property>
+	</class>
+</hibernate-mapping>

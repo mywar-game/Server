@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+  <bean id="arenaDao" class="com.example.dao.TArenaDao"></bean>
+  
+  <bean id="arenaService" class="com.example.service.ArenaService">
+  	<property name="arenaDao" ref="arenaDao"></property>
+  </bean>
+  <bean id="testDao" class="com.example.dao.TestDao"></bean>
+
+  <bean id="testService" class="com.example.service.TestService">
+  	<property name="testDao" ref="testDao"></property>
+  </bean>
+  
+  <bean id="parentDao" class="com.example.dao.TParentDao"></bean>
+  <bean id="parentService" class="com.example.service.TParentService">
+    <property name="parentDao" ref="parentDao"></property>
+  </bean>
+  
+  <bean id="testScheduler" class="com.example.scheduler.testScheduler">
+    <property name="cronExpression" value="5,15,25,35,45,55 * * * * ?"></property>
+    <property name="isTimeZoneDiff" value="false"></property>
+  </bean>
+  <bean id="CopyOftestScheduler" class="com.example.scheduler.CopyOftestScheduler">
+    <property name="cronExpression" value="5,15,25,35,45,55 * * * * ?"></property>
+    <property name="isTimeZoneDiff" value="false"></property>
+  </bean>
+  
+  <bean id="cacheExample" class="com.example.cache.ExampleLocalCache"></bean> 
+  
+ <!-- 
+ <bean id="memcacheExample" class="com.example.cache.ExampleMemcacheCache"></bean>-->
+  <bean id="examplerTask" class="com.example.task.ExampleTask" >
+	<property name="cmdCode" value="999"></property>
+    <property name="requestMsgBody">
+       <bean id="exampleMsgBody" class="com.example.msgbody.bodyExample" />
+    </property>
+  </bean>
+<!-- 
+<bean id="hellloWorld" class="com.example.webservice.HelloWordImp">
+   <property name="address" value="/helloword"></property>
+</bean>
+
+<bean id="test" class="com.example.webservice.Test2">
+   <property name="address" value="/test"></property>
+</bean>
+ -->
+</beans>

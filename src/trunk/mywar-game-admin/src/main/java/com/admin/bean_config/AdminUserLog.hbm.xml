@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-1-3 13:40:49 by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="com.admin.bo.AdminUserLog" table="admin_user_log">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="adminName" type="string">
+            <column name="admin_name" length="128" not-null="true">
+                <comment>管理员名称</comment>
+            </column>
+        </property>
+        <property name="state" type="int">
+            <column name="state" not-null="true">
+                <comment>登陆状态(1、登陆成功,2、密码错误,3、密码过了有效期,4、密码已锁定)</comment>
+            </column>
+        </property>
+        <property name="time" type="timestamp">
+            <column name="time" length="19" not-null="true">
+                <comment>记录时间</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

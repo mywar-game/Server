@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.stats.bo.VipUserDiamondStats" table="vip_user_diamond_stats">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="sysNum" type="java.lang.Integer">
+            <column name="SYS_NUM" not-null="true">
+                <comment>服务器编号</comment>
+            </column>
+        </property>
+        <property name="count" type="java.lang.Integer">
+            <column name="count" length="10" not-null="true">
+                <comment>VIP人数</comment>
+            </column>
+        </property>
+        <property name="type" type="java.lang.Integer">
+            <column name="type" not-null="true">
+                <comment>操作类型</comment>
+            </column>
+        </property>
+        <property name="diamond" type="java.lang.Integer">
+            <column name="diamond" not-null="true">
+                <comment>钻石</comment>
+            </column>
+        </property>
+        <property name="caterory" type="java.lang.Integer">
+            <column name="caterory" not-null="true">
+                <comment>子类型1,2</comment>
+            </column>
+        </property>
+        <property name="date" type="java.util.Date">
+            <column name="DATE" not-null="true">
+                <comment>统计时间</comment>
+            </column>
+        </property>
+        <property name="actityCount" type="java.lang.Integer">
+            <column name="actity_count" not-null="true">
+                <comment>vip活跃人数</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

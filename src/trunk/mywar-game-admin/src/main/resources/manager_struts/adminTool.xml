@@ -1,0 +1,995 @@
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+        "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- 一个包可以就是一个模块 -->
+	<package name="adminTool" extends="managerInterceptor"
+		namespace="/module/adminTool">
+		<!-- 一个包下可以放这个模块下的所有action -->
+
+		<action name="updateVip" class="com.adminTool.action.UpdateVip">
+			<result type="redirect">updateVipSearch</result>
+		</action>
+
+		<action name="updateVipSearch" class="com.adminTool.action.UpdateVipSearch">
+			<result name="input">updateVipSearch.jsp</result>
+			<result name="success">updateVipInfo.jsp</result>
+		</action>
+
+		<action name="userBan" class="com.adminTool.action.UserBan">
+			<result type="redirect">userBanSearch</result>
+		</action>
+
+		<action name="userBanSearch" class="com.adminTool.action.UserBanSearch">
+			<result name="input">userBanSearch.jsp</result>
+			<result name="success">userBanInfo.jsp</result>
+		</action>
+
+		<action name="reissueAudit" class="com.adminTool.action.ReissueAudit">
+			<result name="error">reissueError.jsp</result>
+			<result name="success">reissueSuccess.jsp</result>
+		</action>
+		<action name="reissueList" class="com.adminTool.action.ReissueList">
+			<result name="success">reissueList.jsp</result>
+		</action>
+		<action name="reissueSearch" class="com.adminTool.action.ReissueSearch">
+			<result name="input">reissueSearch.jsp</result>
+			<result name="success">reissueEntry.jsp</result>
+		</action>
+		<action name="reissueSearchById" class="com.adminTool.action.ReissueSearchById">
+			<result name="success">reissueEntryList.jsp</result>
+			<result name="input">reissueSearchList.jsp</result>
+		</action>
+		<action name="mailDelete" class="com.adminTool.action.MailDelete">
+			<result type="redirect">mailAuditList</result>
+		</action>
+
+		<action name="mailUpdate" class="com.adminTool.action.MailUpdate">
+			<result name="input">mailUpdate.jsp</result>
+			<result name="success">mailAuditList.jsp</result>
+		</action>
+
+		<action name="mailAuditList" class="com.adminTool.action.MailAuditList">
+			<result name="success">mailAuditList.jsp</result>
+		</action>
+		<action name="mailSend" class="com.adminTool.action.MailSend">
+			<result name="input">mailSend.jsp</result>
+			<result type="redirect">mailAuditList</result>
+		</action>
+		<action name="mailFucSend" class="com.adminTool.action.MailFucSend">
+			<result name="input">mailFucSend.jsp</result>
+			<result type="redirect">mailAuditList</result>
+		</action>
+		<action name="mailAudit" class="com.adminTool.action.MailAudit">
+			<result name="input">mailAudit.jsp</result>
+			<result type="redirect">mailAuditList</result>
+		</action>
+		<action name="mallHistoryList" class="com.adminTool.action.MallHistoryList">
+			<result name="success">mallHistoryList.jsp</result>
+		</action>
+		<!-- 商城打折审核页面 -->
+		<action name="auditActivity" class="com.adminTool.action.AuditActivity">
+			<result name="input">auditActivity.jsp</result>
+			<result type="redirect">mallAuditList</result>
+		</action>
+		<!-- 显示商城打折审核列表 -->
+		<action name="mallAuditList" class="com.adminTool.action.MallAuditList">
+			<result name="success">mallAuditList.jsp</result>
+		</action>
+		<!-- 添加商城打折活动 -->
+		<action name="addMallDiscount" class="com.adminTool.action.AddMallDiscount">
+			<result name="input">addMallDiscount.jsp</result>
+			<result type="redirect">mallDiscountList</result>
+		</action>
+		<!-- 更新商城打折活动 -->
+		<action name="updateMallDiscount" class="com.adminTool.action.UpdateMallDiscount">
+			<result name="input">updateMallDiscount.jsp</result>
+			<result type="redirect">mallDiscountList</result>
+		</action>
+		<!-- 删除商城道具打折活动 -->
+		<action name="delMallDiscount" class="com.adminTool.action.DelMallDiscount">
+			<result type="redirect">mallDiscountList</result>
+		</action>
+
+		<!-- 商城道具打折 -->
+		<action name="mallDiscountList" class="com.adminTool.action.MallDiscountList">
+			<result name="success">mallDiscountList.jsp</result>
+		</action>
+		<!-- 查看玩家信息 -->
+		<action name="getUserInfo" class="com.adminTool.action.GetUserInfo">
+			<result name="none">../common/userNotExist.jsp</result>
+			<result name="success">getUserInfo.jsp</result>
+		</action>
+
+		<!-- 查看玩家建筑 -->
+		<action name="getUserBuilding" class="com.adminTool.action.GetUserBuilding">
+			<result name="success">getUserBuilding.jsp</result>
+		</action>
+
+		<!-- 查看玩家英雄 -->
+		<action name="getUserHero" class="com.adminTool.action.GetUserHero">
+			<result name="success">getUserHero.jsp</result>
+		</action>
+
+		<!-- 查看玩家装备 -->
+		<action name="getUserEquipment" class="com.adminTool.action.GetUserEquipment">
+			<result name="success">getUserEquipment.jsp</result>
+		</action>
+
+		<!-- 查看玩家道具 -->
+		<action name="getUserTreasure" class="com.adminTool.action.GetUserTreasure">
+			<result name="none">../common/userNotExist.jsp</result>
+			<result name="success">getUserTreasure.jsp</result>
+		</action>
+
+		<!-- 添加系统邮件 -->
+		<action name="addSystemMail" class="com.adminTool.action.AddSystemMail">
+			<result name="input">addSystemMail.jsp</result>
+			<result name="success">addSystemMail.jsp</result>
+			<result name="error">addSystemMail.jsp</result>
+		</action>
+
+		<!-- 发放装备、道具 -->
+		<action name="issueSomethingToUser" class="com.adminTool.action.IssueSomethingToUser">
+			<result name="input">issueSomethingToUser.jsp</result>
+			<result name="success">issueSomethingToUser.jsp</result>
+			<result name="error">issueSomethingToUser.jsp</result>
+		</action>
+
+		<!-- 发放英雄 -->
+		<action name="sendHeroToUser" class="com.adminTool.action.SendHeroToUser">
+			<result name="input">sendHeroToUser.jsp</result>
+			<result name="success">sendHeroToUser.jsp</result>
+			<result name="error">sendHeroToUser.jsp</result>
+		</action>
+
+		<!-- 世界信息总览 -->
+		<action name="getGlobalInfo" class="com.adminTool.action.GetGlobalInfo">
+			<result name="input">getGlobalInfo.jsp</result>
+			<result name="success">getGlobalInfo.jsp</result>
+		</action>
+
+		<!-- 发送玩家金币 -->
+		<action name="sendUserGolden" class="com.adminTool.action.SendUserGolden">
+			<result name="success" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum,erroDescrip</param>
+			</result>
+			<result name="error" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum,erroDescrip</param>
+			</result>
+		</action>
+
+		<!-- 获取用户意见日志 -->
+		<action name="userSuggestLogList*" class="com.log.action.UserSuggestLogList"
+			method="{1}">
+			<result name="success">userSuggestLogList.jsp</result>
+		</action>
+
+
+		<!-- 查询系统公告 -->
+		<action name="systemNoticeLogList" class="com.adminTool.action.SystemNoticeLogList">
+			<result name="success">systemNoticeLogList.jsp</result>
+		</action>
+		<!-- 新增系统公告 -->
+		<action name="addSystemNoticeLog" class="com.adminTool.action.AddSystemNoticeLog">
+			<result name="input">addSystemNoticeLog.jsp</result>
+			<result name="success" type="redirect">systemNoticeLogList</result>
+		</action>
+		<!-- 删除系统公告 -->
+		<action name="delSystemNoticeLog" class="com.adminTool.action.DelSystemNoticeLog"
+			method="executeDel"></action>
+		<!-- 更新系统公告 -->
+		<action name="updateSystemNoticeLog" class="com.adminTool.action.UpdateSystemNoticeLog">
+			<result name="input">updateSystemNoticeLog.jsp</result>
+			<result name="success" type="redirect">systemNoticeLogList</result>
+		</action>
+
+		<!-- 获得在线玩家数 -->
+		<action name="getOnlineUserAmount" class="com.adminTool.action.GetOnlineUserAmount">
+			<result name="success" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">onlineAmount,erroCodeNum,erroDescrip</param>
+			</result>
+		</action>
+
+		<!-- 发放道具、装备日志 -->
+		<action name="adminIssueLogList" class="com.adminTool.action.AdminIssueLogList">
+			<result>adminIssueLogList.jsp</result>
+		</action>
+
+		<!-- 发放钻石日志 -->
+		<action name="adminIssueDiamondLogList" class="com.adminTool.action.AdminIssueDiamondLogList">
+			<result>adminIssueDiamondLogList.jsp</result>
+		</action>
+
+		<!-- 常量改动日志 -->
+		<action name="adminChangeConstantLogList" class="com.adminTool.action.AdminChangeConstantLogList">
+			<result>adminChangeConstantLogList.jsp</result>
+		</action>
+
+		<!-- 服务器memCache状态查询 -->
+		<action name="memCacheInfoList" class="com.adminTool.action.MemCacheInfoList">
+			<result>memCacheInfo.jsp</result>
+		</action>
+
+		<!-- 改变玩家账号类型 -->
+		<action name="changeUserType" class="com.adminTool.action.ChangeUserType">
+			<result name="success">changeUserType.jsp</result>
+			<result name="error">changeUserType.jsp</result>
+		</action>
+
+		<!-- 经济分析 -->
+		<action name="economicAnalysis" class="com.adminTool.action.EconomicAnalysis">
+			<result name="success">economicAnalysis.jsp</result>
+			<result name="error">economicAnalysis.jsp</result>
+		</action>
+
+		<!-- 在线用户列表 -->
+		<action name="getOnlineUserInfoList" class="com.adminTool.action.GetOnlineUserInfoList">
+			<result name="success">getOnlineUserInfoList.jsp</result>
+		</action>
+
+		<!-- 生成区域地图操作 -->
+		<action name="generateRegionalMap" class="com.adminTool.action.GenerateRegionalMap">
+			<result>generateRegionalMap.jsp</result>
+		</action>
+
+		<!-- 生成高级测试账号操作 -->
+		<action name="generateTestAccount" class="com.adminTool.action.GenerateTestAccount">
+			<result>generateTestAccount.jsp</result>
+		</action>
+
+		<!-- 关服前操作 -->
+		<action name="serverOperateBeforeShutdown" class="com.adminTool.action.ServerOperateBeforeShutdown">
+			<result>serverOperateBeforeShutdown.jsp</result>
+		</action>
+
+		<!-- 修改玩家密码 -->
+		<action name="modifyUserPassword" class="com.adminTool.action.ModifyUserPassword">
+			<result>modifyUserPassword.jsp</result>
+		</action>
+
+		<!-- 巨额钻石玩家列表 -->
+		<action name="getHugeDiamondUserList" class="com.adminTool.action.GetHugeDiamondUserList">
+			<result>getHugeDiamondUserList.jsp</result>
+		</action>
+
+		<!-- 登录玩家账号 -->
+		<action name="loginUserAccount" class="com.adminTool.action.LoginUserAccount">
+			<result>loginUserAccount.jsp</result>
+		</action>
+
+		<!-- 修改玩家装备附带技能 -->
+		<action name="modifyUserEquipmentSkill" class="com.adminTool.action.ModifyUserEquipmentSkill">
+			<result name="input">modifyUserEquipmentSkill.jsp</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">getUserEquipment</param>
+				<param name="searchName">${searchName}</param>
+				<param name="isCommit">T</param>
+			</result>
+		</action>
+
+		<!-- 修改玩家任务操作 -->
+		<action name="getUserMissionList" class="com.adminTool.action.GetUserMissionList">
+			<result name="success">getUserMission.jsp</result>
+		</action>
+		<!-- 查看玩家科技 -->
+		<action name="getUserTechnologyInfo" class="com.adminTool.action.GetUserTechnologyInfo">
+			<result name="success">getUserTechnologyInfo.jsp</result>
+		</action>
+
+		<!-- 查看在线玩家的IP信息 -->
+		<action name="getOnlineUserIPInfoList" class="com.adminTool.action.GetOnlineUserIPInfoList">
+			<result name="success">getOnlineUserIPInfoList.jsp</result>
+		</action>
+
+		<!-- 玩家排行快照的查询操作 -->
+		<action name="userRankSnapshotList" class="com.adminTool.action.UserRankSnapshotList">
+			<result>userRankSnapshotList.jsp</result>
+		</action>
+		<!-- 玩家排行快照详情的查询操作 -->
+		<action name="userRankSnapshotDetailList" class="com.adminTool.action.UserRankSnapshotDetailList">
+			<result>userRankSnapshotDetailList.jsp</result>
+		</action>
+		<!-- 玩家排行快照的新增操作 -->
+		<action name="addUserRankSnapshot" class="com.adminTool.action.AddUserRankSnapshot">
+			<result type="chain">userRankSnapshotList</result>
+		</action>
+		<!-- 玩家排行快照的删除操作 -->
+		<action name="delUserRankSnapshot" class="com.adminTool.action.DelUserRankSnapshot"
+			method="executeDel"></action>
+
+		<!-- 玩家在线曲线图 -->
+		<action name="userOnlineGraph" class="com.adminTool.action.UserOnlineGraph">
+			<result name="success">userOnlineGraph.jsp</result>
+		</action>
+
+		<!-- 修改玩家竞技场积分和排行 -->
+		<action name="modifyUserArenaScoreAndRank" class="com.adminTool.action.ModifyUserArenaScoreAndRank">
+			<result name="success">modifyUserArenaScoreAndRank.jsp</result>
+		</action>
+		<!-- 修改玩家等级 -->
+		<action name="updateHeroLevel" class="com.adminTool.action.UpdateHeroLevel">
+			<result name="success">updateHeroLevel.jsp</result>
+		</action>
+
+		<!-- 充值排行 -->
+		<action name="userPayRank" class="com.adminTool.action.UserPayRank">
+			<result name="success">userPayRank.jsp</result>
+		</action>
+
+		<!-- 激活码 -->
+		<action name="activationCodeList*" class="com.adminTool.action.ActivationCodeList"
+			method="{1}">
+			<result name="success">activationCodeList.jsp</result>
+			<result name="find" type="json">
+				<param name="root">platformMap</param>
+			</result>
+		</action>
+		<action name="userActivationCodeLogList*" class="com.adminTool.action.UserActivationCodeLogList"
+			method="{1}">
+			<result name="success">userActivationCodeLogList.jsp</result>
+		</action>
+
+		<!-- 注册链接 -->
+		<action name="regLinkList" class="com.adminTool.action.RegLinkList">
+			<result name="success">regLinkList.jsp</result>
+		</action>
+		<action name="userRegLinkLogList" class="com.adminTool.action.UserRegLinkLogList">
+			<result name="success">userRegLinkLogList.jsp</result>
+		</action>
+
+		<!-- 修改玩家数据 -->
+		<action name="modifyUserSomeData" class="com.adminTool.action.ModifyUserSomeData">
+			<result name="success">modifyUserSomeData.jsp</result>
+		</action>
+
+		<!-- 活动列表 -->
+		<action name="activityList" class="com.adminTool.action.ActivityList">
+			<result name="success">activityList.jsp</result>
+		</action>
+
+		<!-- 新增活动 -->
+		<action name="addActivity" class="com.adminTool.action.AddActivity">
+			<result name="input">addActivity.jsp</result>
+			<result type="redirect" name="success">activityList</result>
+		</action>
+
+		<!-- 更新活动 -->
+		<action name="updateActivity" class="com.adminTool.action.UpdateActivity">
+			<result name="input">updateActivity.jsp</result>
+			<result type="redirect" name="success">activityList</result>
+		</action>
+
+		<!-- 删除活动 -->
+		<action name="delActivity" class="com.adminTool.action.DelActivity"
+			method="executeDel"></action>
+
+		<!-- 刷新活动列表信息 -->
+		<action name="reflashActivityList" class="com.adminTool.action.ReflashActivityList">
+			<result name="success" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum,erroDescrip</param>
+			</result>
+			<result name="error" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum,erroDescrip</param>
+			</result>
+		</action>
+
+		<!-- 选择道具 -->
+		<action name="addTool" class="com.adminTool.action.AddTool">
+			<result name="input">addTool.jsp</result>
+		</action>
+
+		<!-- 累积充值配置列表 -->
+		<action name="totalPayRewardList" class="com.adminTool.action.TotalPayRewardList">
+			<result name="success">totalPayRewardList.jsp</result>
+		</action>
+
+		<!-- 添加累积充值配置 -->
+		<action name="addTotalPayReward" class="com.adminTool.action.AddTotalPayReward">
+			<result name="input">addTool.jsp</result>
+			<result type="redirectAction" name="success">
+				<param name="actionName">totalPayRewardList</param>
+				<param name="activityId">${activityId}</param>
+				<param name="isCommit">${isCommit}</param>
+			</result>
+		</action>
+
+		<!-- 单笔充值配置列表 -->
+		<action name="oncePayRewardList" class="com.adminTool.action.OncePayRewardList">
+			<result name="success">oncePayRewardList.jsp</result>
+		</action>
+
+		<!-- 添加单笔充值配置 -->
+		<action name="addOncePayReward" class="com.adminTool.action.AddOncePayReward">
+			<result type="redirectAction" name="success">
+				<param name="actionName">oncePayRewardList</param>
+				<param name="activityId">${activityId}</param>
+				<param name="isCommit">${isCommit}</param>
+			</result>
+		</action>
+
+		<!-- 道具兑换配置列表 -->
+		<action name="toolExchangeList" class="com.adminTool.action.ToolExchangeList">
+			<result name="success">toolExchangeList.jsp</result>
+		</action>
+
+		<!-- 添加道具兑换配置 -->
+		<action name="addToolExchange" class="com.adminTool.action.AddToolExchange">
+			<result type="redirectAction" name="success">
+				<param name="actionName">toolExchangeList</param>
+				<param name="activityId">${activityId}</param>
+				<param name="isCommit">${isCommit}</param>
+			</result>
+		</action>
+
+		<!-- 充值累积天数 -->
+		<action name="totalDayPayRewardList" class="com.adminTool.action.TotalDayPayRewardList">
+			<result name="success">totalDayPayRewardList.jsp</result>
+		</action>
+		
+		
+		<!-- 添加充值累计天数 -->
+		<action name="addTotalDayPayReward" class="com.adminTool.action.AddTotalDayPayReward">
+			<result type="redirectAction" name="success">
+				<param name="actionName">totalDayPayRewardList</param>
+				<param name="isCommit">${isCommit}</param>
+			</result>
+		</action>
+
+		<!-- 活动抽奖模块 -->
+		<action name="activityDraw" class="com.adminTool.action.ActivityDraw">
+			<result name="success">activityDraw.jsp</result>
+		</action>
+
+		<!-- 抽奖轮盘列表 -->
+		<action name="activityDrawPosList" class="com.adminTool.action.ActivityDrawPosList">
+			<result name="success">activityDrawPosList.jsp</result>
+		</action>
+
+		<!-- 添加抽奖轮盘位置 -->
+		<action name="addActivityDrawPos" class="com.adminTool.action.AddActivityDrawPos">
+			<result type="redirectAction" name="success">
+				<param name="actionName">activityDrawPosList</param>
+				<param name="activityId">${activityId}</param>
+				<param name="isCommit">${isCommit}</param>
+			</result>
+		</action>
+
+		<!-- 抽奖次数配置列表 -->
+		<action name="activityDrawConfigList" class="com.adminTool.action.ActivityDrawConfigList">
+			<result name="success">activityDrawConfigList.jsp</result>
+		</action>
+
+		<!-- 添加抽奖轮盘位置 -->
+		<action name="addActivityDrawConfig" class="com.adminTool.action.AddActivityDrawConfig">
+			<result type="redirectAction" name="success">
+				<param name="actionName">activityDrawConfigList</param>
+				<param name="activityId">${activityId}</param>
+				<param name="isCommit">${isCommit}</param>
+			</result>
+		</action>
+
+		<!-- 抽奖等级物品替换列表 -->
+		<action name="activityDrawLevelGoodsList" class="com.adminTool.action.ActivityDrawLevelGoodsList">
+			<result name="success">activityDrawLevelGoodsList.jsp</result>
+		</action>
+
+		<!-- 添加等级物品替换 -->
+		<action name="addDrawLevelGoods" class="com.adminTool.action.AddDrawLevelGoods">
+			<result name="input">addDrawLevelGoods.jsp</result>
+			<result type="redirectAction" name="success">
+				<param name="actionName">activityDrawLevelGoodsList</param>
+				<param name="activityId">${activityId}</param>
+			</result>
+		</action>
+
+		<!-- 删除等级抽奖替换物品 -->
+		<action name="delDrawLevelGoods" class="com.adminTool.action.DelDrawLevelGoods"
+			method="executeDel"></action>
+
+		<!-- 修改等级物品替换 -->
+		<action name="updateDrawLevelGoods" class="com.adminTool.action.UpdateDrawLevelGoods">
+			<result name="input">updateDrawLevelGoods.jsp</result>
+			<result type="redirectAction" name="success">
+				<param name="actionName">activityDrawLevelGoodsList</param>
+				<param name="activityId">${activityId}</param>
+			</result>
+		</action>
+
+		<!-- 抽奖物品列表 -->
+		<action name="activityDrawGoodsList" class="com.adminTool.action.ActivityDrawGoodsList">
+			<result name="success">activityDrawGoodsList.jsp</result>
+		</action>
+
+		<!-- 添加物品 -->
+		<action name="addDrawGoods" class="com.adminTool.action.AddDrawGoods">
+			<result name="input">addDrawGoods.jsp</result>
+			<result type="redirectAction" name="success">
+				<param name="actionName">activityDrawGoodsList</param>
+				<param name="activityId">${activityId}</param>
+			</result>
+		</action>
+
+		<!-- 修改物品 -->
+		<action name="updateDrawGoods" class="com.adminTool.action.UpdateDrawGoods">
+			<result name="input">updateDrawGoods.jsp</result>
+			<result type="redirectAction" name="success">
+				<param name="actionName">activityDrawGoodsList</param>
+				<param name="activityId">${activityId}</param>
+			</result>
+		</action>
+
+		<!-- 删除物品 -->
+		<action name="delDrawGoods" class="com.adminTool.action.DelDrawGoods"
+			method="executeDel"></action>
+
+		<!-- 系统礼包列表 -->
+		<action name="systemGiftbagList" class="com.adminTool.action.SystemGiftbagList">
+			<result name="success">systemGiftbagList.jsp</result>
+		</action>
+
+		<!-- 添加系统礼包 -->
+		<action name="addSystemGiftbag" class="com.adminTool.action.AddSystemGiftbag">
+			<result name="input">addSystemGiftbag.jsp</result>
+			<result type="redirect" name="success">systemGiftbagList</result>
+		</action>
+
+		<!-- 修改系统礼包 -->
+		<action name="updateSystemGiftbag" class="com.adminTool.action.UpdateSystemGiftbag">
+			<result name="input">updateSystemGiftbag.jsp</result>
+			<result type="redirect" name="success">systemGiftbagList</result>
+		</action>
+
+		<!-- 删除系统礼包 -->
+		<action name="delSystemGiftbag" class="com.adminTool.action.DelSystemGiftbag"
+			method="executeDel"></action>
+
+		<!-- 导出礼包码 -->
+		<action name="exportGiftCode" class="com.adminTool.action.ExportGiftCode">
+			<result name="success" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum</param>
+			</result>
+			<result name="error" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum</param>
+			</result>
+		</action>
+
+		<!-- 礼包码列表 -->
+		<action name="giftCodeList" class="com.adminTool.action.GiftCodeList">
+			<result name="success">giftCodeList.jsp</result>
+		</action>
+
+		<!-- 礼包掉落物品列表 -->
+		<action name="giftbagDropToolList" class="com.adminTool.action.GiftbagDropToolList">
+			<result name="success">giftbagDropToolList.jsp</result>
+		</action>
+
+		<!-- 添加礼包掉落物品 -->
+		<action name="addGiftbagDropTool" class="com.adminTool.action.AddGiftbagDropTool">
+			<result type="redirectAction" name="success">
+				<param name="actionName">giftbagDropToolList</param>
+				<param name="gameWebId">${gameWebId}</param>
+				<param name="giftbagId">${giftbagId}</param>
+				<param name="isCommit">${isCommit}</param>
+			</result>
+		</action>
+
+		<!-- 礼包领取次数 -->
+		<action name="giftbagTypeLimitConfig" class="com.adminTool.action.GiftbagTypeLimitConfig">
+			<result name="input">giftbagTypeLimitConfig.jsp</result>
+			<result type="redirect" name="success">systemGiftbagList</result>
+		</action>
+
+		<!-- 生成礼包码 -->
+		<action name="createGiftCode" class="com.adminTool.action.CreateGiftCode">
+			<result name="input">createGiftCode.jsp</result>
+			<result type="redirect" name="success">systemGiftbagList</result>
+		</action>
+
+		<!-- 删除礼包码 -->
+		<action name="delGiftCode" class="com.adminTool.action.DelGiftCode"
+			method="executeDel"></action>
+
+		<!-- 跑马灯列表 -->
+		<action name="adminMarqueeList" class="com.adminTool.action.AdminMarqueeList">
+			<result name="success">adminMarqueeList.jsp</result>
+		</action>
+
+		<!-- 添加跑马灯 -->
+		<action name="addAdminMarquee" class="com.adminTool.action.AddAdminMarquee">
+			<result name="input">addAdminMarquee.jsp</result>
+			<result name="success" type="redirect">adminMarqueeList</result>
+		</action>
+
+		<!-- 修改跑马灯 -->
+		<action name="updateAdminMarquee" class="com.adminTool.action.UpdateAdminMarquee">
+			<result name="input">updateAdminMarquee.jsp</result>
+			<result name="success" type="redirect">adminMarqueeList</result>
+		</action>
+
+		<!-- 删除跑马灯 -->
+		<action name="delAdminMarquee" class="com.adminTool.action.DelAdminMarquee"
+			method="executeDel"></action>
+		
+		<!-- 系统PK奖励列表 -->
+		<action name="adminPkAwardList" class="com.adminTool.action.AdminPkAwardList">
+			<result name="success">adminPkAwardList.jsp</result>
+		</action>
+
+		<!-- 添加系统PK奖励 -->
+		<action name="addAdminPkAward" class="com.adminTool.action.AddAdminPkAward">
+			<result name="input">addAdminPkAward.jsp</result>
+			<result name="success" type="redirect">adminPkAwardList</result>
+		</action>
+
+		<!-- 修改系统PK奖励 -->
+		<action name="updateAdminPkAward" class="com.adminTool.action.UpdateAdminPkAward">
+			<result name="input">updateAdminPkAward.jsp</result>
+			<result name="success" type="redirect">adminPkAwardList</result>
+		</action>
+
+		<!-- 删除系统PK奖励 -->
+		<action name="delAdminPkAward" class="com.adminTool.action.DelAdminPkAward"
+			method="executeDel"></action>
+
+		<!-- 开启英雄关卡 -->
+		<action name="openHeroPoints" class="com.adminTool.action.OpenHeroPoints">			
+			<result name="input">openHeroPoints.jsp</result>
+			<result name="success" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum</param>
+			</result>
+			<result name="error" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum</param>
+			</result>
+		</action>
+		
+		<!-- 修改用户等级  -->
+		<action name="updateUserLevel" class="com.adminTool.action.UpdateUserLevel">			
+			<result name="input">updateUserLevel.jsp</result>
+			<result name="success" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum</param>
+			</result>
+			<result name="error" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum</param>
+			</result>
+		</action>
+		<!-- 星图配置 -->
+		<action name="systemStarList" class="com.adminTool.action.SystemStarList">
+			<result name="success">systemStarList.jsp</result>
+			<result name="input">updateSystemStar.jsp</result>
+		</action>
+		<action name="updateSystemStar" class="com.adminTool.action.UpdateSystemStar">
+			<result name="success">systemStarList.jsp</result>
+		</action>
+		
+		<!-- 刷新常量类 -->
+		<action name="refreshClassList" class="com.adminTool.action.RefreshClassList">
+			<result name="success">refreshClassList.jsp</result>
+		</action>
+		<!-- 刷新常量类 -->
+		<action name="refreshClassListDo" class="com.adminTool.action.RefreshClassListDo">
+			<result name="success" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum</param>
+			</result>
+			<result name="error" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum</param>
+			</result>
+		</action>
+		
+		<!-- 活跃度配置 -->
+		<action name="updateVitality" class="com.adminTool.action.UpdateVitality">
+			<result name="success">updateVitality.jsp</result>
+			<result name="input">updateVitality.jsp</result>
+		</action>
+		
+		<!-- 充值配置 -->
+		<action name="systemGoldSetList" class="com.adminTool.action.SystemGoldSetList">
+			<result name="success">systemGoldSetList.jsp</result>
+		</action>
+		<action name="synSystemGoldSetList" class="com.adminTool.action.SynSystemGoldSetList">
+			<result name="success">synSystemGoldSetList.jsp</result>
+		</action>
+		
+		<!-- 30天登录奖励 -->
+		<action name="update30LoginReward" class="com.adminTool.action.Update30LoginReward">
+			<result name="success">updateSystem30LoginReward.jsp</result>
+		</action>
+		
+		<!-- 7天登录奖励 -->
+		<action name="update7LoginReward" class="com.adminTool.action.Update7LoginReward">
+			<result name="success">updateSystem7LoginReward.jsp</result>
+		</action>
+		
+		<!-- 邮件查询 -->
+		<action name="searchMail" class="com.adminTool.action.SearchMail">
+			<result name="success">searchMail.jsp</result>
+		</action>
+		
+		<!-- 删除活跃度奖励配置 -->
+		<action name="delVatality" class="com.adminTool.action.DelVatality"
+			method="executeDel"></action>
+			
+		<!-- 修改在线礼包配置 -->
+		<action name="updateDropTool" class="com.adminTool.action.UpdateDropTool">
+			<result name="success">updateDropTool.jsp</result>
+		</action>
+		<!-- 删除在线礼包配置  -->
+		<action name="delDropTool" class="com.adminTool.action.DelDropTool" 
+			method="executeDel"></action>
+		
+		<!-- 查询用户注册信息 -->
+		<action name="searchUserReg" class="com.adminTool.action.SearchUserReg">
+			<result name="success">searchUserReg.jsp</result>
+		</action>
+		
+		<!-- 系统常量配置 -->
+		<action name="updateSystemConfigData" class="com.adminTool.action.UpdateSystemConfigData">
+			<result name="success">updateSystemConfigData.jsp</result>
+			<result name="input">modifySystemConfigData.jsp</result>
+		</action>
+		<action name="modifySystemConfigData" class="com.adminTool.action.ModifySystemConfigData">
+			<result name="success">modifySystemConfigData.jsp</result>
+		</action>
+		
+		<!-- 删除玩家装备道具 -->
+		<action name="delUserEquipSingle" class="com.adminTool.action.DelUserEquipSingle">
+			
+			<result name="success">getUserEquipSingle.jsp</result>
+		</action>
+		
+		<!-- 修改玩家装备数量 -->
+		<action name="updateUserBagSingle" class="com.adminTool.action.UpdateUserBagSingle">
+			
+			<result name="success">getUserEquipSingle.jsp</result>
+		</action>
+		
+		<action name="recordUserStep" class="com.adminTool.action.RecordUserStep">
+			<result name="success">recordUserStep.jsp</result>
+		</action>
+		
+		<!-- 同步数据 -->
+		<action name="synActivityList" class="com.adminTool.action.SynActivityList">
+			<result name="success">activityList.jsp</result>
+		</action>
+		
+		<!-- 登录抽奖活动配置 -->
+		<action name="systemLoginDrawList" class="com.adminTool.action.SystemLoginDrawList">
+			<result name="success">systemLoginDrawList.jsp</result>
+		</action>
+		
+		<!-- 系统内部邮件配置 -->
+		<action name="systemMailInternalList" class="com.adminTool.action.SystemMailInternalList">
+			<result name="success">systemMailInternalList.jsp</result>
+			<result name="input">updateSystemMailInternal.jsp</result>
+		</action>
+		
+		<!-- 更新系统内部邮件配置 -->
+		<action name="updateSystemMailInternal" class="com.adminTool.action.UpdateSystemMailInternal">
+			<result name="success">updateSystemMailInternal.jsp</result>
+		</action>
+		
+		<!-- 刮刮乐 -->
+		<action name="updateSystemScratchReward" class="com.adminTool.action.UpdateSystemScratchReward">
+			<result name="success">updateSystemScratchRewardList.jsp</result>
+		</action>
+		
+		<!-- 累积消费 -->
+		<action name="updateSystemTotalConsumeReward" class="com.adminTool.action.UpdateSystemTotalConsumeReward">
+			<result name="success">updateSystemTotalConsumeReward.jsp</result>
+		</action>
+		
+		<!-- 选择服务器 -->
+		<action name="chooseServer" class="com.adminTool.action.ChooseServer">
+			<result name="input">chooseServer.jsp</result>
+		</action>
+		
+		<!-- 同步系统邮件 -->
+		<action name="synMailInternalList" class="com.adminTool.action.SynMailInternalList">
+			<result name="success">synMailInternalList.jsp</result>
+		</action>
+
+		<!-- 批量查询玩家信息 -->
+		<action name="getUserInfoList" class="com.adminTool.action.GetUserInfoList">
+			<result name="success">getUserInfoList.jsp</result>
+		</action>
+		<!-- 商城 -->
+		<action name="systemMallList" class="com.adminTool.action.SystemMallList">
+			<result name="success">systemMallList.jsp</result>
+		</action>
+		<action name="updateSystemMallList" class="com.adminTool.action.UpdateSystemMallList">
+			<result name="success">systemMallList.jsp</result>
+			<result name="input">updateSystemMallList.jsp</result>
+		</action>
+		<action name="updateSystemMallAmountRuleList" class="com.adminTool.action.UpdateSystemMallAmountRuleList">
+			<result name="input">updateSystemMallAmountRuleList.jsp</result>
+			<result name="success">systemMallList.jsp</result>
+		</action>
+		<action name="delSystemMallAmountRuleList" class="com.adminTool.action.DelSystemMallAmountRuleList">
+			<result name="success">updateSystemMallAmountRuleList.jsp</result>
+		</action>
+		<action name="updateSystemMallVipTimesRuleList" class="com.adminTool.action.UpdateSystemMallVipTimesRuleList">
+			<result name="success">updateSystemMallVipTimesRuleList.jsp</result>
+			<result name="input">systemMallList.jsp</result>
+		</action>
+		<action name="delSystemMallVipTimesRuleList" class="com.adminTool.action.DelSystemMallVipTimesRuleList">
+			<result name="success">updateSystemMallVipTimesRuleList.jsp</result>
+		</action>
+		<action name="newSystemGiftbagList" class="com.adminTool.action.NewSystemGiftbagList">
+			<result name="success">newSystemGiftbagList.jsp</result>
+		</action>
+		
+		<!-- 多服刷新常量类 -->
+		<action name="multiRefreshClassListDo" class="com.adminTool.action.MultiRefreshClassListDo">
+			<result name="success" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum</param>
+			</result>
+			<result name="error" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum</param>
+			</result>
+		</action>
+		
+		<!-- 招财猫 -->
+		<action name="updateSystemDiamondcat" class="com.adminTool.action.UpdateSystemDiamondcat">
+			<result name="input">updateSystemDiamondcat.jsp</result>
+			<result name="success">updateSystemDiamondcat.jsp</result>
+		</action>
+		<!-- 查看玩家背包道具 -->
+		<action name="getUserBagSingle" class="com.adminTool.action.GetUserBagSingle">
+			<result name="none">../common/userNotExist.jsp</result>
+			<result name="success">getUserBagSingle.jsp</result>
+		</action>
+		<!-- 删除玩家背包道具 -->
+		<action name="delUserBagSingle" class="com.adminTool.action.DelUserBagSingle">
+			
+			<result name="success">getUserBagSingle.jsp</result>
+		</action>
+		
+		<!-- 修改玩家背包数量 -->
+		<action name="updateUserBagSingle" class="com.adminTool.action.UpdateUserBagSingle">
+			
+			<result name="success">getUserEquipSingle.jsp</result>
+		</action>
+		
+		<!-- 查看玩家装备道具 -->
+		<action name="getUserEquipSingle" class="com.adminTool.action.GetUserEquipSingle">
+			<result name="none">../common/userNotExist.jsp</result>
+			<result name="success">getUserEquipSingle.jsp</result>
+		</action>
+	
+		<!-- 限时购买 -->
+		<action name="systemXianshiMallList" class="com.adminTool.action.SystemXianshiMallList">
+			<result name="success">systemXianshiMallList.jsp</result>
+			<result name="input">updateSystemXianshiMallList.jsp</result>
+		</action>
+		<action name="addSystemXianshiMall" class="com.adminTool.action.AddSystemXianshiMall">
+			<result name="success">addSystemXianshiMall.jsp</result>
+		</action>
+		<action name="updateSystemXianshiMall" class="com.adminTool.action.UpdateSystemXianshiMall">
+			<result name="success">updateSystemXianshiMallList.jsp</result>
+		</action>
+		
+		<!-- 查看玩家神器道具 -->
+		<action name="getUserArtifactSingle" class="com.adminTool.action.GetUserArtifactSingle">
+			<result name="none">../common/userNotExist.jsp</result>
+			<result name="success">getUserArtifactSingle.jsp</result>
+		</action>
+		<!-- 删除玩家神器 -->
+		<action name="delUserArtifactSingle" class="com.adminTool.action.DelUserArtifactSingle">
+			
+			<result name="success">getUserArtifactSingle.jsp</result>
+		</action>
+		<!-- 查看玩家英雄道具 -->
+		<action name="getUserHeroSingle" class="com.adminTool.action.GetUserHeroSingle">
+			<result name="none">../common/userNotExist.jsp</result>
+			<result name="success">getUserHeroSingle.jsp</result>
+		</action>
+		<!-- 删除玩家英雄 -->
+		<action name="delUserHeroSingle" class="com.adminTool.action.DelUserHeroSingle">
+			
+			<result name="success">getUserArtifactSingle.jsp</result>
+		</action>
+		<!-- 当日累积充值 -->
+		<action name="systemDayTotalPayRewardList" class="com.adminTool.action.SystemDayTotalPayRewardList">
+			<result name="success">systemDayTotalPayRewardList.jsp</result>
+			<result name="input">updateSystemDayTotalPayReward.jsp</result>
+		</action>
+		<action name="updateSystemDayTotalPayReward" class="com.adminTool.action.UpdateSystemDayTotalPayReward">
+			<result name="success">updateSystemDayTotalPayReward.jsp</result>
+		</action>
+		<action name="addSystemDayTotalPayReward" class="com.adminTool.action.AddSystemDayTotalPayReward">
+			<result name="success">addSystemDayTotalPayReward.jsp</result>
+		</action>
+		<!-- 抽样 -->
+		<action name="chouyangList" class="com.adminTool.action.ChouyangList">
+			<result name="input">chouyangList.jsp</result>
+			<result name="success">chouyangList.jsp</result>
+		</action>
+		<!-- 首页数据 -->
+		<action name="allServerInfoListNew" class="com.adminTool.action.AllServerInfoListNew">
+			<result name="success">allServerInfoListNew.jsp</result>
+		</action>
+
+		<!-- 星图配置同步 -->
+		<action name="synSystemStarList" class="com.adminTool.action.SynSystemStarList">
+			<result name="success">synSystemStarList.jsp</result>
+		</action>
+		<!-- 添加累计登录天数     -->
+        <action name="updateAccumLoginReward" class="com.adminTool.action.UpdateAccumLoginReward">
+            <result name="success">updateSystemAccumLoginReward.jsp</result>  
+        </action>
+        <!-- 积分商城配置 -->
+        <action name="integralMallList" class="com.adminTool.action.IntegralMallList">
+        	<result name="success">integralMallList.jsp</result>
+        </action>
+        <!-- 删除积分商城配置 -->
+		<action name="delIntegralMall" class="com.adminTool.action.DelIntegralMall" method="executeDel"></action>	
+		<!-- 修改积分商城配置 -->
+		<action name="updateIntegralMall" class="com.adminTool.action.UpdateIntegralMall">
+			<result name="input">updateIntegralMall.jsp</result>
+			<result type="redirect" name="success">integralMallList</result>
+		</action>
+		<!-- 添加积分商城配置 -->
+		<action name="addIntegralMall" class="com.adminTool.action.AddIntegralMall">
+		    <result name="input">addIntegralMall.jsp</result>
+			<result name="success" type="redirect">integralMallList</result>
+		</action>
+        <!-- 订单号比较 -->
+        <action name="comparePayment" class="com.adminTool.action.ComparePayment">
+            <result name="success">comparePaymentList.jsp</result>
+        </action>
+        <action name="legionList" class="com.adminTool.action.LegionList">
+			<result name="success">legionList.jsp</result>
+		</action>
+		<action name="legionUserInfoList" class="com.adminTool.action.LegionUserInfoList">
+			<result name="success">legionUserInfoList.jsp</result>
+		</action>	
+		<action name="systemValentineList" class="com.adminTool.action.SystemValentineList">
+			<result name="success">systemValentineList.jsp</result>
+		</action>
+		<!-- 情人节英雄配置 -->
+		<action name="valentineHeroList" class="com.adminTool.action.ValentineHeroList">
+			<result name="success">valentineHeroList.jsp</result>
+		</action>
+		<!-- 情人节奖励配置 -->
+		<action name="valentineRewardList" class="com.adminTool.action.ValentineRewardList">
+			<result name="success">valentineRewardList.jsp</result>
+		</action>
+		<!-- 添加情人节英雄配对配置 -->
+		<action name="addValentineHero" class="com.adminTool.action.AddValentineHero">
+		    <result name="input">addValentineHero.jsp</result>
+			<result name="success" type="redirect">valentineHeroList</result>
+		</action>
+		<!-- 删除情人节英雄配对配置 -->
+		<action name="delValentineHero" class="com.adminTool.action.DelValentineHero">
+			<result name="success">valentineHeroList</result>
+		</action>
+		<action name="addValentineReward" class="com.adminTool.action.AddValentineReward">
+			<result name="input">addValentineReward.jsp</result>
+			<result name="success">addValentineRewardNew.jsp</result>
+		</action>
+		<!-- 删除情人节英雄配对奖励配置 -->
+		<action name="delValentineReward" class="com.adminTool.action.DelValentineReward">
+			<result name="success">valentineRewardList</result>
+		</action>
+		<!-- 查询用户渠道号信息 -->
+		<action name="searchByLodoId" class="com.adminTool.action.SearchByLodoId">
+		    <result name="input">searchByLodoIdfail.jsp</result> 
+			<result name="success">searchByLodoId.jsp</result>
+		</action>
+	</package>
+</struts>

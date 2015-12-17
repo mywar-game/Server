@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.adminTool.bo.ActivityTask" table="system_activity_task">
+		<id name="activityTaskId" type="java.lang.Integer">
+			<column name="activity_task_id" />
+			<generator class="assigned" />
+		</id>
+		<property name="targetType" type="java.lang.Integer">
+            <column name="target_type" not-null="true">
+            </column>
+        </property>
+        <property name="targetDesc" type="java.lang.String">
+        	<column name="target_desc">
+        	</column>
+        </property>
+        <property name="needFinishTimes" type="java.lang.Integer">
+        	<column name="need_finish_times">
+        	</column>
+        </property>
+        <property name="point" type="java.lang.Integer">
+        	<column name="point">
+        	</column> 
+        </property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-4-3 16:57:56 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.adminTool.bo.GiftCode" table="gift_code"
+		>
+		<id name="code" type="string">
+			<column name="code" length="50" />
+			<generator class="assigned" />
+		</id>
+		<property name="giftBagId" type="int">
+			<column name="gift_bag_id" not-null="true"></column>
+		</property>
+		<property name="createdTime" type="timestamp">
+			<column name="created_time" length="19" not-null="true" />
+		</property>
+		<property name="effectiveTime" type="timestamp">
+			<column name="effective_time" length="19" not-null="true" />
+		</property>
+		<property name="loseTime" type="timestamp">
+			<column name="lose_time" length="19" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>

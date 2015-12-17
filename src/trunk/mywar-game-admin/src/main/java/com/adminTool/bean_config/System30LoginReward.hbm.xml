@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.adminTool.bo.System30LoginReward" table="system_30_login_reward">
+		<id name="system30LoginRewardId" type="java.lang.Integer">
+			<column name="system_30_login_reward_id" />
+			<generator class="assigned" />
+		</id>
+		<property name="day" type="java.lang.Integer">
+            <column name="day" not-null="true">
+            </column>
+        </property>
+        <property name="toolIds" type="java.lang.String">
+        	<column name="tool_ids">
+        	</column>
+        </property>
+      <property name="toolDesc" type="java.lang.String">
+        	<column name="tool_desc">
+        	</column>
+        </property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-7-14 13:57:12 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.adminTool.bo.AdminPkAward" table="system_pk_award">
+		<id name="id" type="java.lang.Integer">
+			<column name="award_id" />
+			<generator class="assigned" />
+		</id>
+		<property name="score" type="int">
+			<column name="score"></column>
+		</property>
+		<property name="tools" type="string">
+			<column name="tools"></column>
+		</property>
+		<property name="name" type="string">
+			<column name="name"></column>
+		</property>
+		<property name="description" type="string">
+			<column name="description"></column>
+		</property>
+		<property name="imgId" type="string">
+			<column name="img_id"></column>
+		</property>
+		<property name="day_buy_num" type="int">
+			<column name="day_buy_num" ></column>
+		</property>
+		<property name="total_buy_num" type="int">
+			<column name="total_buy_num" ></column>
+		</property>
+	</class>
+</hibernate-mapping>

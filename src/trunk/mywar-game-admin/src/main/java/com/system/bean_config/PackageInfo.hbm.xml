@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-3-14 18:07:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.system.bo.PackageInfo" table="package_info" >
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="version" type="java.lang.String">
+            <column name="version" length="20"></column>
+        </property>
+        <property name="versions" type="java.lang.String">
+            <column name="versions"></column>
+        </property>
+        <property name="fullUrl" type="java.lang.String">
+            <column name="full_url"></column>
+        </property>
+        <property name="upgradeUrl" type="java.lang.String">
+            <column name="upgrade_url"></column>
+        </property>
+        <property name="createdTime" type="java.sql.Timestamp">
+            <column name="created_time" length="19"></column>
+        </property>
+        <property name="pkgType" type="java.lang.Integer">
+            <column name="pkg_type" not-null="true"></column>
+        </property>
+        <property name="description" type="java.lang.String">
+            <column name="description" length="200"></column>
+        </property>
+        <property name="isTest" type="java.lang.Integer">
+            <column name="is_test" not-null="true"></column>
+        </property>
+        <property name="partnerId" type="java.lang.String">
+            <column name="partner_id" length="10" not-null="true"></column>
+        </property>
+    </class>
+</hibernate-mapping>

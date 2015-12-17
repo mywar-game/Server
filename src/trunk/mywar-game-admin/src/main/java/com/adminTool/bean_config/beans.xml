@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="giftCodeDaoMysqlImpl" class="com.adminTool.dao.impl.mysql.GiftCodeDaoMysqlImpl"></bean>
+
+	<bean id="paymentOrderDao" class="com.adminTool.dao.PaymentOrderDao"></bean>
+	<bean id="paymentOrderService" class="com.adminTool.service.PaymentOrderService">
+		<property name="paymentOrderDao" ref="paymentOrderDao"></property>
+	</bean>
+	<bean id="userMapperDao" class="com.adminTool.dao.UserMapperDao"></bean>
+	<bean id="adminMailDao" class="com.adminTool.dao.AdminMailDao"></bean>
+	<bean id="adminMailToolDao" class="com.adminTool.dao.AdminMailToolDao"></bean>
+	<bean id="goodsLimitNumberDao" class="com.adminTool.dao.GoodsLimitNumberDao"></bean>
+	<bean id="mailToolService" class="com.adminTool.service.MailToolService">
+		<property name="adminMailToolDao" ref="adminMailToolDao"></property>
+		<property name="adminMailDao" ref="adminMailDao"></property>
+		<property name="goodsLimitNumberDao" ref="goodsLimitNumberDao"></property>
+	</bean>
+
+	<bean id="systemMallDiscountDao" class="com.adminTool.dao.SystemMallDiscountDao"></bean>
+	<bean id="mallDiscountItemDao" class="com.adminTool.dao.MallDiscountItemDao"></bean>
+	<bean id="mallDiscountItemService" class="com.adminTool.service.MallDiscountItemService">
+		<property name="mallDiscountItemDao" ref="mallDiscountItemDao"></property>
+		<property name="systemMallDiscountDao" ref="systemMallDiscountDao"></property>
+	</bean>
+	<bean id="mallAuditDao" class="com.adminTool.dao.MallAuditDao"></bean>
+	<bean id="mallAuditService" class="com.adminTool.service.MallAuditService">
+		<property name="mallAuditDao" ref="mallAuditDao"></property>
+	</bean>
+	<bean id="mallDiscountDao" class="com.adminTool.dao.MallDiscountDao"></bean>
+	<bean id="mallDiscountService" class="com.adminTool.service.MallDiscountService">
+		<property name="mallDiscountDao" ref="mallDiscountDao"></property>
+	</bean>
+
+	<bean id="userDao" class="com.adminTool.dao.UserDao"></bean>
+	<bean id="userService" class="com.adminTool.service.UserService">
+		<property name="userDao" ref="userDao"></property>
+		<property name="userMapperDao" ref="userMapperDao"></property>
+	</bean>
+
+	<bean id="systemNoticeLogDao" class="com.adminTool.dao.SystemNoticeLogDao"></bean>
+	<bean id="SystemNoticeLogService" class="com.adminTool.service.SystemNoticeLogService">
+		<property name="systemNoticeLogDao" ref="systemNoticeLogDao"></property>
+	</bean>
+
+	<bean id="globalInfoDao" class="com.adminTool.dao.GlobalInfoDao"></bean>
+	<bean id="statisticsInfoDao" class="com.adminTool.dao.StatisticsInfoDao"></bean>
+
+	<bean id="globalService" class="com.adminTool.service.GlobalService">
+		<property name="globalInfoDao" ref="globalInfoDao"></property>
+		<property name="statisticsInfoDao" ref="statisticsInfoDao"></property>
+	</bean>
+
+	<!-- 读取管理员发放道具、装备日志 -->
+	<bean id="adminIssueLogDao" class="com.adminTool.dao.AdminIssueLogDao"></bean>
+	<bean id="adminIssueLogService" class="com.adminTool.service.AdminIssueLogService">
+		<property name="adminIssueLogDao" ref="adminIssueLogDao" />
+	</bean>
+
+	<!-- 读取管理员发放钻石日志 -->
+	<bean id="adminIssueDiamondLogDao" class="com.adminTool.dao.AdminIssueDiamondLogDao"></bean>
+	<bean id="adminIssueDiamondLogService" class="com.adminTool.service.AdminIssueDiamondLogService">
+		<property name="adminIssueDiamondLogDao" ref="adminIssueDiamondLogDao" />
+	</bean>
+
+	<!-- 读取管理员发放钻石日志 -->
+	<bean id="adminChangeConstantLogDao" class="com.adminTool.dao.AdminChangeConstantLogDao"></bean>
+	<bean id="adminChangeConstantLogService" class="com.adminTool.service.AdminChangeConstantLogService">
+		<property name="adminChangeConstantLogDao" ref="adminChangeConstantLogDao" />
+	</bean>
+
+	<!-- 账号类型 -->
+	<bean id="userTypeDao" class="com.adminTool.dao.UserTypeDao"></bean>
+	<bean id="userTypeService" class="com.adminTool.service.UserTypeService">
+		<property name="userTypeDao" ref="userTypeDao"></property>
+	</bean>
+
+	<!-- 高级测试号 -->
+	<bean id="testUserDao" class="com.adminTool.dao.TestUserDao"></bean>
+	<bean id="testUserService" class="com.adminTool.service.TestUserService">
+		<property name="testUserDao" ref="testUserDao"></property>
+	</bean>
+
+	<!-- 玩家排行快照 -->
+	<bean id="userRankSnapshotDao" class="com.adminTool.dao.UserRankSnapshotDao"></bean>
+	<bean id="userRankSnapshotService" class="com.adminTool.service.UserRankSnapshotService">
+		<property name="userRankSnapshotDao" ref="userRankSnapshotDao"></property>
+	</bean>
+
+	<!-- 管理员处理玩家建议日志 -->
+	<bean id="adminDealSuggestLogDao" class="com.adminTool.dao.AdminDealSuggestLogDao"></bean>
+	<bean id="adminDealSuggestLogService" class="com.adminTool.service.AdminDealSuggestLogService">
+		<property name="adminDealSuggestLogDao" ref="adminDealSuggestLogDao"></property>
+	</bean>
+
+	<!-- 平台 -->
+	<bean id="platformConstantDao" class="com.adminTool.dao.PlatformConstantDao"></bean>
+	<bean id="platformConstantService" class="com.adminTool.service.PlatformConstantService">
+		<property name="platformConstantDao" ref="platformConstantDao"></property>
+	</bean>
+
+	<!-- 平台 -->
+	<bean id="partnerDao" class="com.adminTool.dao.PartnerDao"></bean>
+	<bean id="partnerService" class="com.adminTool.service.PartnerService">
+		<property name="partnerDao" ref="partnerDao"></property>
+	</bean>
+
+
+
+
+
+
+
+
+	<!-- 每小时更新一次排行 -->
+	<bean id="dealGlobalInfo" class="com.adminTool.scheduler.DealGlobalInfo">
+		<property name="cronExpression" value="0 10 */1 * * ?"></property>
+		<property name="isTimeZoneDiff" value="false"></property>
+	</bean>
+
+	<!-- 定时发放钻石给升到整十级的测试号 <bean id="issueDiamondForTestUser" class="com.adminTool.scheduler.IssueDiamondForTestUser"> 
+		<property name="cronExpression" value="0 20 0 * * ?"></property> <property 
+		name="isTimeZoneDiff" value="true"></property> </bean> -->
+
+	<!-- 每半小时发送数据给运营开发 -->
+	<bean id="collectUserDataForPlatform" class="com.adminTool.scheduler.CollectUserDataForPlatform">
+		<property name="cronExpression" value="0 5,35 * * * ?"></property>
+		<property name="isTimeZoneDiff" value="false"></property>
+	</bean>
+	<!-- 创建备份日志表sch <bean id="createTableSch" class="com.adminTool.scheduler.CreateTableSch"> 
+		<property name="cronExpression" value="0 0 3 * * ?"></property> <property 
+		name="isTimeZoneDiff" value="false"></property> </bean> -->
+
+	<!-- 活动 -->
+	<bean id="activityDao" class="com.adminTool.dao.ActivityDao"></bean>
+	<bean id="activityService" class="com.adminTool.service.ActivityService">
+		<property name="activityDao" ref="activityDao"></property>
+	</bean>
+
+	<!-- 累积充值活动模块 -->
+	<bean id="totalPayRewardDao" class="com.adminTool.dao.TotalPayRewardDao"></bean>
+	<bean id="totalPayRewardService" class="com.adminTool.service.TotalPayRewardService">
+		<property name="totalPayRewardDao" ref="totalPayRewardDao"></property>
+	</bean>
+
+	<!-- 单笔充值活动模块 -->
+	<bean id="oncePayRewardDao" class="com.adminTool.dao.OncePayRewardDao"></bean>
+	<bean id="oncePayRewardService" class="com.adminTool.service.OncePayRewardService">
+		<property name="oncePayRewardDao" ref="oncePayRewardDao"></property>
+	</bean>
+
+	<!-- 道具兑换活动模块 -->
+	<bean id="toolExchangeDao" class="com.adminTool.dao.ToolExchangeDao"></bean>
+	<bean id="toolExchangeService" class="com.adminTool.service.ToolExchangeService">
+		<property name="toolExchangeDao" ref="toolExchangeDao"></property>
+	</bean>
+
+	<!-- 充值累积天数活动 -->
+	<bean id="totalDayPayRewardDao" class="com.adminTool.dao.TotalDayPayRewardDao"></bean>
+	<bean id="totalDayPayRewardService" class="com.adminTool.service.TotalDayPayRewardService">
+		<property name="totalDayPayRewardDao" ref="totalDayPayRewardDao"></property>
+	</bean>
+
+	<!-- 抽奖次数配置 -->
+	<bean id="activityDrawConfigDao" class="com.adminTool.dao.ActivityDrawConfigDao"></bean>
+	<bean id="activityDrawConfigService" class="com.adminTool.service.ActivityDrawConfigService">
+		<property name="activityDrawConfigDao" ref="activityDrawConfigDao"></property>
+	</bean>
+
+	<!-- 抽奖物品 -->
+	<bean id="activityDrawGoodsDao" class="com.adminTool.dao.ActivityDrawGoodsDao"></bean>
+	<bean id="activityDrawGoodsService" class="com.adminTool.service.ActivityDrawGoodsService">
+		<property name="activityDrawGoodsDao" ref="activityDrawGoodsDao"></property>
+	</bean>
+
+	<!-- 抽奖轮盘 -->
+	<bean id="activityDrawPosDao" class="com.adminTool.dao.ActivityDrawPosDao"></bean>
+	<bean id="activityDrawPosService" class="com.adminTool.service.ActivityDrawPosService">
+		<property name="activityDrawPosDao" ref="activityDrawPosDao"></property>
+	</bean>
+
+	<!-- 抽奖等级物品替换 -->
+	<bean id="activityDrawLevelGoodsDao" class="com.adminTool.dao.ActivityDrawLevelGoodsDao"></bean>
+	<bean id="activityDrawLevelGoodsService" class="com.adminTool.service.ActivityDrawLevelGoodsService">
+		<property name="activityDrawLevelGoodsDao" ref="activityDrawLevelGoodsDao"></property>
+	</bean>
+
+	<!-- 系统礼包 -->
+	<bean id="systemGiftbagDao" class="com.adminTool.dao.SystemGiftbagDao"></bean>
+	<bean id="systemGiftbagService" class="com.adminTool.service.SystemGiftbagService">
+		<property name="systemGiftbagDao" ref="systemGiftbagDao"></property>
+	</bean>
+
+	<!-- 礼包码 -->
+	<bean id="giftCodeDao" class="com.adminTool.dao.GiftCodeDao"></bean>
+	<bean id="giftCodeService" class="com.adminTool.service.GiftCodeService">
+		<property name="giftCodeDao" ref="giftCodeDao"></property>
+	</bean>
+	
+	<!-- 礼包领取日志 -->
+	<bean id="giftCodeLogDao" class="com.adminTool.dao.GiftCodeLogDao"></bean>
+	<bean id="giftCodeLogService" class="com.adminTool.service.GiftCodeLogService">
+		<property name="giftCodeLogDao" ref="giftCodeLogDao"></property>
+	</bean>
+
+	<!-- 礼包掉落物品 -->
+	<bean id="giftbagDropToolDao" class="com.adminTool.dao.GiftbagDropToolDao"></bean>
+	<bean id="giftbagDropToolService" class="com.adminTool.service.GiftbagDropToolService">
+		<property name="giftbagDropToolDao" ref="giftbagDropToolDao"></property>
+	</bean>
+
+	<!-- 礼包领取次数 -->
+	<bean id="giftbagTypeLimitDao" class="com.adminTool.dao.GiftbagTypeLimitDao"></bean>
+	<bean id="giftbagTypeLimitService" class="com.adminTool.service.GiftbagTypeLimitService">
+		<property name="giftbagTypeLimitDao" ref="giftbagTypeLimitDao"></property>
+	</bean>
+
+	<!-- 跑马灯 -->
+	<bean id="adminMarqueeDao" class="com.adminTool.dao.AdminMarqueeDao"></bean>
+	<bean id="adminMarqueeService" class="com.adminTool.service.AdminMarqueeService">
+		<property name="adminMarqueeDao" ref="adminMarqueeDao"></property>
+	</bean>
+
+	<!-- 每10s执行跑马灯 -->
+	<bean id="marqueeSchduler" class="com.adminTool.scheduler.MarqueeSchduler">
+		<property name="cronExpression" value="0/10 *,* * * * ?"></property>
+		<property name="isTimeZoneDiff" value="false"></property>
+	</bean>
+	
+	<!-- Qn -->
+	<bean id="partnerQnDao" class="com.adminTool.dao.PartnerQnDao"></bean>
+	<bean id="partnerQnService" class="com.adminTool.service.PartnerQnService">
+		<property name="partnerQnDao" ref="partnerQnDao"></property>
+	</bean>
+
+	<!-- 星图配置 -->
+	<bean id="systemStarDao" class="com.adminTool.dao.SystemStarDao"></bean>
+	<bean id="systemStarService" class="com.adminTool.service.SystemStarService">
+		<property name="systemStarDao" ref="systemStarDao"></property>
+	</bean>
+	
+	<!-- 刷新常量类(活动) -->
+	<bean id="activityRefreshConstantDao" class="com.adminTool.dao.ActivityRefreshConstantDao"></bean>
+
+	<bean id="activityRefreshConstantService" class="com.adminTool.service.ActivityRefreshConstantService">
+		<property name="activityRefreshConstantDao" ref="activityRefreshConstantDao"></property>
+	</bean>
+	
+	<!-- 刷新常量类(全部reload) -->
+	<bean id="refreshClassDao" class="com.adminTool.dao.RefreshClassDao"></bean>
+	<bean id="refreshClassService" class="com.adminTool.service.RefreshClassService">
+		<property name="dao" ref="refreshClassDao"></property>
+	</bean>
+	
+	<!-- 活跃度 -->
+	<bean id="activityTaskDao" class="com.adminTool.dao.ActivityTaskDao"></bean>
+	<bean id="activityTaskService" class="com.adminTool.service.ActivityTaskService">
+		<property name="activityTaskDao" ref="activityTaskDao"></property>
+	</bean>
+	
+	<!-- 活跃度奖励 -->
+	<bean id="activityTaskRewardDao" class="com.adminTool.dao.ActivityTaskRewardDao"></bean>
+	<bean id="activityTaskRewardService" class="com.adminTool.service.ActivityTaskRewardService">
+		<property name="activityTaskRewardDao" ref="activityTaskRewardDao"></property>
+	</bean>
+	
+	<!-- 充值配置 -->
+	<bean id="systemGoldSetDao" class="com.adminTool.dao.SystemGoldSetDao"></bean>
+	<bean id="systemGoldSetService" class="com.adminTool.service.SystemGoldSetService">
+		<property name="systemGoldSetDao" ref="systemGoldSetDao"></property>
+	</bean>
+	
+	
+	<!-- 30天登录奖励 -->
+	<bean id="system30LoginRewardDao" class="com.adminTool.dao.System30LoginRewardDao"></bean>
+	<bean id="system30LoginRewardService" class="com.adminTool.service.System30LoginRewardService">
+		<property name="system30LoginRewardDao" ref="system30LoginRewardDao"></property>
+	</bean>
+	
+	<!-- 7天连续登录奖励配置 -->
+	<bean id="system7LoginRewardDao" class="com.adminTool.dao.System7LoginRewardDao"></bean>
+	<bean id="system7LoginRewardService" class="com.adminTool.service.System7LoginRewardService">
+		<property name="system7LoginRewardDao" ref="system7LoginRewardDao"></property>
+	</bean>
+	
+	<!-- 邮件查询 -->
+	<bean id="searchMailDao" class="com.adminTool.dao.SearchMailDao"></bean>
+	<bean id="searchMailService" class="com.adminTool.service.SearchMailService">
+		<property name="searchMailDao" ref="searchMailDao"></property>
+	</bean>
+	
+	<!-- 在线礼包配置 -->
+	<bean id="updateDropToolDao" class="com.adminTool.dao.UpdateDropToolDao"></bean>
+	<bean id="updateDropToolService" class="com.adminTool.service.UpdateDropToolService">
+		<property name="updateDropToolDao" ref="updateDropToolDao"></property>
+	</bean>
+	
+	<!-- 系统常量配置 -->
+	<bean id="systemConfigDataDao" class="com.adminTool.dao.SystemConfigDataDao"></bean>
+	<bean id="systemConfigDataService" class="com.adminTool.service.SystemConfigDataService">
+		<property name="systemConfigDataDao" ref="systemConfigDataDao"></property>
+	</bean>
+	
+	<!-- 登录抽奖活动配置 -->
+	<bean id="systemLoginDrawDao" class="com.adminTool.dao.SystemLoginDrawDao"></bean>
+	<bean id="systemLoginDrawService" class="com.adminTool.service.SystemLoginDrawService">
+		<property name="systemLoginDrawDao" ref="systemLoginDrawDao"></property>
+	</bean>
+	
+	<!-- 坐享其成 -->
+	<bean id="systemGrowthPlanRewardDao" class="com.adminTool.dao.SystemGrowthPlanRewardDao"></bean>
+	<bean id="systemGrowthPlanRewardService" class="com.adminTool.service.SystemGrowthPlanRewardService">
+		<property name="systemGrowthPlanRewardDao" ref="systemGrowthPlanRewardDao"></property>
+	</bean>
+	
+	<!-- 体力恢复  -->
+	<bean id="systemReceivePowerDao" class="com.adminTool.dao.SystemReceivePowerDao"></bean>
+	<bean id="systemReceivePowerService" class="com.adminTool.service.SystemReceivePowerService">
+		<property name="systemReceivePowerDao" ref="systemReceivePowerDao"></property>
+	</bean>
+	
+	<!-- 刮刮乐 -->
+	<bean id="systemActivityScratchRewardDao" class="com.adminTool.dao.SystemActivityScratchRewardDao"></bean>
+	<bean id="systemActivityScratchRewardService" class="com.adminTool.service.SystemActivityScratchRewardService">
+		<property name="systemActivityScratchRewardDao" ref="systemActivityScratchRewardDao"></property>
+	</bean>
+	
+	<!-- 累积消费 -->
+	<bean id="systemTotalConsumeRewardDao" class="com.adminTool.dao.SystemTotalConsumeRewardDao"></bean>
+	<bean id="systemTotalConsumeRewardService" class="com.adminTool.service.SystemTotalConsumeRewardService">
+		<property name="systemTotalConsumeRewardDao" ref="systemTotalConsumeRewardDao"></property>
+	</bean>
+	
+	<!-- 活动副本 -->
+	<bean id="systemActivityCopyConditionDropDao" class="com.adminTool.dao.SystemActivityCopyConditionDropDao"></bean>
+	<bean id="systemActivityCopyConditionDropService" class="com.adminTool.service.SystemActivityCopyConditionDropService">
+		<property name="systemActivityCopyConditionDropDao" ref="systemActivityCopyConditionDropDao"></property>
+	</bean>
+	<bean id="systemActivityCopyConfigDao" class="com.adminTool.dao.SystemActivityCopyConfigDao"></bean>
+	<bean id="systemActivityCopyConfigService" class="com.adminTool.service.SystemActivityCopyConfigService">
+		<property name="systemActivityCopyConfigDao" ref="systemActivityCopyConfigDao"></property>
+	</bean>
+	
+	<!-- 系统内部邮件 -->
+	<bean id="systemMailInternalDao" class="com.adminTool.dao.SystemMailInternalDao"></bean>
+	<bean id="systemMailInternalService" class="com.adminTool.service.SystemMailInternalService">
+		<property name="systemMailInternalDao" ref="systemMailInternalDao"></property>
+	</bean>
+	
+	<!-- 系统PK奖励 -->
+	<bean id="adminPkAwardDao" class="com.adminTool.dao.AdminPkAwardDao"></bean>
+	<bean id="adminPkAwardService" class="com.adminTool.service.AdminPkAwardService">
+	    <property name="adminPkAwardDao" ref="adminPkAwardDao"></property>
+	</bean>
+	<!-- 商城 -->
+	<bean id="systemMallDao" class="com.adminTool.dao.SystemMallDao"></bean>
+	<bean id="systemMallService" class="com.adminTool.service.SystemMallService">
+		<property name="systemMallDao" ref="systemMallDao"></property>
+	</bean>
+	<bean id="systemMallAmountRuleDao" class="com.adminTool.dao.SystemMallAmountRuleDao"></bean>
+	<bean id="systemMallAmountRuleService" class="com.adminTool.service.SystemMallAmountRuleService">
+		<property name="systemMallAmountRuleDao" ref="systemMallAmountRuleDao"></property>
+	</bean>
+	<bean id="systemMallVipTimesRuleDao" class="com.adminTool.dao.SystemMallVipTimesRuleDao"></bean>
+	<bean id="updateSystemMallVipTimesRuleService" class="com.adminTool.service.UpdateSystemMallVipTimesRuleService">
+		<property name="systemMallVipTimesRuleDao" ref="systemMallVipTimesRuleDao"></property>
+	</bean>
+	<bean id="systemDiamondcatDao" class="com.adminTool.dao.SystemDiamondcatDao"></bean>
+	<bean id="updateSystemDiamondcatService" class="com.adminTool.service.UpdateSystemDiamondcatService">
+		<property name="systemDiamondcatDao" ref="systemDiamondcatDao"></property>
+	</bean>
+	<bean id="systemXianshiMallDao" class="com.adminTool.dao.SystemXianshiMallDao"></bean>
+	<bean id="systemXianshiMallService" class="com.adminTool.service.SystemXianshiMallService">
+		<property name="systemXianshiMallDao" ref="systemXianshiMallDao"></property>
+	</bean>
+	<bean id="systemDayTotalPayRewardDao" class="com.adminTool.dao.SystemDayTotalPayRewardDao"></bean>
+	<bean id="systemDayTotalPayRewardService" class="com.adminTool.service.SystemDayTotalPayRewardService">
+		<property name="systemDayTotalPayRewardDao" ref="systemDayTotalPayRewardDao"></property>
+	</bean>
+	<!-- 累计登录奖励配置-->
+	<bean id="systemAccumLoginRewardDao" class="com.adminTool.dao.SystemAccumLoginRewardDao"></bean>
+	<bean id="systemAccumLoginRewardService" class="com.adminTool.service.SystemAccumLoginRewardService">
+		<property name="systemAccumLoginRewardDao" ref="systemAccumLoginRewardDao"></property>
+	</bean>
+	<!-- 积分商城配置 -->
+	<bean id="integralMallDao" class="com.adminTool.dao.IntegralMallDao"></bean>
+	<bean id="integralMallService" class="com.adminTool.service.IntegralMallService">
+		<property name="integralMallDao" ref="integralMallDao"></property>
+	</bean>
+	<!-- 订单号比较 -->
+	<bean id="comparePaymentDao" class="com.adminTool.dao.ComparePaymentDao"></bean>
+	<bean id="comparePaymentService" class="com.adminTool.service.ComparePaymentService">
+		<property name="comparePaymentDao" ref="comparePaymentDao"></property>
+	</bean>
+	<!-- 情人节英雄配对配置 -->
+	<bean id="valentineHeroDao" class="com.adminTool.dao.ValentineHeroDao"></bean>
+	<bean id="valentineHeroService" class="com.adminTool.service.ValentineHeroService">
+		<property name="valentineHeroDao" ref="valentineHeroDao"></property>
+	</bean>
+	<!-- 情人节英雄配对配置 -->
+	<bean id="valentineRewardDao" class="com.adminTool.dao.ValentineRewardDao"></bean>
+	<bean id="valentineRewardService" class="com.adminTool.service.ValentineRewardService">
+		<property name="valentineRewardDao" ref="valentineRewardDao"></property>
+	</bean>
+	<!-- 查询用户渠道信息 -->
+	<bean id="searchByLodoIdDao" class="com.adminTool.dao.SearchByLodoIdDao"></bean>
+	<bean id="searchByLodoIdService" class="com.adminTool.service.SearchByLodoIdService">
+		<property name="searchByLodoIdDao" ref="searchByLodoIdDao"></property>
+	</bean>
+</beans>

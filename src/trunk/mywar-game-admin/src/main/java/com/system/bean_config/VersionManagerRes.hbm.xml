@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-4-22 14:40:07 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.system.bo.VersionManagerRes" table="version_manager_res">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="resBigVersion" type="int">
+			<column name="res_big_version" not-null="true">
+				<comment>当前资源大版本号</comment>
+			</column>
+		</property>
+		<property name="resSmallVersion" type="int">
+			<column name="res_small_version" not-null="true">
+				<comment>当前资源小版本号</comment>
+			</column>
+		</property>
+		<property name="beUpdateBigVersion" type="int">
+			<column name="be_update_big_version" not-null="true">
+				<comment>被升级的资源大版本号</comment>
+			</column>
+		</property>
+		<property name="beUpdateSmallVersion" type="int">
+			<column name="be_update_small_version" not-null="true">
+				<comment>被升级的资源小版本号</comment>
+			</column>
+		</property>
+		<property name="isTest" type="int">
+			<column name="is_test" not-null="true">
+				<comment>1 测试 0正式</comment>
+			</column>
+		</property>
+		<property name="partnerId" type="string">
+			<column name="partner_id" length="11" not-null="true">
+				<comment>合作商id 0为所有渠道</comment>
+			</column>
+		</property>
+		<property name="url" type="string">
+			<column name="url" length="512" not-null="true">
+				<comment>更新包地址</comment>
+			</column>
+		</property>
+		<property name="description" type="string">
+			<column name="description" length="512">
+				<comment>描述</comment>
+			</column>
+		</property>
+	</class>
+</hibernate-mapping>

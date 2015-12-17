@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+		<class name="com.adminTool.bo.GiftbagDropTool" table="giftbag_drop_tool">
+		<composite-id>
+		
+			<key-property name="giftbagDropToolId" type="java.lang.Integer">
+				<column name="giftbag_drop_tool_id" not-null="true">
+				</column>				
+			</key-property>
+			<key-property name="giftbagId" type="java.lang.Integer">
+           		<column name="giftbag_id" not-null="true">
+            	</column>
+        	</key-property>
+        	<key-property name="toolType" type="java.lang.Integer">
+            	<column name="tool_type" not-null="true">
+            	</column>
+        	</key-property>
+    		<key-property name="toolId" type="java.lang.Integer">
+            	<column name="tool_id" not-null="true">
+            	</column>
+        	</key-property>
+        	<key-property name="name" type="java.lang.String">
+            	<column name="name" not-null="true">
+            	</column>
+        	</key-property>
+        	<key-property name="toolNum" type="java.lang.Integer">
+            	<column name="tool_num" not-null="true">
+            	</column>
+        	</key-property>
+        	<key-property name="isCheck" type="java.lang.Integer">
+            	<column name="is_check" not-null="true">
+            	</column>
+        	</key-property>
+        	<key-property name="lowerNum" type="java.lang.Integer">
+            	<column name="lower_num" not-null="true">
+            	</column>
+        	</key-property>
+        	<key-property name="upperNum" type="java.lang.Integer">
+            	<column name="upper_num" not-null="true">
+            	</column>
+        	</key-property>
+    	</composite-id>
+    </class>
+ </hibernate-mapping>

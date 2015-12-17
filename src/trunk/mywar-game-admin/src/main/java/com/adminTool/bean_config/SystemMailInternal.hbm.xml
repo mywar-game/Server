@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.adminTool.bo.SystemMailInternal" table="system_mail_internal">
+		<id name="internalMailId" type="java.lang.Integer">
+			<column name="internal_mail_id" />
+			<generator class="assigned" />
+		</id>
+		<property name="mailTitle" type="java.lang.String">
+			<column name="mail_title" />
+		</property>
+		<property name="mailContent" type="java.lang.String">
+			<column name="mail_content" />
+		</property>
+		<property name="logicType" type="java.lang.Integer">
+			<column name="logic_type"/>
+		</property>
+		<property name="showType" type="java.lang.Integer">
+			<column name="show_type"/>
+		</property>
+		<property name="tools" type="java.lang.String">
+			<column name="tools"/>
+		</property>
+		<property name="param" type="java.lang.String">
+			<column name="param" />
+		</property>
+		<property name="description" type="java.lang.String">
+			<column name="description" />
+		</property>
+	</class>
+</hibernate-mapping>

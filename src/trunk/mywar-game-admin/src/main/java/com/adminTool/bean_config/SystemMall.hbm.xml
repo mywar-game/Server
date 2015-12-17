@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.adminTool.bo.SystemMall" table="system_mall">
+		<id name="mallId" type="int">
+			<column name="mall_id" />
+			<generator class="assigned" />
+		</id>
+		<property name="tag" type="java.lang.String">
+			<column name="tag" />
+		</property>
+		<property name="name" type="java.lang.String">
+			<column name="name" />
+		</property>
+		<property name="description" type="java.lang.String">
+			<column name="description" />
+		</property>
+		<property name="toolType" type="int">
+			<column name="tool_type" />
+		</property>
+		<property name="toolId" type="int">
+			<column name="tool_id" />
+		</property>
+		<property name="toolNum" type="int">
+			<column name="tool_num" />
+		</property>
+		<property name="moneyType" type="int">
+			<column name="money_type" />
+		</property>
+		<property name="amount" type="int">
+			<column name="amount" />
+		</property>
+		<property name="imgId" type="int">
+			<column name="img_id" />
+		</property>
+		<property name="dailyMaxNum" type="int">
+			<column name="daily_max_num" />
+		</property>
+		<property name="maxNum" type="int">
+			<column name="max_num" />
+		</property>
+		<property name="needVipLevel" type="int">
+			<column name="need_vip_level" />
+		</property>
+		<property name="seeVipLevel" type="int">
+			<column name="see_vip_level" />
+		</property>
+	</class>
+</hibernate-mapping>
+		

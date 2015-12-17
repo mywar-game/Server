@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<!-- MySql数据源配置 配置库数据源 -->
+	<bean id="dataSourcecfg"
+		class="org.logicalcobwebs.proxool.ProxoolDataSource">
+		<property name="alias" value="CfgDBPool" />
+		<property name="driver" value="com.mysql.jdbc.Driver" />
+		<property name="driverUrl"
+			value="jdbc:mysql://[MYSQL:CFG_IP]:[MYSQL:CFG_PORT]/[MYSQL:CFG_DATANAME]?user=[MYSQL:CFG_USER]&amp;password=[MYSQL:CFG_PASSWORD]&amp;characterEncoding=UTF-8" />
+		<property name="user" value="[MYSQL:CFG_USER]" />
+		<property name="password" value="[MYSQL:CFG_PASSWORD]" />
+		<property name="maximumActiveTime" value="300000" />
+		<property name="prototypeCount" value="1" />
+		<property name="maximumConnectionCount" value="1" />
+		<property name="minimumConnectionCount" value="1" />
+		<property name="simultaneousBuildThrottle" value="1" />
+		<property name="houseKeepingTestSql"
+			value="select CURRENT_DATE" />
+	</bean>
+	<bean id="dataSource"
+		class="com.framework.departbaseandtable.DynamicDataSource">
+		<property name="targetDataSources">
+			<map key-type="java.lang.Integer">
+				<entry key="-1" value-ref="dataSourcecfg" />
+			</map>
+		</property>
+		<property name="defaultTargetDataSource" ref="dataSourcecfg" />
+	</bean>
+    <!-- 2进制存储配置 -->
+	<bean id="lobHandler"
+		class="org.springframework.jdbc.support.lob.DefaultLobHandler"
+		lazy-init="true" />
+	<bean id="queryResInterceptor"
+		class="com.framework.departbaseandtable.QueryResInterceptor">
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref local="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.cglib.use_reflection_optimizer">
+					true
+				</prop>
+				<!-- 自动生成表结构
+					<prop key="hibernate.hbm2ddl.auto">update</prop>
+				-->
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">false</prop>
+				<prop key="hibernate.connection.autocommit">true</prop>
+				<!-- 非0值 指定jdbc抓取数量的大小调用Statement.setFetchSize() -->
+				<prop key="hibernate.jdbc.fetch_size">30</prop>
+				<!-- jdbc批量更新 建议5到30 -->
+				<prop key="hibernate.jdbc.batch_size">10</prop>
+
+                <prop key="hibernate.connection.release_mode">after_transaction</prop>
+
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+				<prop key="hibernate.cache.use_second_level_cache">
+					false
+				</prop>
+			</props>
+		</property>
+		<property name="mappingLocations"
+			value="classpath*:com/**/bean_config/*.hbm.xml" />
+		<property name="lobHandler" ref="lobHandler" />
+	</bean>
+	<!-- 注入sessionFactory到hibernate的dao中 -->
+	<bean id="sessionFactoryAutoInsertDao"
+		class="com.framework.dao.mysql.SessionFactoryAutoInsertDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- flash安全沙箱服务器 -->
+	<bean id="flashSecurityServer"
+		class="com.framework.server.socket.mina.flashsecurity.FlashSecurityServer">
+	</bean>
+	
+	<!-- 日志插件，放在开头，spring会先加载它 -->
+	<bean id="logAppPlugin" class="com.framework.log.LogAppPlugin">
+		<!-- 日志路径 -->
+		<property name="logConfig" value="/logConfig.xml" />
+		<!-- 是否要输出到平台 -->
+		<property name="isConsole" value="true" />
+		<property name="isLogDebug" value="true" />
+		<property name="isLogInfo" value="true" />
+		<property name="isLogError" value="true" />
+		<property name="isLogFatal" value="true" />		
+		<property name="isLogWarn" value="true" />			
+	</bean>
+	<!-- 平台逻辑执行器 -->
+	<bean id="plamserverMinaHandler" class="com.framework.server.socket.mina.plamserver.MinaHandler" >
+	 		<property name="bridgeEntry" ref="bridgeEntry"></property>
+	 		<property name="useSecret" value="true"></property>
+	 		<property name="serverType" value="2"></property>
+	</bean>
+		<!-- socket管理逻辑执行器 -->
+	<bean id="managerMinaHandler" class="com.framework.server.socket.mina.plamserver.MinaHandler" >
+	 		<property name="bridgeEntry" ref="bridgeEntry"></property>
+	 		<property name="useSecret" value="false"></property>
+	</bean>
+	<!-- mina编解码协议 -->
+	<bean id="protocolCodecFactory" class="com.framework.server.socket.mina.codefactory.CodeFactory" />
+    <!-- 平台sockt服务器 -->
+	<bean id="plamMinaServer"
+		class="com.framework.server.socket.mina.plamserver.MinaServer">
+		<property name="maxReadBufferSize" value="512"></property>
+		<property name="handler" ref="plamserverMinaHandler"></property>
+		<property name="codeFactory"
+			ref="protocolCodecFactory">
+		</property>
+	</bean>
+	
+		    <!-- 管理socket服务器-->
+	<bean id="managerMinaServer"
+		class="com.framework.server.socket.mina.plamserver.MinaServer">
+		<property name="maxReadBufferSize" value="512"></property>
+		<property name="port" value="[CONFIG:SYSTEM_PORT1]"></property>
+		<property name="handler" ref="managerMinaHandler"></property>
+		<property name="codeFactory"
+			ref="protocolCodecFactory">
+		</property>
+	</bean>
+		<!--逻辑处理线程管理器  -->
+	<bean id="workThreadManager" class="com.framework.manager.msg.WorkerManager">
+	   <property name="poolBean" ref="workerThreadPoolBean"></property>
+	   <property name="msgManager" ref="msgManager"></property>
+	</bean>
+	<!-- 广播消息发送器 -->
+	<bean id="roomMsgSender" class="com.framework.manager.room.RoomMsgSender">
+	  <property name="poolBean" ref="roomMsgSenderThreadPoolBean"></property>
+	</bean>
+	<!-- 消息处理器 -->
+	<bean id="msgManager" class="com.framework.manager.msg.MsgManagerImp">
+	  <property name="bridgeExit" ref="bridgeExit"></property>
+	</bean>
+	<!-- 网络数据入口 -->
+	<bean id="bridgeEntry" class="com.framework.server.bridge.ChannelBridgeEntry">
+		  <property name="msgManager" ref="msgManager"></property>
+	</bean>
+	<!-- 网络数据出口 -->
+	<bean id="bridgeExit" class="com.framework.server.bridge.ChannelBridgeExit"></bean>
+    <!-- service方法运行时间监控器 -->
+	<bean id="monitorProxyCreator"
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="interceptorNames">
+			<list>
+				<value>showRunTimeInterceptor</value>
+			</list>
+		</property>
+		<property name="beanNames">
+			<value>*Service</value>
+		</property>
+	</bean>
+	<bean id="showRunTimeInterceptor"
+		class="com.framework.log.ShowMethodRunTime">
+		<property name="isRecordLog" value="true"></property>
+		<property name="logWarnMaxTime" value="200"></property>
+		<property name="isRecordData" value="false"></property>
+	</bean>
+	<!-- memcache服务器地址配置 -->
+	<bean id="memcacheAddress1" class="java.net.InetSocketAddress">
+					<constructor-arg>
+						<value>[MEM:IP]</value>
+					</constructor-arg>
+					<constructor-arg>
+						<value>[MEM:PORT]</value>
+					</constructor-arg>
+	</bean>
+	<!-- memcached客户端-->
+	<bean name="memcachedClientBuilder"
+		class="net.rubyeye.xmemcached.XMemcachedClientBuilder">
+		<constructor-arg>
+			<list>
+                <ref bean="memcacheAddress1"/>
+			</list>
+		</constructor-arg>
+		<constructor-arg>
+			<list>
+				<value>1</value>
+			</list>
+		</constructor-arg>
+		<property name="connectionPoolSize" value="10"></property>
+		<property name="commandFactory">
+			<bean
+				class="net.rubyeye.xmemcached.command.TextCommandFactory">
+			</bean>
+		</property>
+		<property name="sessionLocator">
+			<bean
+				class="net.rubyeye.xmemcached.impl.KetamaMemcachedSessionLocator">
+			</bean>
+		</property>
+		<property name="transcoder">
+			<bean
+				class="net.rubyeye.xmemcached.transcoders.SerializingTranscoder" />
+		</property>
+	</bean> 
+   <!-- 注入memcache客户端到bean中-->
+   <bean id="mecacheClientAutoInsert"
+		class="com.framework.cache.memcache.MecacheClientAutoInsert">
+		<property name="xmemcachedClientBuilder" ref="memcachedClientBuilder" />
+	</bean> 
+	<!-- 服务器管理器 -->
+	<bean id="serverManager"
+		class="com.framework.server.manager.ServerManager">
+		<property name="serverList">
+			<list>
+				<ref bean="plamMinaServer" />
+				<ref bean="managerMinaServer"/>
+                <ref bean="flashSecurityServer" />
+			</list>
+		</property>
+	</bean>
+		<!-- 广播消息发动处理线程池 -->
+	<bean id="roomMsgSenderThreadPoolBean"
+		class="com.framework.server.threadpool.ThreadPoolBean">
+		<!-- coreSize线程核心大小 -->
+		<constructor-arg value="5" />
+		<!-- maxSize线程最大大小 -->
+		<constructor-arg value="20" />
+		<!-- maxQueneLength最大队列长度 -->
+		<constructor-arg value="5000" />
+		<!-- aliveTime超标线程存活时间 -->
+		<constructor-arg value="5000" />
+	</bean>
+		<!-- socket的逻辑处理线程池 -->
+	<bean id="workerThreadPoolBean"
+		class="com.framework.server.threadpool.ThreadPoolBean">
+		<!-- coreSize线程核心大小 -->
+		<constructor-arg value="20" />
+		<!-- maxSize线程最大大小 -->
+		<constructor-arg value="50" />
+		<!-- maxQueneLength最大队列长度 -->
+		<constructor-arg value="1000" />
+		<!-- aliveTime超标线程存活时间 -->
+		<constructor-arg value="5000" />
+	</bean>
+	     <!-- DAO异步写入线程池配置 -->
+   	<bean id="daoWriteThreadPoolBean"
+		class="com.framework.server.threadpool.ThreadPoolBean">
+		<!-- coreSize线程核心大小 -->
+		<constructor-arg value="2" />
+		<!-- maxSize线程最大大小 -->
+		<constructor-arg value="30" />
+		<!-- maxQueneLength最大队列长度 -->
+		<constructor-arg value="30" />
+		<!-- aliveTime超标线程存活时间 -->
+		<constructor-arg value="1000" />
+	</bean>
+	 <!-- DAO异步处理插件  -->
+   <bean id="writeThreadStart" class="com.framework.dao.mysql.DaoWriteThreadStart" >
+     <!-- 单次处理的操作消息数量 -->
+     <property name="maxNum" value="200"></property>
+     <!-- 线程池 -->
+     <property name="threadPoolBean" ref="daoWriteThreadPoolBean"></property>
+   </bean>
+     <!-- 并发屏蔽后台清理缓存 
+     <bean id="multiThreadSch" class="com.framework.scheduler.MultiThreadSch">
+          <property name="cronExpression" value="5,15,25,35,45,55 * * * * ?"></property>
+     </bean>-->
+     	<!-- 本地配置工具 -->
+	<bean id="LocalConfigTools" class="com.system.config.LocalTools">
+	  <property name="localConfig" ref="localConfig" />
+	</bean>
+	<bean id="localConfig" class="com.system.config.LocalConfig">
+		<property name="port" value="[CONFIG:SYSTEM_PORT]" />
+	     <!-- 系统编号 -->
+	     <property name="systemNum" value="[CONFIG:SYSTEM_NUM]"></property> 
+		<!-- 服务器与服务器间通讯MD5key -->
+		<property name="md5Key" value="[CONFIG:SYSTEM_KEY]"></property>
+	</bean>
+</beans>

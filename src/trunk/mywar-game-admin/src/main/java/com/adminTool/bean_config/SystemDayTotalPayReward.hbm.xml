@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+<class name="com.adminTool.bo.SystemDayTotalPayReward" table="system_day_total_pay_reward">
+
+	<id name="id" type="java.lang.Integer">
+		<column name="id" />
+		<generator class="assigned" />
+	</id>
+	<property name="activityId" type="java.lang.Integer">
+		<column name="activity_id"></column>
+	</property>
+	<property name="payMoney" type="java.lang.Integer">
+		<column name="pay_money" />
+	</property>
+	<property name="rewards" type="java.lang.String">
+		<column name="rewards" />
+	</property>
+</class>
+</hibernate-mapping>

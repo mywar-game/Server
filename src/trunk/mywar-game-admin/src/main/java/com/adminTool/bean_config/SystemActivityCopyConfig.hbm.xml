@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.adminTool.bo.SystemActivityCopyConfig" table="system_activity_copy_config">
+		<id name="activityId" type="java.lang.Integer">
+			<column name="activity_id" />
+			<generator class="assigned" />
+		</id>
+		<property name="forceId" type="java.lang.Integer">
+            <column name="force_id" not-null="true">
+            </column>
+        </property>
+        <property name="limitTimes" type="java.lang.Integer">
+        	<column name="limit_times">
+        	</column>
+        </property>
+        <property name="enterNeedTools" type="java.lang.String">
+        	<column name="enter_need_tools">
+        	</column>
+        </property>
+        <property name="countType" type="java.lang.Integer">
+        	<column name="count_type">
+        	</column>
+        </property>
+        <property name="maxRound" type="java.lang.Integer">
+        	<column name="max_round">
+        	</column>
+        </property>
+        <property name="imgId" type="java.lang.Integer">
+        	<column name="img_id">
+        	</column>
+        </property>
+        <property name="monsterMultiple" type="java.lang.Integer">
+        	<column name="monster_multiple">
+        	</column>
+        </property>
+        <!-- 添加 -->
+        <property name="vipBuyTimes" type="java.lang.String">
+        	<column name="vip_buy_times">
+        	</column>
+        </property>
+        <property name="vipBuyTimesUsedDiamond" type="java.lang.String">
+        	<column name="vip_buy_times_used_diamond">
+        	</column>
+        </property>
+	</class>
+</hibernate-mapping>

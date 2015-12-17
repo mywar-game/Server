@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:jdbc.properties</value>
+			</list>
+		</property>
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+	</bean>
+
+	<!-- admin数据库bean -->
+	<bean id="dataSourceAdmin" class="org.logicalcobwebs.proxool.ProxoolDataSource">
+		<property name="alias" value="AdminDBPool" />
+		<property name="driver" value="com.mysql.jdbc.Driver" />
+		<property name="driverUrl"
+			value="${jdbc.url}?user=${jdbc.username}&amp;password=${jdbc.password}&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;maxReconnects=10" />
+		<property name="user" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="maximumActiveTime" value="300000" />
+		<property name="prototypeCount" value="5" />
+		<property name="maximumConnectionCount" value="20" />
+		<property name="minimumConnectionCount" value="5" />
+		<property name="simultaneousBuildThrottle" value="20" />
+		<property name="testBeforeUse" value="true"></property>
+		<property name="houseKeepingTestSql" value="select CURRENT_DATE" />
+	</bean>
+
+	<bean id="dataSource" class="com.framework.servicemanager.DynamicDataSource">
+		<property name="dataSourceCount" value="1"></property>
+		<property name="targetDataSources">
+			<map key-type="java.lang.Integer">
+				<entry key="-2" value-ref="dataSourceAdmin" />
+			</map>
+		</property>
+		<property name="defaultTargetDataSource" ref="dataSourceAdmin" />
+	</bean>
+
+	<bean id="lobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler"
+		lazy-init="true" />
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref local="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					com.framework.config.LocalDialect
+				</prop>
+				<prop key="hibernate.cglib.use_reflection_optimizer">
+					true
+				</prop>
+				<!-- 自动生成表结构 <prop key="hibernate.hbm2ddl.auto">update</prop> -->
+				<!-- <prop key="hibernate.proxool.xml">proxool.xml</prop> <prop key="hibernate.proxool.pool_alias">DBPool</prop> -->
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">false</prop>
+				<prop key="hibernate.connection.autocommit">true</prop>
+				<!-- 非0值 指定jdbc抓取数量的大小调用Statement.setFetchSize() -->
+				<prop key="hibernate.jdbc.fetch_size">30</prop>
+				<!-- jdbc批量更新 建议5到30 -->
+				<prop key="hibernate.jdbc.batch_size">10</prop>
+
+				<prop key="hibernate.connection.release_mode">after_transaction</prop>
+
+				<!-- <prop key="hibernate.cache.use_query_cache">false</prop> -->
+				<!-- 二级缓存配置下面两项，并且把hibernate.cache.use_query_cache = true <prop key="hibernate.cache.provider_class"> 
+					com.googlecode.hibernate.memcached.MemcachedCacheProvider </prop> -->
+				<!-- 222.175.114.75:11211 <prop key="hibernate.memcached.servers"> 192.168.70.190:11211 
+					</prop> -->
+				<!-- <prop key="hibernate.cache.provider_configuration_file_resource_path"> 
+					${hibernate.ehcache_config_file} </prop> -->
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+				<prop key="hibernate.cache.use_second_level_cache">false</prop>
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+			</props>
+		</property>
+		<property name="mappingLocations" value="classpath*:com/**/bean_config/*.hbm.xml" />
+		<property name="lobHandler" ref="lobHandler" />
+	</bean>
+
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="txInterceptor"
+		class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="transactionAttributeSource">
+			<ref bean="txAttributes" />
+		</property>
+	</bean>
+
+	<bean id="serviceExceptionInterceptor" class="com.framework.exception.ServiceExceptionInterceptor">
+	</bean>
+
+	<bean id="autoProxyCreator"
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="interceptorNames">
+			<list>
+				<value>serviceExceptionInterceptor</value>
+				<value>txInterceptor</value>
+			</list>
+		</property>
+		<property name="beanNames">
+			<value>*Service</value>
+		</property>
+	</bean>
+
+	<bean id="txAttributes"
+		class="org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource">
+		<property name="properties">
+			<value>
+				*=PROPAGATION_SUPPORTS
+				*Service=PROPAGATION_REQUIRED
+			</value>
+		</property>
+	</bean>
+	<!-- 本地配置工具 -->
+	<bean id="LocalConfigTools" class="com.framework.config.LocalTools">
+		<property name="localConfig" ref="localConfig" />
+		<property name="localKeyConfig" ref="localKeyConfig" />
+	</bean>
+	<bean id="localConfig" class="com.framework.config.LocalConfig">
+		<!-- 本机ip -->
+		<property name="ip" value="localhost" />
+		<!-- webservice发布端口号 -->
+		<property name="webServicePort" value="9091"></property>
+	</bean>
+
+	<bean id="localKeyConfig" class="com.framework.config.LocalKeyConfig">
+		<!-- webService校验KEY -->
+		<property name="webServiceKey" value="##$!@@11234#$ddaf$$553" />
+	</bean>
+	
+	<!-- JDBC 配置 -->
+	<import resource="applicationContext-jdbc.xml" />
+</beans>

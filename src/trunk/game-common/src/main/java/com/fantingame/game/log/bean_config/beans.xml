@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	 	http://www.springframework.org/schema/aop 
+	 	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+     	http://www.springframework.org/schema/tx 
+     	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+        
+    	<!-- DAO异步写入线程池配置 -->
+	<bean id="logWriteThreadPoolBean" class="com.fantingame.game.server.threadpool.ThreadPoolBean">
+		<!-- 线程名称 -->
+		<constructor-arg value="数据库异步写入日志线程池(log mysql write)"/>		
+		<!-- coreSize线程核心大小 -->
+		<constructor-arg value="${log.threadPool.coreThreadSize}"/>
+		<!-- maxSize线程最大大小 -->
+		<constructor-arg value="${log.threadPool.maxThreadSize}"/>
+		<!-- maxQueneLength最大队列长度 -->
+		<constructor-arg value="${log.threadPool.maxQueneLength}"/>
+		<!-- aliveTime超标线程存活时间 -->
+		<constructor-arg value="${log.threadPool.aliveTime}"/>
+	</bean>
+	
+	<bean id="unSynDao" class="com.fantingame.game.log.dao.mysql.UnSynDaoMysqlImpl"></bean>
+	<bean id="logService" class="com.fantingame.game.log.service.LogService"></bean>
+	
+	<bean id="logStartPlugin" class="com.fantingame.game.log.plugin.LogStartPlugin">
+	    <property name="logWriteThreadPoolBean" ref="logWriteThreadPoolBean"></property>
+	</bean>
+	<!-- 创建日志表现成每晚1点执行 -->
+	<bean id="creatLogTableScheduler" class="com.fantingame.game.log.scheduler.CreatLogTableScheduler">
+	    <property name="cronExpression" value="0 0 1 * * ?"></property>
+	</bean>
+</beans>

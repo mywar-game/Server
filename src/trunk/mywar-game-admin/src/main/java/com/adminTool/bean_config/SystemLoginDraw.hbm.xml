@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.adminTool.bo.SystemLoginDraw" table="system_login_draw">
+		<id name="pos" type="java.lang.Integer">
+			<column name="pos" />
+			<generator class="assigned" />
+		</id>
+		<property name="rewards" type="java.lang.String">
+			<column name="rewards" />
+		</property>
+		<property name="drawRation" type="java.lang.String">
+			<column name="draw_ration" />
+		</property>
+		<property name="activityId" type="java.lang.Integer">
+			<column name="activity_id"/>
+		</property>
+		<property name="posXer" type="java.lang.Integer">
+			<column name="pos_x"/>
+		</property>
+		<property name="poxYer" type="java.lang.Integer">
+			<column name="pox_y"/>
+		</property>
+		<property name="imgId" type="java.lang.Integer">
+			<column name="img_id" />
+		</property>
+		
+	</class>
+</hibernate-mapping>

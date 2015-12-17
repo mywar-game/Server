@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-3-31 12:15:28 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.adminTool.bo.ActivityDrawLevelGoods" table="system_activity_draw_level_goods">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="activityId" type="int">
+            <column name="activity_id" not-null="true">
+            </column>
+        </property>
+        <property name="level" type="int">
+            <column name="level" not-null="true">
+            </column>
+        </property>
+        <property name="replacePos" type="int">
+            <column name="replace_pos" not-null="true">
+            </column>
+        </property>
+        <property name="toolType" type="int">
+            <column name="tool_type" not-null="true" />
+        </property>
+        <property name="toolId" type="int">
+            <column name="tool_id" not-null="true" />
+        </property>
+        <property name="toolNum" type="int">
+            <column name="tool_num" not-null="true" />
+        </property>
+        <property name="refreshLowerNum" type="int">
+            <column name="refresh_lower_num" not-null="true"></column>
+        </property>
+        <property name="refreshUpperNum" type="int">
+            <column name="refresh_upper_num" not-null="true"></column>
+        </property>
+    </class>
+</hibernate-mapping>

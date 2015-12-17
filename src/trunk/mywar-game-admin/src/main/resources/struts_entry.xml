@@ -1,0 +1,23 @@
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+        "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<include file="struts-default.xml" />
+	<include file="struts-plugin.xml" />
+	<include file="manager_struts/all_manager.xml" />
+    <constant name="struts.custom.i18n.resources" value="message"></constant>
+    <constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
+	<package name="myInterceptor" extends="json-default">
+		<interceptors>
+			<!-- struts异常拦截器 -->
+			<interceptor name="exceptionInterceptor"
+				class="com.framework.interceptor.StrutsExceptionInterceptor" />
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="exceptionInterceptor" />
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="myStack" />
+	</package>
+</struts>

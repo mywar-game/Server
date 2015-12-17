@@ -1,0 +1,435 @@
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+        "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- 一个包可以就是一个模块 -->
+	<package name="system" extends="managerInterceptor" namespace="/module/system">
+		<!-- 一个包下可以放这个模块下的所有action -->
+
+
+		<!-- 查看原子操作 -->
+		<action name="physicslist" class="com.admin.action.PowerPhysicsList">
+			<result>physicslist.jsp</result>
+		</action>
+		<!-- 添加原子操作 -->
+		<action name="addpysics" class="com.admin.action.AddAdminPowerPhysics">
+			<result>addpysics.jsp</result>
+			<result name="input">addpysics.jsp</result>
+			<result name="results" type="redirect">physicslist</result>
+		</action>
+		<!-- 删除原子操作 DelPhysics -->
+		<action name="delpysics" class="com.admin.action.DelPhysics">
+			<result type="redirect">physicslist</result>
+		</action>
+		<!-- 编辑原子操作 DelPhysics -->
+		<action name="editpysics" class="com.admin.action.EditAdminPowerPhysics">
+			<result>editpysics.jsp</result>
+			<result name="input">editpysics.jsp</result>
+			<result name="results" type="redirect">physicslist</result>
+		</action>
+		<!-- 查看菜单列表 -->
+		<action name="menulist" class="com.admin.action.MenuList">
+			<result>menulist.jsp</result>
+		</action>
+		<!-- 添加菜单 -->
+		<action name="addmenuchild" class="com.admin.action.AddMenuChild">
+			<result>addmenuchild.jsp</result>
+			<result name="result" type="redirect">menulist</result>
+		</action>
+		<!-- 删除菜单 -->
+		<action name="delmenuchild" class="com.admin.action.DeletMenuChild">
+			<result>delmenuchild.jsp</result>
+			<result name="result" type="redirect">menulist</result>
+		</action>
+		<!-- 编辑菜单 -->
+		<action name="editmenuchild" class="com.admin.action.EditMenuChild">
+			<result>editmenuchild.jsp</result>
+			<result name="result" type="redirect">menulist</result>
+		</action>
+
+		<!-- 选择服务器 -->
+		<action name="changeServer" class="com.system.action.ChangeServer"
+			method="executeChange"></action>
+
+		<!-- 所有服务器信息列表 -->
+		<action name="allServerInfoList*" class="com.system.action.AllServerInfoList"
+			method="{1}">
+			<result>../../allServerInfoList.jsp</result>
+		</action>
+
+		<action name="testEmail" class="com.system.action.AllServerInfoList"
+			method="test">
+			<result type="json">
+				<param name="root">message</param>
+			</result>
+		</action>
+		
+		<action name="getServer*" class="com.system.action.KaiYing"
+			method="{1}">
+			<result type="json">
+				<param name="root">serverMap</param>
+			</result>
+		</action>
+		
+		<action name="getUser" class="com.system.action.KaiYing"
+			method="getUserInfo">
+			<result type="json">
+				<param name="root">userMap</param>
+			</result>
+		</action>
+
+		<!-- 服务器信息的查询操作 -->
+		<action name="tGameServerList" class="com.system.action.TGameServerList">
+			<result>tGameServerList.jsp</result>
+		</action>
+		<!-- 服务器信息的新增操作 -->
+		<action name="addTGameServer" class="com.system.action.AddTGameServer">
+			<result name="input">addTGameServer.jsp</result>
+			<result type="redirect" name="success">tGameServerList</result>
+		</action>
+		<!-- 服务器组的修改操作 -->
+		<action name="updateTGameServer" class="com.system.action.UpdateTGameServer">
+			<result name="input">updateTGameServer.jsp</result>
+			<result type="redirect">tGameServerList</result>
+		</action>
+		<!-- 服务器组的删除操作 -->
+		<action name="delTGameServer" class="com.system.action.DelTGameServer"
+			method="executeDel"></action>
+
+		<!-- 刷新服务器组信息 -->
+		<action name="reflashServerCache" class="com.system.action.ReflashServerCache">
+			<result name="success" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum</param>
+				<!-- <param name="includeProperties">servers</param> -->
+			</result>
+			<result name="error" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum</param>
+			</result>
+		</action>
+
+		<!-- 服务器组配置信息下载 -->
+		<action name="downloadingApplication" class="com.system.action.DownloadingApplication"
+			method="downLoadingApp">
+		</action>
+
+
+		<!-- 服务器组ZIP下载 -->
+		<action name="downloadingZip" class="com.system.action.DownloadingZip"
+			method="downLoadingApp">
+			<result name="success" type="stream">
+				<param name="bufferSize">4096</param>
+				<!-- 设置输入流 -->
+				<param name="inputstream">inputStream</param>
+				<param name="inputName">inputStream</param>
+				<!--文件下载 -->
+				<param name="contentType">application/octet-stream;charset-8859-1</param>
+				<param name="contentDisposition">
+					attachment;filename="${fileName}"
+				</param>
+			</result>
+		</action>
+
+		<!-- 数据服务器的新增操作 -->
+		<action name="addDbServer" class="com.system.action.AddDbServer">
+			<result name="input">addDbServer.jsp</result>
+			<result type="redirect" name="success">dbServerList</result>
+		</action>
+		<!-- 数据服务器的删除操作 -->
+		<action name="delDbServer" class="com.system.action.DelDbServer"
+			method="executeDel"></action>
+		<!-- 数据服务器的修改操作 -->
+		<action name="updateDbServer" class="com.system.action.UpdateDbServer">
+			<result name="input">updateDbServer.jsp</result>
+			<result type="redirect">dbServerList</result>
+		</action>
+		<!-- 数据服务器的查询操作 -->
+		<action name="dbServerList*" class="com.system.action.DbServerList"
+			method="{1}">
+			<result>dbServerList.jsp</result>
+			<result name="find" type="json">
+				<param name="root">dbSeverIdAndInfoMap</param>
+			</result>
+		</action>
+
+		<!-- 中间服务器的新增操作 -->
+		<action name="addSecondaryServer" class="com.system.action.AddSecondaryServer">
+			<result name="input">addSecondaryServer.jsp</result>
+			<result type="redirect" name="success">secondaryServerList</result>
+		</action>
+		<!-- 中间服务器的删除操作 -->
+		<action name="delSecondaryServer" class="com.system.action.DelSecondaryServer"
+			method="executeDel"></action>
+		<!-- 中间服务器的修改操作 -->
+		<action name="updateSecondaryServer" class="com.system.action.UpdateSecondaryServer">
+			<result name="input">updateSecondaryServer.jsp</result>
+			<result type="redirect">secondaryServerList</result>
+		</action>
+		<!-- 中间服务器的查询操作 -->
+		<action name="secondaryServerList" class="com.system.action.SecondaryServerList">
+			<result>secondaryServerList.jsp</result>
+		</action>
+
+		<!-- GameWeb服务器列表 -->
+		<action name="gameWebServerList" class="com.system.action.GameWebServerList">
+			<result>gameWebServerList.jsp</result>
+		</action>
+
+		<!-- GameWeb服务器的新增操作 -->
+		<action name="addGameWebServer" class="com.system.action.AddGameWebServer">
+			<result name="input">addGameWebServer.jsp</result>
+			<result type="redirect" name="success">gameWebServerList</result>
+		</action>
+
+		<!-- GameWeb服务器的删除操作 -->
+		<action name="delGameWebServer" class="com.system.action.DelGameWebServer"
+			method="executeDel"></action>
+
+		<!-- GameWeb服务器的修改操作 -->
+		<action name="updateGameWebServer" class="com.system.action.UpdateGameWebServer">
+			<result name="input">updateGameWebServer.jsp</result>
+			<result type="redirect" name="success">gameWebServerList
+			</result>
+		</action>
+
+		<!-- 服务器列表 -->
+		<action name="serverList" class="com.system.action.ServerList">
+			<result>serverList.jsp</result>
+		</action>
+
+		<!-- 添加服务器 -->
+		<action name="addServer" class="com.system.action.AddServer">
+			<result name="input">addServer.jsp</result>
+			<result type="redirect" name="success">serverList</result>
+		</action>
+
+		<!--服务器的修改操作 -->
+		<action name="updateServer" class="com.system.action.UpdateServer">
+			<result name="input">updateServer.jsp</result>
+			<result type="redirect" name="success">serverList</result>
+		</action>
+
+		<!-- 服务器的删除操作 -->
+		<action name="delServer" class="com.system.action.DelServer"
+			method="executeDel"></action>
+	
+		<!-- 服务器的清服操作 -->
+		<action name="clearTGameServer" class="com.system.action.ClearTGameServer"
+			method="executeCls">
+		</action>
+		
+		<!-- 合作方列表 -->
+		<action name="partnerList" class="com.system.action.PartnerList">
+			<result>partnerList.jsp</result>
+		</action>
+
+		<!-- 添加合作方 -->
+		<action name="addPartner" class="com.system.action.AddPartner">
+			<result name="input">addPartner.jsp</result>
+			<result type="redirect" name="success">partnerList</result>
+		</action>
+
+		<!-- 合作方的删除操作 -->
+		<action name="delPartner" class="com.system.action.DelPartner"
+			method="executeDel"></action>
+
+		<!-- 合作方的修改操作 -->
+		<action name="updatePartner" class="com.system.action.UpdatePartner">
+			<result name="input">updatePartner.jsp</result>
+			<result type="redirect" name="success">partnerList</result>
+		</action>
+
+		<!-- 黑名单列表 -->
+		<action name="blackList" class="com.system.action.BlackList">
+			<result>blackList.jsp</result>
+		</action>
+
+		<!-- 添加黑名单 -->
+		<action name="addBlackInfo" class="com.system.action.AddBlackInfo">
+			<result name="input">addBlackInfo.jsp</result>
+			<result type="redirect" name="success">blackList</result>
+		</action>
+
+		<!-- 修改黑名单 -->
+		<action name="updateBlackInfo" class="com.system.action.UpdateBlackInfo">
+			<result name="input">updateBlackInfo.jsp</result>
+			<result type="redirect" name="success">blackList</result>
+		</action>
+
+		<!-- 删除黑名单 -->
+		<action name="delBlackInfo" class="com.system.action.DelBlackInfo"
+			method="executeDel"></action>
+
+		<!-- 游戏包信息列表 -->
+		<action name="packageInfoList" class="com.system.action.PackageInfoList">
+			<result>packageInfoList.jsp</result>
+		</action>
+
+		<!-- 添加包信息 -->
+		<action name="addPackageInfo" class="com.system.action.AddPackageInfo">
+			<result name="input">addPackageInfo.jsp</result>
+			<result type="redirect" name="success">packageInfoList</result>
+		</action>
+
+		<!-- 修改包信息 -->
+		<action name="updatePackageInfo" class="com.system.action.UpdatePackageInfo">
+			<result name="input">updatePackageInfo.jsp</result>
+			<result type="redirect" name="success">packageInfoList</result>
+		</action>
+
+		<!-- 删除包信息 -->
+		<action name="delPackageInfo" class="com.system.action.DelPackageInfo"
+			method="executeDel"></action>
+
+		<!-- 通知列表 -->
+		<action name="noticeList" class="com.system.action.NoticeList">
+			<result>noticeList.jsp</result>
+		</action>
+		
+		<!-- 删除通知信息 -->
+		<action name="delNotice" class="com.system.action.DelNotice" method="executeDel"></action>
+		
+		<!-- 添加通知 -->
+		<action name="addNotice" class="com.system.action.AddNotice" >
+			<result name="input">addNotice.jsp</result>
+			<result type="redirect" name="success">noticeList</result>
+		</action>
+		
+		<!-- 修改通知信息 -->
+		<action name="updateNotice" class="com.system.action.UpdateNotice">
+			<result name="input">updateNotice.jsp</result>
+			<result type="redirect" name="success">noticeList</result>
+		</action>
+
+		<!-- 刷新服务器配置 -->
+		<action name="updateConfigs" class="com.system.action.UpdateConfigs">
+			<result name="success" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum</param>
+			</result>
+			<result name="error" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum</param>
+			</result>
+		</action>
+		
+		<!-- 刷新服务器列表 -->
+		<action name="reflashServerList" class="com.system.action.ReflashServerList">
+			<result name="success" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum</param>
+			</result>
+			<result name="error" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum</param>
+			</result>
+		</action>
+
+		<!-- 设置服务器状态 -->
+		<action name="setGameServerStatus" class="com.system.action.SetGameServerStatus">
+			<result name="input">setGameServerStatus.jsp</result>
+			<result type="redirect" name="success">gameWebServerList</result>
+		</action>
+
+		<!-- 设置区服务器开启状态 -->
+		<action name="setLoginServerStatus" class="com.system.action.SetLoginServerStatus">
+			<result name="input">setLoginServerStatus.jsp</result>
+			<result type="redirect" name="success">gameWebServerList</result>
+		</action>
+
+		<!-- apk版本列表 -->
+		<action name="versionManagerApkList" class="com.system.action.VersionManagerApkList">
+			<result>versionManagerApkList.jsp</result>
+		</action>
+		
+		<!-- 添加apk版本信息 -->
+		<action name="addVersionManagerApk" class="com.system.action.AddVersionManagerApk">
+			<result name="input">addVersionManagerApk.jsp</result>
+			<result type="redirect" name="success">versionManagerApkList</result>
+		</action>
+
+		<!-- 删除apk版本信息 -->
+		<action name="delVersionManagerApk" class="com.system.action.DelVersionManagerApk" method="executeDel"></action>
+
+		<!-- 修改apk版本信息 -->
+		<action name="updateVersionManagerApk" class="com.system.action.UpdateVersionManagerApk">
+			<result name="input">updateVersionManagerApk.jsp</result>
+			<result type="redirect" name="success">versionManagerApkList</result>
+		</action>
+		
+		<!-- 资源包版本列表 -->
+		<action name="versionManagerResList" class="com.system.action.VersionManagerResList">
+			<result>versionManagerResList.jsp</result>
+		</action>
+		
+		<!-- 添加资源包版本信息 -->
+		<action name="addVersionManagerRes" class="com.system.action.AddVersionManagerRes">
+			<result name="input">addVersionManagerRes.jsp</result>
+			<result type="redirect" name="success">versionManagerResList</result>
+		</action>
+		
+		<!-- 添加资源包版本信息 -->
+		<action name="updateVersionManagerRes" class="com.system.action.UpdateVersionManagerRes">
+			<result name="input">updateVersionManagerRes.jsp</result>
+			<result type="redirect" name="success">versionManagerResList</result>
+		</action>
+		
+		<!-- 删除资源包版本信息 -->
+		<action name="delVersionManagerRes" class="com.system.action.DelVersionManagerRes" method="executeDel"></action>
+		
+		
+		<!-- 命令列表 -->
+		<action name="cmdList" class="com.system.action.CommandList">
+			<result>cmdList.jsp</result>
+		</action>
+		<!-- 添加命令 -->
+		<action name="addCMD" class="com.system.action.AddCMD" >
+			<result name="input">addCMD.jsp</result>
+			<result type="redirect" name="success">cmdList</result>
+		</action>
+		<action name="commandDetails" class="com.system.action.CommandDetails">
+			<result>cmdDetails.jsp</result>
+		</action>
+        <!-- 修正通知列表 -->
+		<action name="amendNoticeList" class="com.system.action.AmendNoticeList">
+			<result>amendNoticeList.jsp</result>
+		</action>
+		
+		<!-- 删除修正通知信息 -->
+		<action name="delAmendNotice" class="com.system.action.DelAmendNotice" method="executeDel"></action>
+		
+		<!-- 添加修正通知 -->
+		<action name="addAmendNotice" class="com.system.action.AddAmendNotice" >
+			<result name="input">addAmendNotice.jsp</result>
+			<result type="redirect" name="success">amendNoticeList</result>
+		</action>
+		
+		<!-- 修改修正通知信息 -->
+		<action name="updateAmendNotice" class="com.system.action.UpdateAmendNotice">
+			<result name="input">updateAmendNotice.jsp</result>
+			<result type="redirect" name="success">amendNoticeList</result>
+		</action>
+		
+		 <!-- 特殊通知列表 -->
+		<action name="specialNoticeList" class="com.system.action.SpecialNoticeList">
+			<result>specialNoticeList.jsp</result>
+		</action>
+		
+		<!-- 删除特殊通知信息 -->
+		<action name="delSpecialNotice" class="com.system.action.DelSpecialNotice" method="executeDel"></action>
+		
+		<!-- 添加特殊通知 -->
+		<action name="addSpecialNotice" class="com.system.action.AddSpecialNotice" >
+			<result name="input">addSpecialNotice.jsp</result>
+			<result type="redirect" name="success">specialNoticeList</result>
+		</action>
+		
+		<!-- 修改特殊通知信息 -->
+		<action name="updateSpecialNotice" class="com.system.action.UpdateSpecialNotice">
+			<result name="input">updateSpecialNotice.jsp</result>
+			<result type="redirect" name="success">specialNoticeList</result>
+		</action>
+		
+	</package>
+</struts>

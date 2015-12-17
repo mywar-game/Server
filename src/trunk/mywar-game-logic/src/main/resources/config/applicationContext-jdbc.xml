@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	 	http://www.springframework.org/schema/aop 
+	 	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+     	http://www.springframework.org/schema/tx 
+     	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<bean id="springDSN" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url" value="jdbc:mysql://${jdbc.ip}:${jdbc.port}/${jdbc.dbname}?useUnicode=true&amp;characterEncoding=utf-8">
+		</property>
+		<property name="username" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+		<property name="maxActive" value="10"></property>
+		<property name="timeBetweenEvictionRunsMillis" value="3600000" />
+		<property name="minEvictableIdleTimeMillis" value="3600000" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="springDSN" />
+	</bean>
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" abstract="false" lazy-init="false" autowire="default">
+		<property name="dataSource">
+			<ref bean="springDSN" />
+		</property>
+	</bean>
+
+	<bean id="jdbcUser" class="com.fantingame.common.jdbc.JdbcImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+
+	<bean id="springDSNLog" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url" value="jdbc:mysql://${jdbc.ip_log}:${jdbc.port_log}/${jdbc.dbname_log}?useUnicode=true&amp;characterEncoding=utf-8">
+		</property>
+		<property name="username" value="${jdbc.username_log}"></property>
+		<property name="password" value="${jdbc.password_log}"></property>
+		<property name="maxActive" value="10"></property>
+		<property name="timeBetweenEvictionRunsMillis" value="3600000" />
+		<property name="minEvictableIdleTimeMillis" value="3600000" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManagerLog" />
+
+	<bean id="transactionManagerLog" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="springDSNLog" />
+	</bean>
+
+	<bean id="jdbcTemplateLog" class="org.springframework.jdbc.core.JdbcTemplate" abstract="false" lazy-init="false" autowire="default">
+		<property name="dataSource">
+			<ref bean="springDSNLog" />
+		</property>
+	</bean>
+
+	<bean id="jdbcLog" class="com.fantingame.common.jdbc.JdbcImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplateLog" />
+		</property>
+	</bean>
+	
+	<bean id="springDSNConfig" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url" value="jdbc:mysql://${jdbc.ip_config}:${jdbc.port_config}/${jdbc.dbname_config}?useUnicode=true&amp;characterEncoding=utf-8">
+		</property>
+		<property name="username" value="${jdbc.username_config}"></property>
+		<property name="password" value="${jdbc.password_config}"></property>
+		<property name="maxActive" value="10"></property>
+		<property name="timeBetweenEvictionRunsMillis" value="3600000" />
+		<property name="minEvictableIdleTimeMillis" value="3600000" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManagerConfig" />
+
+	<bean id="transactionManagerConfig" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="springDSNConfig" />
+	</bean>
+
+	<bean id="jdbcTemplateConfig" class="org.springframework.jdbc.core.JdbcTemplate" abstract="false" lazy-init="false" autowire="default">
+		<property name="dataSource">
+			<ref bean="springDSNConfig" />
+		</property>
+	</bean>
+
+	<bean id="jdbcConfig" class="com.fantingame.common.jdbc.JdbcImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplateConfig" />
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.adminTool.bo.AdminMail" table="admin_mail" >
+		<id name="adminMailId" type="java.lang.Integer">
+			<column name="system_mail_id"></column>
+			<generator class="identity"></generator>
+		</id>  
+		<property name="title" type="java.lang.String">
+			<column name="title" length="200"></column>
+		</property>
+		<property name="lodoIds" type="java.lang.String">
+			<column name="lodo_ids"></column>
+		</property>
+		<property name="target" type="java.lang.Integer">
+			<column name="target" length="4"></column>
+		</property>
+		<property name="partner" type="java.lang.String">
+			<column name="partner"  length="100"></column>
+		</property>
+		<property name="status" type="java.lang.Integer">
+			<column name="status" length="10"></column>
+		</property>
+		<property name="content" type="java.lang.String">
+			<column name="content" length="500"></column>
+		</property>
+		<property name="createdUser" type="java.lang.String">
+			<column name="created_user" length="50"></column>
+		</property>
+		<property name="approveUser" type="java.lang.String">
+			<column name="approve_user" length="50"></column>
+		</property>
+		<property name="toolIds" type="java.lang.String">
+			<column name="tool_ids" length="200"></column>
+		</property>
+		<property name="toolList" type="java.lang.String">
+			<column name="tool_list" length="500"></column>
+		</property>
+		<property name="serverIds" type="java.lang.String">
+			<column name="server_ids" length="100"></column>
+		</property>
+		<property name="sendServerIds" type="java.lang.String">
+			<column name="send_server_ids" length="50"></column>
+		</property>
+		<property name="createdTime" type="java.sql.Timestamp">
+			<column name="created_time"></column>
+		</property>
+		<property name="updatedTime" type="java.sql.Timestamp">
+			<column name="updated_time"></column>
+		</property>
+		<property name="approveTime" type="java.sql.Timestamp">
+			<column name="approve_time"></column>
+		</property>
+		<property name="date" type="java.util.Date">
+			<column name="date"></column>
+		</property>
+		<property name="senderm" type="java.lang.String">
+			<column name="sender1"></column>
+		</property>
+		<property name="auditer" type="java.lang.String">
+			<column name="auditer"></column>
+		</property>
+	</class>
+	
+</hibernate-mapping>

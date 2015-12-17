@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	 	http://www.springframework.org/schema/aop 
+	 	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+     	http://www.springframework.org/schema/tx 
+     	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+        
+        
+        <bean id="systemForcesDaoCache" class="com.fantingame.game.mywar.logic.forces.dao.cache.SystemForcesDaoCache"></bean>
+        <bean id="systemBigForcesDaoCache" class="com.fantingame.game.mywar.logic.forces.dao.cache.SystemBigForcesDaoCache"></bean>
+        <bean id="systemForcesDropToolDaoCache" class="com.fantingame.game.mywar.logic.forces.dao.cache.SystemForcesDropToolDaoCache"></bean>
+        <bean id="systemForcesMonsterDaoCache" class="com.fantingame.game.mywar.logic.forces.dao.cache.SystemForcesMonsterDaoCache"></bean>
+        <bean id="systemMonsterDaoCache" class="com.fantingame.game.mywar.logic.forces.dao.cache.SystemMonsterDaoCache"></bean>
+        
+        
+        <bean id="forcesService" class="com.fantingame.game.mywar.logic.forces.service.ForcesService"></bean>
+        
+        <bean id="userForcesDaoMysqlImpl" class="com.fantingame.game.mywar.logic.forces.dao.mysql.UserForcesDaoMysqlImpl"></bean>
+        
+        <bean id="userForcesDao" class="com.fantingame.game.mywar.logic.forces.dao.cache.UserForcesDaoCacheImpl">
+            <property name="userForcesDaoMysqlImpl" ref="userForcesDaoMysqlImpl"></property>
+        </bean>
+        
+        <bean id="forcesAction" class="com.fantingame.game.mywar.logic.forces.action.ForcesAction"></bean>
+        
+        <bean id="battleLog" class="com.fantingame.game.mywar.logic.forces.log.BattleLogTable"></bean>
+</beans>

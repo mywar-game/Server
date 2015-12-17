@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-4-22 16:23:36 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.adminTool.bo.GiftCodeLog" table="gift_code_log">
+		<id name="code" type="string">
+			<column name="code" length="20" />
+			<generator class="assigned" />
+		</id>
+		<property name="giftBagId" type="int">
+			<column name="gift_bag_id" not-null="true" />
+		</property>
+		<property name="userId" type="string">
+			<column name="user_id" length="32" not-null="true" />
+		</property>
+		<property name="serverId" type="string">
+			<column name="server_id" length="4" not-null="true" />
+		</property>
+		<property name="partenerId" type="string">
+			<column name="partener_id" length="16" not-null="true">
+				<comment>渠道id</comment>
+			</column>
+		</property>
+		<property name="qn" type="string">
+			<column name="qn" length="32">
+				<comment>二级渠道号</comment>
+			</column>
+		</property>
+		<property name="createdTime" type="timestamp">
+			<column name="created_time" length="19" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>

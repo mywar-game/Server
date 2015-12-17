@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-3-8 16:56:53 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.system.bo.BlackInfo" table="black_list">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="value" type="string">
+            <column name="value" length="50" />
+        </property>
+        <property name="blackType" type="int">
+            <column name="black_type" length="11" />
+        </property>
+        <property name="valueType" type="int">
+            <column name="value_type" length="11" />
+        </property>
+    </class>
+</hibernate-mapping>

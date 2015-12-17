@@ -1,0 +1,94 @@
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+        "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- 一个包可以就是一个模块 -->
+	<package name="adminlogin" extends="myInterceptor" namespace="/">
+		<!-- 一个包下可以放这个模块下的所有action -->
+		<action name="adminlogin" class="com.admin.action.AdminLogin">
+			<result name="error" type="json" />
+		</action>
+		
+	</package>
+
+   	<package name="adminuser" extends="managerInterceptor" namespace="/module/manageruser">
+		<!-- 管理员列表 -->
+		<action name="adminuserlist" class="com.admin.action.AdminUserList">
+			<result>/module/manageruser/adminuserlist.jsp</result>
+		</action>
+		<!-- 添加管理员 -->
+		<action name="addadminuser" class="com.admin.action.AddAdminUser">
+			<result name="input">/module/manageruser/addadminuser.jsp</result>
+		    <result name="success" type="redirect">adminuserlist</result>		
+		</action>
+		<!-- 删除管理员 -->
+		<action name="deladminuser" class="com.admin.action.DelAdminUser">
+			   <result type="redirect">adminuserlist</result>		
+		</action>
+		<!-- 编辑密码 -->
+		<action name="updatepassword" class="com.admin.action.UpdateAdminUserPassword">
+			<result>updatepassword.jsp</result>		
+		    <result name="result" type="redirect">adminuserlist</result>		
+		</action>
+						
+		<!-- 修改功能权限 -->
+		<action name="updatepower" class="com.admin.action.UpdateAdminUserPower">
+			   <result>updatepower.jsp</result>		
+			   <result name="result" type="redirect">adminuserlist</result>		
+		</action>
+					
+		<!-- 修改界面权限 -->
+		<action name="updatemenupower" class="com.admin.action.UpdateAdminUserMenuPower">
+			<result>updatemenupower.jsp</result>		
+			<result name="result" type="redirect">adminuserlist</result>		
+		</action>
+		
+		<!-- 修改管理员角色 -->
+		<action name="updateAdminUserRole" class="com.admin.action.UpdateAdminUserRole">
+			<result name="success" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum,erroDescrip</param>
+			</result>
+		</action>
+		
+		<!-- 解锁密码 -->
+		<action name="updateLock" class="com.admin.action.UpdateLock">
+			   <result type="redirect">adminuserlist</result>		
+		</action>
+		<!-- 修改密码有效期 -->
+		<action name="updatePwdDueTime" class="com.admin.action.UpdatePwdDueTime">
+			<result>updatePwdDueTime.jsp</result>		
+		    <result name="result" type="redirect">adminuserlist</result>		
+		</action>
+		
+		<!-- 角色管理 -->
+		<action name="adminRoleList" class="com.admin.action.AdminRoleList">
+			<result>/module/manageruser/adminRoleList.jsp</result>
+		</action>
+		<!-- 添加角色 -->
+		<action name="addAdminRole" class="com.admin.action.AddAdminRole">
+			<result name="input">/module/manageruser/addAdminRole.jsp</result>
+			<result name="success" type="redirect">updateAdminRoleMenuPower?roleId=${adminRole.roleId}</result>
+		</action>
+		<!-- 删除角色 -->
+		<action name="delAdminRole" class="com.admin.action.DelAdminRole" method="executeDel"></action>
+		<!-- 修改角色 -->
+		<action name="updateAdminRole" class="com.admin.action.UpdateAdminRole">
+			<result name="input">/module/manageruser/updateAdminRole.jsp</result>
+			<result name="success" type="redirect">adminRoleList</result>
+		</action>
+		
+		<!-- 角色菜单权限配置 -->
+		<action name="updateAdminRoleMenuPower" class="com.admin.action.UpdateAdminRoleMenuPower">
+			<result name="input">/module/manageruser/updateAdminRoleMenuPower.jsp</result>
+			<result name="success" type="redirect">updateAdminRolePhysicsPower?roleId=${adminRole.roleId}</result>
+		</action>
+		<!-- 角色功能权限配置 -->
+		<action name="updateAdminRolePhysicsPower" class="com.admin.action.UpdateAdminRolePhysicsPower">
+			<result name="input">updateAdminRolePhysicsPower.jsp</result>
+			<result name="success" type="redirect">adminRoleList</result>
+		</action>
+		
+		
+	</package>
+</struts>

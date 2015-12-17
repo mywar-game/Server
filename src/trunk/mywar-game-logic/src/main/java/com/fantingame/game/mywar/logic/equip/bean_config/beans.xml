@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	 	http://www.springframework.org/schema/aop 
+	 	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+     	http://www.springframework.org/schema/tx 
+     	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+        
+        <!-- log -->
+        <bean id="equipLog" class="com.fantingame.game.mywar.logic.equip.log.EquipLogTable"></bean>
+        
+        <!-- dao -->
+        <bean id="systemEquipDaoCache" class="com.fantingame.game.mywar.logic.equip.dao.cache.SystemEquipDaoCache"></bean>
+        <bean id="systemEquipAttrDaoCache" class="com.fantingame.game.mywar.logic.equip.dao.cache.SystemEquipAttrDaoCache"></bean>
+        <bean id="systemEquipFixedAttrDaoCache" class="com.fantingame.game.mywar.logic.equip.dao.cache.SystemEquipFixedAttrDaoCache"></bean>
+        <bean id="userEquipDaoMysqlImpl" class="com.fantingame.game.mywar.logic.equip.dao.mysql.UserEquipDaoMysqlImpl"></bean>
+        <bean id="userEquipDao" class="com.fantingame.game.mywar.logic.equip.dao.cache.UserEquipDaoCacheImpl">
+        	<property name="userEquipDaoMysqlImpl" ref="userEquipDaoMysqlImpl"></property>
+        </bean>
+        
+        <bean id="systemEquipForgeDaoCache" class="com.fantingame.game.mywar.logic.equip.dao.cache.SystemEquipForgeDaoCache"></bean>
+        <bean id="systemEquipMagicDaoCache" class="com.fantingame.game.mywar.logic.equip.dao.cache.SystemEquipMagicDaoCache"></bean>
+        
+        
+        <bean id="equipDealer" class="com.fantingame.game.mywar.logic.equip.goods.EquipDealer"></bean>
+        <bean id="equipAction" class="com.fantingame.game.mywar.logic.equip.action.EquipAction"></bean>
+        <bean id="equipService" class="com.fantingame.game.mywar.logic.equip.service.EquipService"></bean>
+</beans>

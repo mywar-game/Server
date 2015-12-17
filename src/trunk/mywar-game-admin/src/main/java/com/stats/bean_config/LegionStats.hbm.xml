@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.stats.bo.LegionStats" table="legion_stats">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="sysNum" type="java.lang.Integer">
+            <column name="SYS_NUM" not-null="true">
+                <comment>服务器编号</comment>
+            </column>
+        </property>
+        <property name="legionJoin" type="java.lang.Integer">
+            <column name="legion_join" not-null="true">
+                <comment>参与军团人数</comment>
+            </column>
+        </property>
+        <property name="legionTotal" type="java.lang.Integer">
+            <column name="legion_total" not-null="true">
+                <comment>拥有军团数</comment>
+            </column>
+        </property>
+        <property name="diamondUse" type="java.lang.Integer">
+            <column name="diamond_use" not-null="true">
+                <comment>钻石消耗</comment>
+            </column>
+        </property>
+        <property name="coinUse" type="java.lang.Integer">
+            <column name="coin_use" not-null="true">
+                <comment>金币消耗</comment>
+            </column>
+        </property>
+        <property name="diamondUseTotal" type="java.lang.Integer">
+            <column name="diamond_use_total" not-null="true">
+                <comment>金币消费人数</comment>
+            </column>
+        </property>
+        <property name="time" type="java.util.Date">
+            <column name="TIME" length="10" not-null="true">
+                <comment>统计日期</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

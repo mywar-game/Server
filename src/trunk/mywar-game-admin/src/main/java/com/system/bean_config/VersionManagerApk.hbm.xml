@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-4-22 14:40:07 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.system.bo.VersionManagerApk" table="version_manager_apk">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="apkBigVersion" type="int">
+			<column name="apk_big_version" not-null="true">
+				<comment>apk大版本号</comment>
+			</column>
+		</property>
+		<property name="apkSmallVersion" type="int">
+			<column name="apk_small_version" not-null="true">
+				<comment>apk小版本号</comment>
+			</column>
+		</property>
+		<property name="isTest" type="int">
+			<column name="is_test" not-null="true">
+				<comment>1 测试 0正式</comment>
+			</column>
+		</property>
+		<property name="partnerId" type="string">
+			<column name="partner_id" length="10" not-null="true">
+				<comment>合作商id</comment>
+			</column>
+		</property>
+		<property name="url" type="string">
+			<column name="url" length="512" not-null="true">
+				<comment>包下载地址</comment>
+			</column>
+		</property>
+		<property name="qn" type="string">
+			<column name="qn" ></column>
+		</property>
+		<property name="description" type="string">
+			<column name="description" length="512">
+				<comment>描述</comment>
+			</column>
+		</property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.adminTool.bo.SystemConfigData" table="system_config_data">
+		<id name="configDataId" type="java.lang.Integer">
+			<column name="config_data_id" />
+			<generator class="assigned" />
+		</id>
+		<property name="configKey" type="java.lang.String">
+            <column name="config_key" not-null="true">
+            </column>
+        </property>
+        <property name="configValue" type="java.lang.String">
+        	<column name="config_value">
+        	</column>
+        </property>
+         <property name="isSendClient" type="java.lang.Integer">
+        	<column name="is_send_client">
+        	</column>
+        </property>
+         <property name="description" type="java.lang.String">
+        	<column name="description">
+        	</column>
+        </property>
+	</class>
+</hibernate-mapping>

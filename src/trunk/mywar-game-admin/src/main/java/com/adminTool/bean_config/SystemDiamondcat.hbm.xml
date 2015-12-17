@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+		<class name="com.adminTool.bo.SystemDiamondcat" table="system_diamondcat">
+		<composite-id>
+		
+			<key-property name="id" type="java.lang.Integer">
+				<column name="id" not-null="true">
+				</column>				
+			</key-property>
+			<key-property name="diamondUse" type="java.lang.Integer">
+           		<column name="diamond_use" not-null="true">
+            	</column>
+        	</key-property>
+        	<key-property name="diamondReceive" type="java.lang.Float">
+            	<column name="diamond_receive" not-null="true">
+            	</column>
+        	</key-property>
+    		<key-property name="activityId" type="java.lang.Integer">
+           		<column name="activity_id" not-null="true">
+            	</column>
+        	</key-property>
+    	</composite-id>
+    </class>
+ </hibernate-mapping>

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-3-31 12:15:28 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.adminTool.bo.ActivityDrawGoods" table="system_activity_draw_goods"
+		>
+		<id name="goodsId" type="int">
+			<column name="goods_id" />
+			<generator class="identity" />
+		</id>
+		<property name="activityId" type="int">
+			<column name="activity_id" not-null="true">
+			</column>
+		</property>
+		<property name="pos" type="int">
+			<column name="pos" not-null="true" />
+		</property>
+		<property name="toolType" type="int">
+			<column name="tool_type" not-null="true" />
+		</property>
+		<property name="toolId" type="int">
+			<column name="tool_id" not-null="true" />
+		</property>
+		<property name="toolNum" type="int">
+			<column name="tool_num" not-null="true" />
+		</property>
+		<property name="refreshLowerNum" type="int">
+			<column name="refresh_lower_num" not-null="true" />
+		</property>
+		<property name="refreshUpperNum" type="int">
+			<column name="refresh_upper_num" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>

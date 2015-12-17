@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	 	http://www.springframework.org/schema/aop 
+	 	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+     	http://www.springframework.org/schema/tx 
+     	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+     
+     <bean id="systemLifeConfigDaoCache" class="com.fantingame.game.mywar.logic.life.dao.cache.SystemLifeConfigDaoCache"></bean>
+     <bean id="systemLifeRewardDaoCache" class="com.fantingame.game.mywar.logic.life.dao.cache.SystemLifeRewardDaoCache"></bean>
+     <bean id="systemWeatherMapDaoCache" class="com.fantingame.game.mywar.logic.life.dao.cache.SystemWeatherMapDaoCache"></bean>
+     <bean id="systemWeatherEffectDaoCache" class="com.fantingame.game.mywar.logic.life.dao.cache.SystemWeatherEffectDaoCache"></bean>
+     
+     <bean id="weatherInfoDaoMysqlImpl" class="com.fantingame.game.mywar.logic.life.dao.mysql.WeatherInfoDaoMysqlImpl"></bean>
+     <bean id="weatherInfoDao" class="com.fantingame.game.mywar.logic.life.dao.cache.WeatherInfoDaoCacheImpl">
+     	<property name="weatherInfoDaoMysqlImpl" ref="weatherInfoDaoMysqlImpl"></property>
+     </bean>
+     
+     <bean id="userLifeInfoDaoMysqlImpl" class="com.fantingame.game.mywar.logic.life.dao.mysql.UserLifeInfoDaoMysqlImpl"></bean>
+     <bean id="userLifeInfoDao" class="com.fantingame.game.mywar.logic.life.dao.cache.UserLifeInfoDaoCacheImpl">
+     	<property name="userLifeInfoDaoMysqlImpl" ref="userLifeInfoDaoMysqlImpl"></property>
+     </bean>
+     
+     <bean id="userHangupInfoDaoMysqlImpl" class="com.fantingame.game.mywar.logic.life.dao.mysql.UserHangupInfoDaoMysqlImpl"></bean>
+     <bean id="userHangupInfoDao" class="com.fantingame.game.mywar.logic.life.dao.cache.UserHangupInfoDaoCacheImpl">
+     	<property name="userHangupInfoDaoMysqlImpl" ref="userHangupInfoDaoMysqlImpl"></property>
+     </bean>
+     
+     <bean id="lifeService" class="com.fantingame.game.mywar.logic.life.service.LifeService"></bean>
+     <bean id="lifeAction" class="com.fantingame.game.mywar.logic.life.action.LifeAction"></bean>
+
+	<!-- 每隔两小时更新一次 -->
+    <bean id="weatherScheduler" class="com.fantingame.game.mywar.logic.life.scheduler.WeatherScheduler">
+       <property name="cronExpression" value="0 0 0/2 * * ?"></property>	 
+    </bean>
+</beans>

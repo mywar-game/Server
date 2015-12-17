@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-3-27 16:46:59 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.adminTool.bo.OncePayReward" table="system_once_pay_reward">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="activityId" type="int">
+            <column name="activity_id" not-null="true">
+                <comment>活动id</comment>
+            </column>
+        </property>
+        <property name="payMoney" type="int">
+            <column name="pay_money" not-null="true">
+                <comment>单笔充值数额</comment>
+            </column>
+        </property>
+        <property name="nextPayMoney" type="int">
+            <column name="next_pay_money" not-null="true">
+                <comment>下一档的金额</comment>
+            </column>
+        </property>
+        <property name="rewards" type="string">
+            <column name="rewards" length="512" not-null="true">
+                <comment>奖励信息</comment>
+            </column>
+        </property>
+        <property name="timesLimit" type="int">
+            <column name="times_limit" not-null="true">
+                <comment>领取次数限制</comment>
+            </column>
+        </property>
+        <property name="description" type="string">
+            <column name="description" not-null="true">
+                <comment>描述</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

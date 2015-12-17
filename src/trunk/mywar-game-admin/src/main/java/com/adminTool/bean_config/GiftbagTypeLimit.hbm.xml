@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-4-3 16:57:56 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.adminTool.bo.GiftbagTypeLimit" table="giftbag_type_limit"
+		>
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="giftBagType" type="int">
+			<column name="gift_bag_type" not-null="true" />
+		</property>
+		<property name="serverIds" type="string">
+			<column name="server_ids" length="2000"></column>
+		</property>
+		<property name="limitTimes" type="int">
+			<column name="limit_times" not-null="true"></column>
+		</property>
+		<property name="minLevel" type="int">
+			<column name="min_level" not-null="true"></column>
+		</property>
+		<property name="minVipLevel" type="int">
+			<column name="min_vip_level" not-null="true"></column>
+		</property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,43 @@
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+        "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="managerInterceptor" extends="myInterceptor">
+
+		<interceptors>
+			<!-- 认证拦截器-->
+			<interceptor name="adminUserInterceptor"
+				class="com.admin.interceptor.AdminUserInterceptor" />
+			<interceptor-stack name="adminStack">
+				<interceptor-ref name="adminUserInterceptor" />
+				<interceptor-ref name="myStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="adminStack" />
+
+		<global-results>
+			<!-- 当anction抛出异常将被转向web的错误处理页面，拦截器是exceptionInterceptor -->
+			<result name="glober_error">
+				/error_manager.jsp
+			</result>
+			<!-- 当没有登录的时候就会跳到首页要求其进行登录 -->
+			<result name="nologin" type="redirect">
+				/default.jsp
+			</result>
+
+			<result name="nopower">/nopower.jsp</result>
+			<result name="nopysic">/nopysic.jsp</result>
+			<result name="nodatasource">/nodatasource.jsp</result>
+		</global-results>
+	</package>
+
+	<!-- 管理员登录 -->
+	<include file="manager_struts/log.xml" />	
+	<include file="manager_struts/adminuser.xml" />
+	<include file="manager_struts/system.xml" />	
+	<include file="manager_struts/dataconfig.xml" />	
+	<include file="manager_struts/adminTool.xml" />	
+	<include file="manager_struts/stats.xml" />	
+	<!-- 推荐活动 -->
+	
+</struts>

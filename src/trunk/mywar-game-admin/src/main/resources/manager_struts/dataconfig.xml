@@ -1,0 +1,708 @@
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+        "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- 一个包可以就是一个模块 -->
+	<package name="dataconfig" extends="managerInterceptor" namespace="/module/dataconfig">
+		
+		<!-- 刷新常量缓存 -->
+		<action name="reflashConstantCache" class="com.dataconfig.action.ReflashConstantCache">
+			<result name="success" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum</param>
+			</result>
+			<result name="error" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">erroCodeNum,erroDescrip</param>
+			</result>
+		</action>
+		
+		<!-- 配置常量的查询操作 -->
+		<action name="sParamConfigList" class="com.dataconfig.action.SParamConfigList">
+			<result>sParamConfigList.jsp</result>
+		</action>
+		<!-- 配置常量的新增操作 -->
+		<action name="addSParamConfig" class="com.dataconfig.action.AddSParamConfig">
+			<result name="input">addSParamConfig.jsp</result>
+			<result type="redirect" name="ok">sParamConfigList</result>
+		</action>
+		<!-- 配置常量的删除操作 -->
+		<action name="delSParamConfig" class="com.dataconfig.action.DelSParamConfig" method="executeDel"></action>
+		<!-- 配置常量的修改操作 -->
+		<action name="updateSParamConfig" class="com.dataconfig.action.UpdateSParamConfig">
+			<result type="redirect">sParamConfigList</result>
+			<result name="input">updateSParamConfig.jsp</result>
+		</action>
+		
+		<!-- 任务常量的查询操作 -->
+		<action name="mMissionConstantList*" class="com.dataconfig.action.MMissionConstantList" method="{1}">
+			<result>mMissionConstantList.jsp</result>
+			<result name="find" type="json">
+				<param name="root">missionIdNameMap</param>
+			</result>
+		</action>
+		<!-- 任务常量的新增操作 -->
+		<action name="addMMissionConstant" class="com.dataconfig.action.AddMMissionConstant">
+			<result name="input">addMMissionConstant.jsp</result>
+			<result name="error">addMMissionConstant.jsp</result>
+			<result type="redirect" name="ok">mMissionConstantList</result>
+		</action>
+		<!-- 任务常量的删除操作 -->
+		<action name="delMMissionConstant" class="com.dataconfig.action.DelMMissionConstant" method="executeDel"></action>
+		<!-- 任务常量的修改操作 -->
+		<action name="updateMMissionConstant"
+			class="com.dataconfig.action.UpdateMMissionConstant">
+			<result type="redirect">mMissionConstantList</result>
+			<result name="input">updateMMissionConstant.jsp</result>
+		</action>
+		
+		<!-- 英雄常量的查询操作 -->
+		<action name="hHeroConstantList" class="com.dataconfig.action.HHeroConstantList">
+			<result>hHeroConstantList.jsp</result>
+		</action>
+		<!-- 英雄常量的新增操作 -->
+		<action name="addHHeroConstant" class="com.dataconfig.action.AddHHeroConstant">
+			<result name="input">addHHeroConstant.jsp</result>
+			<result type="redirect" name="ok">hHeroConstantList</result>
+		</action>
+		<!-- 英雄常量的删除操作 -->
+		<action name="delHHeroConstant" class="com.dataconfig.action.DelHHeroConstant" method="executeDel"></action>
+		<!-- 英雄常量的修改操作 -->
+		<action name="updateHHeroConstant" class="com.dataconfig.action.UpdateHHeroConstant">
+			<result type="redirect">hHeroConstantList</result>
+			<result name="input">updateHHeroConstant.jsp</result>
+		</action>
+		
+		<!-- 装备常量的查询操作 -->
+		<action name="eEquipmentConstantList*" class="com.dataconfig.action.EEquipmentConstantList" method="{1}">
+			<result>eEquipmentConstantList.jsp</result>
+			<result name="find" type="json">
+				<param name="root">equipmentIDNameMap</param>
+			</result>
+		</action>
+		<!-- 装备常量的新增操作 -->
+		<action name="addEEquipmentConstant" class="com.dataconfig.action.AddEEquipmentConstant">
+			<result name="input">addEEquipmentConstant.jsp</result>
+			<result name="error">addEEquipmentConstant.jsp</result>
+			<result type="redirect" name="ok">eEquipmentConstantList</result>
+		</action>
+		<!-- 装备常量的删除操作 -->
+		<action name="delEEquipmentConstant" class="com.dataconfig.action.DelEEquipmentConstant" method="executeDel"></action>
+		<!-- 装备常量的修改操作 -->
+		<action name="updateEEquipmentConstant"
+			class="com.dataconfig.action.UpdateEEquipmentConstant">
+			<result type="redirect">eEquipmentConstantList</result>
+			<result name="input">updateEEquipmentConstant.jsp</result>
+		</action>
+		
+		<!-- 技能常量的查询操作 -->
+		<action name="sSkillConstantList*" class="com.dataconfig.action.SSkillConstantList" method="{1}">
+			<result>sSkillConstantList.jsp</result>
+			<result name="find" type="json">
+				<param name="root">equipmentSkillIdNameMap</param>
+			</result>
+		</action>
+		<!-- 技能常量的新增操作 -->
+		<action name="addSSkillConstant" class="com.dataconfig.action.AddSSkillConstant">
+			<result name="input">addSSkillConstant.jsp</result>
+			<result type="redirect" name="ok">sSkillConstantList</result>
+		</action>
+		<!-- 技能常量的删除操作 -->
+		<action name="delSSkillConstant" class="com.dataconfig.action.DelSSkillConstant" method="executeDel"></action>
+		<!-- 技能常量的修改操作 -->
+		<action name="updateSSkillConstant" class="com.dataconfig.action.UpdateSSkillConstant">
+			<result name="input">updateSSkillConstant.jsp</result>
+			<result type="redirect">sSkillConstantList</result>
+		</action>
+		
+		<!-- 技能效果常量的查询操作 -->
+		<action name="sEffectConstantList" class="com.dataconfig.action.SEffectConstantList">
+			<result>sEffectConstantList.jsp</result>
+		</action>
+		<!-- 技能效果常量的新增操作 -->
+		<action name="addSEffectConstant" class="com.dataconfig.action.AddSEffectConstant">
+			<result name="input">addSEffectConstant.jsp</result>
+			<result type="redirect" name="ok">sEffectConstantList</result>
+		</action>
+		<!-- 技能效果常量的删除操作 -->
+		<action name="delSEffectConstant" class="com.dataconfig.action.DelSEffectConstant" method="executeDel"></action>
+		<!-- 技能效果常量的修改操作 -->
+		<action name="updateSEffectConstant" class="com.dataconfig.action.UpdateSEffectConstant">
+			<result name="input">updateSEffectConstant.jsp</result>
+			<result type="redirect">sEffectConstantList</result>
+		</action>
+		
+		<!-- 怪物常量的查询操作 -->
+		<action name="mMonsterConstantList*" class="com.dataconfig.action.MMonsterConstantList" method="{1}">
+			<result>mMonsterConstantList.jsp</result>
+			<result name="find" type="json">
+				<param name="root">monsterIdNameMap</param>
+			</result>
+		</action>
+		<!-- 怪物常量的新增操作 -->
+		<action name="addMMonsterConstant" class="com.dataconfig.action.AddMMonsterConstant">
+			<result name="input">addMMonsterConstant.jsp</result>
+			<result name="error">addMMonsterConstant.jsp</result>
+			<result type="redirect" name="success">mMonsterConstantList</result>
+		</action>
+		<!-- 怪物常量的删除操作 -->
+		<action name="delMMonsterConstant" class="com.dataconfig.action.DelMMonsterConstant" method="executeDel"></action>
+		<!-- 怪物常量的修改操作 -->
+		<action name="updateMMonsterConstant" class="com.dataconfig.action.UpdateMMonsterConstant">
+			<result name="input">updateMMonsterConstant.jsp</result>
+			<result type="redirect">mMonsterConstantList</result>
+		</action>
+
+		<!-- 关卡常量的查询操作 -->
+		<action name="baPveConstantList" class="com.dataconfig.action.BaPveConstantList">
+			<result>baPveConstantList.jsp</result>
+		</action>
+		<!-- 关卡详情的查询操作 -->
+		<action name="baPveDetailList" class="com.dataconfig.action.BaPveDetailList">
+			<result>baPveDetailList.jsp</result>
+		</action>
+		<!-- 关卡常量的新增操作 -->
+		<action name="addBaPveConstant" class="com.dataconfig.action.AddBaPveConstant">
+			<result name="input">addBaPveConstant.jsp</result>
+			<result name="error">addBaPveConstant.jsp</result>
+			<result type="redirect" name="success">baPveConstantList</result>
+		</action>
+		<!-- 关卡常量的删除操作 -->
+		<action name="delBaPveConstant" class="com.dataconfig.action.DelBaPveConstant" method="executeDel"></action>
+		<!-- 关卡常量的修改操作 -->
+		<action name="updateBaPveConstant" class="com.dataconfig.action.UpdateBaPveConstant">
+			<result name="input">updateBaPveConstant.jsp</result>
+			<result type="redirect">baPveConstantList</result>
+		</action>
+		
+		<!-- 建筑常量的查询操作 -->
+		<action name="bBuildingConstantList" class="com.dataconfig.action.BBuildingConstantList">
+			<result>bBuildingConstantList.jsp</result>
+		</action>
+		<!-- 建筑常量的新增操作 -->
+		<action name="addBBuildingConstant" class="com.dataconfig.action.AddBBuildingConstant">
+			<result name="input">addBBuildingConstant.jsp</result>
+			<result type="redirect" name="success">bBuildingConstantList</result>
+		</action>
+		<!-- 建筑常量的删除操作 -->
+		<action name="delBBuildingConstant" class="com.dataconfig.action.DelBBuildingConstant" method="executeDel"></action>
+		<!-- 建筑常量的修改操作 -->
+		<action name="updateBBuildingConstant" class="com.dataconfig.action.UpdateBBuildingConstant">
+			<result name="input">updateBBuildingConstant.jsp</result>
+			<result type="redirect">bBuildingConstantList</result>
+		</action>
+		
+		<!-- 建筑约束常量的查询操作 -->
+		<action name="bBuildingconstraintConstantList" class="com.dataconfig.action.BBuildingconstraintConstantList">
+			<result>bBuildingconstraintConstantList.jsp</result>
+		</action>
+		<!-- 建筑约束常量的新增操作 -->
+		<action name="addBBuildingconstraintConstant" class="com.dataconfig.action.AddBBuildingconstraintConstant">
+			<result name="input">addBBuildingconstraintConstant.jsp</result>
+			<result type="redirect" name="success">bBuildingconstraintConstantList</result>
+		</action>
+		<!-- 建筑约束常量的删除操作 -->
+		<action name="delBBuildingconstraintConstant" class="com.dataconfig.action.DelBBuildingconstraintConstant" method="executeDel"></action>
+		<!-- 建筑约束常量的修改操作 -->
+		<action name="updateBBuildingconstraintConstant" class="com.dataconfig.action.UpdateBBuildingconstraintConstant">
+			<result name="input">updateBBuildingconstraintConstant.jsp</result>
+			<result type="redirect">bBuildingconstraintConstantList</result>
+		</action>
+		
+		<!-- 训练假人常量的查询操作 -->
+		<action name="bDummyList" class="com.dataconfig.action.BDummyList">
+			<result>bDummyList.jsp</result>
+		</action>
+		<!-- 训练假人常量的新增操作 -->
+		<action name="addBDummy" class="com.dataconfig.action.AddBDummy">
+			<result name="input">addBDummy.jsp</result>
+			<result type="redirect" name="success">bDummyList</result>
+		</action>
+		<!-- 训练假人常量的删除操作 -->
+		<action name="delBDummy" class="com.dataconfig.action.DelBDummy" method="executeDel"></action>
+		<!-- 训练假人常量的修改操作 -->
+		<action name="updateBDummy" class="com.dataconfig.action.UpdateBDummy">
+			<result name="input">updateBDummy.jsp</result>
+			<result type="redirect">bDummyList</result>
+		</action>
+		
+		<!-- npc常量的查询操作 -->
+		<action name="bNpcConstantList" class="com.dataconfig.action.BNpcConstantList">
+			<result>bNpcConstantList.jsp</result>
+		</action>
+		<!-- npc常量的新增操作 -->
+		<action name="addBNpcConstant" class="com.dataconfig.action.AddBNpcConstant">
+			<result name="input">addBNpcConstant.jsp</result>
+			<result type="redirect" name="success">bNpcConstantList</result>
+		</action>
+		<!-- npc常量的删除操作 -->
+		<action name="delBNpcConstant" class="com.dataconfig.action.DelBNpcConstant" method="executeDel"></action>
+		<!-- npc常量的修改操作 -->
+		<action name="updateBNpcConstant" class="com.dataconfig.action.UpdateBNpcConstant">
+			<result name="input">updateBNpcConstant.jsp</result>
+			<result type="redirect">bNpcConstantList</result>
+		</action>
+		
+		<!-- 科技常量的查询操作 -->
+		<action name="bTechnologyConstantList" class="com.dataconfig.action.BTechnologyConstantList">
+			<result>bTechnologyConstantList.jsp</result>
+		</action>
+		<!-- 科技常量的新增操作 -->
+		<action name="addBTechnologyConstant" class="com.dataconfig.action.AddBTechnologyConstant">
+			<result name="input">addBTechnologyConstant.jsp</result>
+			<result type="redirect" name="success">bTechnologyConstantList</result>
+		</action>
+		<!-- 科技常量的删除操作 -->
+		<action name="delBTechnologyConstant" class="com.dataconfig.action.DelBTechnologyConstant" method="executeDel"></action>
+		<!-- 科技常量的修改操作 -->
+		<action name="updateBTechnologyConstant" class="com.dataconfig.action.UpdateBTechnologyConstant">
+			<result name="input">updateBTechnologyConstant.jsp</result>
+			<result type="redirect">bTechnologyConstantList</result>
+		</action>
+		
+		<!-- 聊天屏蔽关键字常量的查询操作 -->
+		<action name="cChatKeywordList" class="com.dataconfig.action.CChatKeywordList">
+			<result>cChatKeywordList.jsp</result>
+		</action>
+		<!-- 聊天屏蔽关键字常量的新增操作 -->
+		<action name="addCChatKeyword" class="com.dataconfig.action.AddCChatKeyword">
+			<result type="redirect" name="success">cChatKeywordList</result>
+		</action>
+		<!-- 聊天屏蔽关键字常量的删除操作 -->
+		<action name="delCChatKeyword" class="com.dataconfig.action.DelCChatKeyword" method="executeDel"></action>
+		<!-- 聊天屏蔽关键字常量的修改操作 -->
+		<action name="updateCChatKeyword" class="com.dataconfig.action.UpdateCChatKeyword">
+			<result type="redirect" name="success">cChatKeywordList</result>
+		</action>
+		
+		<!-- 军团科技常量的查询操作 -->
+		<action name="gGuildTechnologyList" class="com.dataconfig.action.GGuildTechnologyList">
+			<result>gGuildTechnologyList.jsp</result>
+		</action>
+		<!-- 军团科技常量的新增操作 -->
+		<action name="addGGuildTechnology" class="com.dataconfig.action.AddGGuildTechnology">
+			<result name="input">addGGuildTechnology.jsp</result>
+			<result type="redirect" name="success">gGuildTechnologyList</result>
+		</action>
+		<!-- 军团科技常量的删除操作 -->
+		<action name="delGGuildTechnology" class="com.dataconfig.action.DelGGuildTechnology" method="executeDel"></action>
+		<!-- 军团科技常量的修改操作 -->
+		<action name="updateGGuildTechnology" class="com.dataconfig.action.UpdateGGuildTechnology">
+			<result name="input">updateGGuildTechnology.jsp</result>
+			<result type="redirect">gGuildTechnologyList</result>
+		</action>
+		
+		<!-- 升级常量的查询操作 -->
+		<action name="lLevelupConstantList" class="com.dataconfig.action.LLevelupConstantList">
+			<result>lLevelupConstantList.jsp</result>
+		</action>
+		<!-- 升级常量的新增操作 -->
+		<action name="addLLevelupConstant" class="com.dataconfig.action.AddLLevelupConstant">
+			<result name="input">addLLevelupConstant.jsp</result>
+			<result type="redirect" name="success">lLevelupConstantList</result>
+		</action>
+		<!-- 升级常量的删除操作 -->
+		<action name="delLLevelupConstant" class="com.dataconfig.action.DelLLevelupConstant" method="executeDel"></action>
+		<!-- 升级常量的修改操作 -->
+		<action name="updateLLevelupConstant" class="com.dataconfig.action.UpdateLLevelupConstant">
+			<result name="input">updateLLevelupConstant.jsp</result>
+			<result type="redirect">lLevelupConstantList</result>
+		</action>
+		
+		<!-- 世界地图区域常量的查询操作 -->
+		<action name="mMapAreaList" class="com.dataconfig.action.MMapAreaList">
+			<result>mMapAreaList.jsp</result>
+		</action>
+		<!-- 世界地图区域常量的新增操作 -->
+		<action name="addMMapArea" class="com.dataconfig.action.AddMMapArea">
+			<result name="input">addMMapArea.jsp</result>
+			<result type="redirect" name="success">mMapAreaList</result>
+		</action>
+		<!-- 世界地图区域常量的删除操作 -->
+		<action name="delMMapArea" class="com.dataconfig.action.DelMMapArea" method="executeDel"></action>
+		<!-- 世界地图区域常量的修改操作 -->
+		<action name="updateMMapArea" class="com.dataconfig.action.UpdateMMapArea">
+			<result name="input">updateMMapArea.jsp</result>
+			<result type="redirect">mMapAreaList</result>
+		</action>
+		
+		<!-- 道具常量的查询操作 -->
+		<action name="tTreasureConstantList*" class="com.dataconfig.action.TTreasureConstantList" method="{1}">
+			<result>tTreasureConstantList.jsp</result>
+			<result name="find" type="json">
+				<param name="root">treasureIDNameMap</param>
+			</result>
+		</action>
+		<!-- 道具常量的新增操作 -->
+		<action name="addTTreasureConstant" class="com.dataconfig.action.AddTTreasureConstant">
+			<result name="input">addTTreasureConstant.jsp</result>
+			<result type="redirect" name="success">tTreasureConstantList</result>
+		</action>
+		<!-- 道具常量的删除操作 -->
+		<action name="delTTreasureConstant" class="com.dataconfig.action.DelTTreasureConstant" method="executeDel"></action>
+		<!-- 道具常量的修改操作 -->
+		<action name="updateTTreasureConstant" class="com.dataconfig.action.UpdateTTreasureConstant">
+			<result name="input">updateTTreasureConstant.jsp</result>
+			<result type="redirect">tTreasureConstantList</result>
+		</action>
+		
+		<!-- 动作常量的查询操作 -->
+		<action name="aActionConstantList" class="com.dataconfig.action.AActionConstantList">
+			<result>aActionConstantList.jsp</result>
+		</action>
+		<!-- 动作常量的新增操作 -->
+		<action name="addAActionConstant" class="com.dataconfig.action.AddAActionConstant">
+			<result type="redirect" name="success">aActionConstantList</result>
+		</action>
+		<!-- 动作常量的删除操作 -->
+		<action name="delAActionConstant" class="com.dataconfig.action.DelAActionConstant" method="executeDel"></action>
+		<!-- 动作常量的修改操作 -->
+		<action name="updateAActionConstant" class="com.dataconfig.action.UpdateAActionConstant">
+			<result type="redirect" name="success">aActionConstantList</result>
+		</action>
+		
+		<!-- 国际化的查询操作 -->
+		<action name="sGlobalParamList" class="com.dataconfig.action.SGlobalParamList">
+			<result>sGlobalParamList.jsp</result>
+		</action>
+			<!-- 国际化常量的修改操作 -->
+		<action name="updateSGlobalParam" class="com.dataconfig.action.UpdateSGlobalParam">
+			<result name="input">updateSGlobalParamList.jsp</result>
+			<result type="redirect" name="success">sGlobalParamList</result>
+		</action>
+		
+		<!-- 装备合成常量的查询操作 -->
+		<action name="tequipmentSynthesisConstantList" class="com.dataconfig.action.TEquipmentSynthesisConstantList">
+			<result>tequipmentSynthesisConstantList.jsp</result>
+		</action>
+		<!-- 装备合成常量的新增操作 -->
+		<action name="addTEquipmentSynthesisConstant" class="com.dataconfig.action.AddTEquipmentSynthesisConstant">
+			<result name="input">addTEquipmentSynthesisConstant.jsp</result>
+			<result type="redirect" name="success">tequipmentSynthesisConstantList</result>
+		</action>
+		<!-- 装备合成常量的删除操作 -->
+		<action name="delTEquipmentSynthesisConstant" class="com.dataconfig.action.DelTEquipmentSynthesisConstant" method="executeDel"></action>
+		<!-- 装备合成常量的修改操作 -->
+		<action name="updateTEquipmentSynthesisConstant" class="com.dataconfig.action.UpdateTEquipmentSynthesisConstant">
+			<result name="input">updateTEquipmentSynthesisConstant.jsp</result>
+			<result type="redirect" name="success">tequipmentSynthesisConstantList</result>
+		</action>
+		
+		<!-- 商城常量的查询操作 -->
+		<action name="tMallTreasureConstantList" class="com.dataconfig.action.TMallTreasureConstantList">
+			<result>tMallTreasureConstantList.jsp</result>
+		</action>
+		<!-- 商城常量的新增操作 -->
+		<action name="addTMallTreasureConstant" class="com.dataconfig.action.AddTMallTreasureConstant">
+			<result name="input">addTMallTreasureConstant.jsp</result>
+			<result type="redirect" name="success">tMallTreasureConstantList</result>
+		</action>
+		<!-- 商城常量的删除操作 -->
+		<action name="delTMallTreasureConstant" class="com.dataconfig.action.DelTMallTreasureConstant" method="executeDel"></action>
+		<!-- 商城常量的修改操作 -->
+		<action name="updateTMallTreasureConstant" class="com.dataconfig.action.UpdateTMallTreasureConstant">
+			<result name="input">updateTMallTreasureConstant.jsp</result>
+			<result type="redirect" name="success">tMallTreasureConstantList</result>
+		</action>
+		
+		<!-- 连续登陆奖励的查询操作 -->
+		<action name="uContinueLoginConstantList" class="com.dataconfig.action.UContinueLoginConstantList">
+			<result>uContinueLoginConstantList.jsp</result>
+		</action>
+		<!-- 连续登陆奖励的修改操作 -->
+		<action name="updateUContinueLoginConstant" class="com.dataconfig.action.UpdateUContinueLoginConstant">
+			<result name="input">updateUContinueLoginConstant.jsp</result>
+			<result type="redirect" name="success">uContinueLoginConstantList</result>
+		</action>
+		
+		<!-- 成就常量的查询操作 -->
+		<action name="achievementConstantList" class="com.dataconfig.action.AchievementConstantList">
+			<result>achievementConstantList.jsp</result>
+		</action>
+		<!-- 成就常量的新增操作 -->
+		<action name="addAchievementConstant" class="com.dataconfig.action.AddAchievementConstant">
+			<result name="input">addAchievementConstant.jsp</result>
+			<result type="redirect" name="success">achievementConstantList</result>
+		</action>
+		<!-- 成就常量的删除操作 -->
+		<action name="delAchievementConstant" class="com.dataconfig.action.DelAchievementConstant" method="executeDel"></action>
+		<!-- 成就常量的修改操作 -->
+		<action name="updateAchievementConstant" class="com.dataconfig.action.UpdateAchievementConstant">
+			<result name="input">updateAchievementConstant.jsp</result>
+			<result type="redirect" name="success">achievementConstantList</result>
+		</action>
+		
+		<!-- 好友推荐奖励列表 -->
+		<action name="instroductRewardList" class="com.dataconfig.action.InstroductRewardList">
+			<result>instroductRewardList.jsp</result>
+		</action>
+		<!-- 添加好友推荐奖励 -->
+		<action name="addInstroductReward" class="com.dataconfig.action.AddInstroductReward">
+			<result name="input">addInstroductReward.jsp</result>
+			<result type="redirect" name="success">instroductRewardList</result>
+		</action>
+		<!-- 更新好友推荐奖励列表 -->
+		<action name="updateInstroductReward" class="com.dataconfig.action.UpdateInstroductReward">
+			<result name="input">updateInstroductReward.jsp</result>
+			<result type="redirect" name="success">instroductRewardList</result>
+		</action>
+		
+		<!-- 删除好友推荐奖励列表 -->
+		<action name="delInstroductReward" class="com.dataconfig.action.DelInstroductReward" method="executeDel"></action>
+		
+		<!-- 宠物常量的查询操作 -->
+		<action name="petConstantList" class="com.dataconfig.action.PetConstantList">
+			<result>petConstantList.jsp</result>
+		</action>
+		<!-- 宠物常量的新增操作 -->
+		<action name="addPetConstant" class="com.dataconfig.action.AddPetConstant">
+			<result name="input">addPetConstant.jsp</result>
+			<result type="redirect" name="success">petConstantList</result>
+		</action>
+		<!-- 宠物常量的删除操作 -->
+		<action name="delPetConstant" class="com.dataconfig.action.DelPetConstant" method="executeDel"></action>
+		<!-- 宠物常量的修改操作 -->
+		<action name="updatePetConstant" class="com.dataconfig.action.UpdatePetConstant">
+			<result name="input">updatePetConstant.jsp</result>
+			<result type="redirect" name="success">petConstantList</result>
+		</action>
+
+		<!-- 宠物额外加成常量的新增操作 -->
+		<action name="addPPetExtraConstant" class="com.dataconfig.action.AddPPetExtraConstant">
+			<result name="input">addPPetExtra.jsp</result>
+			<result type="redirect" name="success">pPetExtraConstantList</result>
+		</action>
+		
+		<!-- 宠物额外加成常量的查询操作 -->
+		<action name="pPetExtraConstantList" class="com.dataconfig.action.PPetExtraConstantList">
+			<result>pPetExtraList.jsp</result>
+		</action>
+		
+		<!-- 宠物额外加成的删除操作 -->
+		<action name="delPPetExtra" class="com.dataconfig.action.DelPPetExtra" method="executeDel"></action>
+		
+		<!-- 宠物常量的修改操作 -->
+		<action name="updatePPetExtra" class="com.dataconfig.action.UpdatePPetExtra">
+			<result name="input">updatePPetExtra.jsp</result>
+			<result type="redirect" name="success">pPetExtraConstantList</result>
+		</action>
+		
+		<!-- 宠物装备加成常量的新增操作 -->
+		<action name="addPPetEquipmentConstant" class="com.dataconfig.action.AddPPetEquipmentConstant">
+			<result name="input">addPPetEquipment.jsp</result>
+			<result type="redirect" name="success">pPetEquipmentConstantList</result>
+		</action>
+		
+		
+		<!-- 宠物装备加成查询操作 -->
+		<action name="pPetEquipmentConstantList" class="com.dataconfig.action.PPetEquipmentConstantList">
+			<result>pPetEquipmentList.jsp</result>
+		</action>
+		
+		<!-- 宠物装备加成的删除操作 -->
+		<action name="delPPetEquipment" class="com.dataconfig.action.DelPPetEquipment" method="executeDel"></action>
+		
+		<!-- 宠物装备加成的修改操作 -->
+		<action name="updatePPetEquipment" class="com.dataconfig.action.UpdatePPetEquipment">
+			<result name="input">updatePPetEquipment.jsp</result>
+			<result type="redirect" name="success">pPetEquipmentConstantList</result>
+		</action>
+		
+		<!-- 剧情常量的查询操作 -->
+		<action name="storyConstantList" class="com.dataconfig.action.StoryConstantList">
+			<result>storyConstantList.jsp</result>
+		</action>
+		<!-- 剧情常量的新增操作 -->
+		<action name="addStoryConstant" class="com.dataconfig.action.AddStoryConstant">
+			<result name="input">addStoryConstant.jsp</result>
+			<result type="redirect" name="success">storyConstantList</result>
+		</action>
+		<!-- 剧情常量的删除操作 -->
+		<action name="delStoryConstant" class="com.dataconfig.action.DelStoryConstant" method="executeDel"></action>
+		<!-- 剧情常量的修改操作 -->
+		<action name="updateStoryConstant" class="com.dataconfig.action.UpdateStoryConstant">
+			<result name="input">updateStoryConstant.jsp</result>
+			<result type="redirect" name="success">storyConstantList</result>
+		</action>
+		
+		<!-- 多倍活动配置的查询操作 -->
+		<action name="multipleActivityConfigList" class="com.dataconfig.action.MultipleActivityConfigList">
+			<result>multipleActivityConfigList.jsp</result>
+		</action>
+		<!-- 多倍活动配置的新增操作 -->
+		<action name="addMultipleActivityConfig" class="com.dataconfig.action.AddMultipleActivityConfig">
+			<result name="input">addMultipleActivityConfig.jsp</result>
+			<result type="redirect" name="success">multipleActivityConfigList</result>
+		</action>
+		<!-- 多倍活动配置的删除操作 -->
+		<action name="delMultipleActivityConfig" class="com.dataconfig.action.DelMultipleActivityConfig" method="executeDel"></action>
+		<!-- 多倍活动配置的修改操作 -->
+		<action name="updateMultipleActivityConfig" class="com.dataconfig.action.UpdateMultipleActivityConfig">
+			<result name="input">updateMultipleActivityConfig.jsp</result>
+			<result type="redirect" name="success">multipleActivityConfigList</result>
+		</action>
+		
+		<!-- 问卷配置的查询操作 -->
+		<action name="questionnaireConstantList" class="com.dataconfig.action.QuestionnaireConstantList">
+			<result>questionnaireConstantList.jsp</result>
+		</action>
+		<!-- 问卷配置的新增操作 -->
+		<action name="addQuestionnaireConstant" class="com.dataconfig.action.AddQuestionnaireConstant">
+			<result name="input">addQuestionnaireConstant.jsp</result>
+			<result type="redirect" name="success">questionnaireConstantList</result>
+		</action>
+		<!-- 问卷配置的删除操作 -->
+		<action name="delQuestionnaireConstant" class="com.dataconfig.action.DelQuestionnaireConstant" method="executeDel"></action>
+		<!-- 问卷配置的修改操作 -->
+		<action name="updateQuestionnaireConstant" class="com.dataconfig.action.UpdateQuestionnaireConstant">
+			<result name="input">updateQuestionnaireConstant.jsp</result>
+			<result type="redirect" name="success">questionnaireConstantList</result>
+		</action>
+		
+		<!-- 训练营配置的查询操作 -->
+		<action name="trainingConfigList" class="com.dataconfig.action.TrainingConfigList">
+			<result>trainingConfigList.jsp</result>
+		</action>
+		<!-- 训练营配置的修改操作 -->
+		<action name="updateTrainingConfig" class="com.dataconfig.action.UpdateTrainingConfig">
+			<result name="input">updateTrainingConfig.jsp</result>
+			<result type="redirect" name="success">trainingConfigList</result>
+		</action>
+		
+		<!-- 炼金术配置的查询操作 -->
+		<action name="alchemyConstantList" class="com.dataconfig.action.AlchemyConstantList">
+			<result>alchemyConstantList.jsp</result>
+		</action>
+		
+		<!-- 基因改造属性配置的查询操作 -->
+		<action name="attrConstantList" class="com.dataconfig.action.AttrConstantList">
+			<result>attrConstantList.jsp</result>
+		</action>
+		
+		<!-- 基因改造消费配置的查询操作 -->
+		<action name="geneCostConstantList" class="com.dataconfig.action.GeneCostConstantList">
+			<result>geneCostConstantList.jsp</result>
+		</action>
+		
+		<!-- 战斗地图配置的查询操作 -->
+		<action name="mapConstantList" class="com.dataconfig.action.MapConstantList">
+			<result>mapConstantList.jsp</result>
+		</action>
+		
+		<!-- 商店产出配置的查询操作 -->
+		<action name="shopConstantList" class="com.dataconfig.action.ShopConstantList">
+			<result>shopConstantList.jsp</result>
+		</action>
+		
+		<!-- 实验室开放科技配置的查询操作 -->
+		<action name="technologyOpenConstantList" class="com.dataconfig.action.TechnologyOpenConstantList">
+			<result>technologyOpenConstantList.jsp</result>
+		</action>
+		
+		<!-- 装备扩展常量的查询操作 -->
+		<action name="equipmentExtList" class="com.dataconfig.action.EquipmentExtList">
+			<result>equipmentExtList.jsp</result>
+		</action>
+		
+		<!-- 装备强化配置的查询操作 -->
+		<action name="equipmentStrengthList" class="com.dataconfig.action.EquipmentStrengthList">
+			<result>equipmentStrengthList.jsp</result>
+		</action>
+		
+		<!-- 好友帮助常量的查询操作 -->
+		<action name="helpConstantList" class="com.dataconfig.action.HelpConstantList">
+			<result>helpConstantList.jsp</result>
+		</action>
+		
+		<!-- 英雄亲密度配置的查询操作 -->
+		<action name="heroIntimacyConstantList" class="com.dataconfig.action.HeroIntimacyConstantList">
+			<result>heroIntimacyConstantList.jsp</result>
+		</action>
+		
+		<!-- 宝石常量的查询操作 -->
+		<action name="jewelConstantList" class="com.dataconfig.action.JewelConstantList">
+			<result>jewelConstantList.jsp</result>
+		</action>
+		
+		<!-- 活跃事件常量的查询操作 -->
+		<action name="activeEventList" class="com.dataconfig.action.ActiveEventList">
+			<result>activeEventList.jsp</result>
+		</action>
+		
+		<!-- 丧尸基因常量的查询操作 -->
+		<action name="monsterGeneConstantList" class="com.dataconfig.action.MonsterGeneConstantList">
+			<result>monsterGeneConstantList.jsp</result>
+		</action>
+		
+		<!-- 宠物进阶配置的查询操作 -->
+		<action name="evoutionGraphConstantList" class="com.dataconfig.action.EvoutionGraphConstantList">
+			<result>evoutionGraphConstantList.jsp</result>
+		</action>
+		
+		<!-- 充值道具配置的查询操作 -->
+		<action name="payBuyPresentList" class="com.dataconfig.action.PayBuyPresentList">
+			<result>payBuyPresentList.jsp</result>
+		</action>
+		
+		<!-- 充值回馈配置的查询操作 -->
+		<action name="payFeedBackList" class="com.dataconfig.action.PayFeedBackList">
+			<result>payFeedBackList.jsp</result>
+		</action>
+		
+		<!-- 驯兽术常量的查询操作 -->
+		<action name="petTrainingList" class="com.dataconfig.action.PetTrainingList">
+			<result>petTrainingList.jsp</result>
+		</action>
+		
+		<!-- 宠物解锁配置的查询操作 -->
+		<action name="petUnlockList" class="com.dataconfig.action.PetUnlockList">
+			<result>petUnlockList.jsp</result>
+		</action>
+		
+		<!-- 射箭掉落配置的查询操作 -->
+		<action name="rewardConstantList" class="com.dataconfig.action.RewardConstantList">
+			<result>rewardConstantList.jsp</result>
+		</action>
+		
+		<!-- 奖励配置的查询操作 -->
+		<action name="globalRewardConstantList" class="com.dataconfig.action.GlobalRewardConstantList">
+			<result>globalRewardConstantList.jsp</result>
+		</action>
+		
+		<!-- 监狱常量的查询操作 -->
+		<action name="prisonConstantList" class="com.dataconfig.action.PrisonConstantList">
+			<result>prisonConstantList.jsp</result>
+		</action>
+		
+		<!-- 日常任务奖励配置的查询操作 -->
+		<action name="dailyConstantList" class="com.dataconfig.action.DailyConstantList">
+			<result>dailyConstantList.jsp</result>
+		</action>
+		
+		<!-- 活动中心奖励的查询操作 -->
+		<action name="aRewardConstantList" class="com.dataconfig.action.ARewardConstantList">
+			<result>aRewardConstantList.jsp</result>
+		</action>
+		
+		<!-- 军团商城的查询操作 -->
+		<action name="guildMallList" class="com.dataconfig.action.GuildMallList">
+			<result>guildMallList.jsp</result>
+		</action>
+		
+		<!-- 怪物图鉴的查询操作 -->
+		<action name="monsterAttributeList" class="com.dataconfig.action.MonsterAttributeList">
+			<result>monsterAttributeList.jsp</result>
+		</action>
+		
+		<!-- 章节常量的查询操作 -->
+		<action name="sectionConstantList" class="com.dataconfig.action.SectionConstantList">
+			<result>sectionConstantList.jsp</result>
+		</action>
+		
+		<!-- 战斗提示的查询操作 -->
+		<action name="baTipsConstantList" class="com.dataconfig.action.BaTipsConstantList">
+			<result>baTipsConstantList.jsp</result>
+		</action>
+		
+	</package>
+</struts>

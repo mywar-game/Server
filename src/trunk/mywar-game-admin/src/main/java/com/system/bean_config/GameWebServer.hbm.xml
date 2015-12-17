@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-3-4 13:19:46 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.system.bo.GameWebServer" table="game_server">
+        <id name="serverId" type="java.lang.String">
+            <column name="SERVER_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="serverName" type="java.lang.String">
+            <column name="server_name" not-null="true" />
+        </property>
+        <property name="serverUrl" type="java.lang.String">
+            <column name="SERVER_URL" not-null="true" />
+        </property>
+        <property name="serverPort" type="java.lang.Integer">
+            <column name="SERVER_PORT" not-null="true" />
+        </property>
+        <property name="apiPort" type="java.lang.Integer">
+            <column name="API_PORT" not-null="true" />
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="status" not-null="true" />
+        </property>
+        <property name="createTime" type="java.sql.Timestamp">
+            <column name="CREATE_TIME" not-null="true" />
+        </property>
+        <property name="openTime" type="java.sql.Timestamp">
+            <column name="OPEN_TIME" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

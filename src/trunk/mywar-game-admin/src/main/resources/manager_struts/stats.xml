@@ -1,0 +1,442 @@
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+        "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- 一个包可以就是一个模块 -->
+	<package name="stats" extends="managerInterceptor" namespace="/module/stats">
+		<!-- 一个包下可以放这个模块下的所有action -->
+
+		<!-- 玩家每天登入统计查询 -->
+		<action name="userEverydayLoginStatsList*" class="com.stats.action.UserEverydayLoginStatsList"
+			method="{1}">
+			<result>userEverydayLoginStatsList.jsp</result>
+		</action>
+
+		<!-- 玩家创建角色流失统计查询 -->
+		<action name="userCreateRoleLossStatsList*" class="com.stats.action.UserCreateRoleLossStatsList"
+			method="{1}">
+			<result>userCreateRoleLossStatsList.jsp</result>
+		</action>
+
+		<!--用户活跃统计查询 -->
+		<action name="userActiveStatsList*" class="com.stats.action.UserActiveStatsList"
+			method="{1}">
+			<result>userActiveStatsList.jsp</result>
+		</action>
+
+		<!--在线人数统计查询 -->
+		<action name="userOnlineStatsList" class="com.stats.action.UserOnlineStatsList">
+			<result>userOnlineStatsList.jsp</result>
+		</action>
+
+		<!--玩家节点流失统计查询 -->
+		<action name="userNodeLossStatsList" class="com.stats.action.UserNodeLossStatsList">
+			<result>userNodeLossStatsList.jsp</result>
+		</action>
+
+		<!-- 玩家节点统计 -->
+		<action name="userNodeStatsList" class="com.stats.action.UserNodeStatsList">
+			<result name="success">userNodeStatsList.jsp</result>
+		</action>
+
+		<!--玩家等级流失统计查询 -->
+		<action name="userLevelLossStatsList" class="com.stats.action.UserLevelLossStatsList">
+			<result>userLevelLossStatsList.jsp</result>
+		</action>
+
+		<!-- 随着时间玩家流失统计查询 -->
+		<action name="userTimeLossStatsList" class="com.stats.action.UserTimeLossStatsList">
+			<result>userTimeLossStatsList.jsp</result>
+		</action>
+
+		<!-- 玩家装备强化、镶嵌、打造次数统计查询 -->
+		<action name="userEquipmentModifyStatsList" class="com.stats.action.UserEquipmentModifyStatsList">
+			<result>userEquipmentModifyStatsList.jsp</result>
+		</action>
+
+		<!-- 玩家道具统计查询 -->
+		<action name="userOperateTreasureStatsList" class="com.stats.action.UserOperateTreasureStatsList">
+			<result>userOperateTreasureStatsList.jsp</result>
+		</action>
+
+		<!-- 玩家军团统计查询 -->
+		<action name="userGuildStatsList" class="com.stats.action.UserGuildStatsList">
+			<result>userGuildStatsList.jsp</result>
+		</action>
+
+		<!-- 玩家钻石统计查询 -->
+		<action name="userDiamondStatsList" class="com.stats.action.UserDiamondStatsList">
+			<result>userDiamondStatsList.jsp</result>
+		</action>
+
+		<!-- 关卡统计查询 -->
+		<action name="pveStatsList" class="com.stats.action.PveStatsList">
+			<result>pveStatsList.jsp</result>
+		</action>
+
+		<!-- 充值区间统计查询 -->
+		<action name="payIntervalStatsList" class="com.stats.action.PayIntervalStatsList">
+			<result>payIntervalStatsList.jsp</result>
+		</action>
+
+		<!-- 玩家充值统计查询 -->
+		<action name="userPayStatsList" class="com.stats.action.UserPayStatsList">
+			<result>userPayStatsList.jsp</result>
+		</action>
+
+		<!-- 玩家等级区间充值总数查询 -->
+		<action name="userLevelIntervalPayStatsList" class="com.stats.action.UserLevelIntervalPayStatsList">
+			<result>userLevelIntervalPayStatsList.jsp</result>
+		</action>
+
+		<!-- 玩家等级区间各类型消费统计 -->
+		<action name="userLevelIntervalConsumeStatsList"
+			class="com.stats.action.UserLevelIntervalConsumeStatsList">
+			<result>userLevelIntervalConsumeStatsList.jsp</result>
+		</action>
+
+		<!-- 玩家每等级区间的各活跃天数区间的人数和消费统计 -->
+		<action name="userLevelIntervalActiveDaysAndConsumStatsList"
+			class="com.stats.action.UserLevelIntervalActiveDaysAndConsumStatsList">
+			<result>userLevelIntervalActiveDaysAndConsumStatsList.jsp</result>
+		</action>
+
+		<!-- 玩家消费统计（按日期） -->
+		<action name="userConsumeStatsList" class="com.stats.action.UserConsumeStatsList">
+			<result>userConsumeStatsList.jsp</result>
+		</action>
+
+
+
+		<!-- 玩家刷新英雄统计查询 -->
+		<action name="userRefreshHeroStatsList" class="com.stats.action.UserRefreshHeroStatsList">
+			<result>userRefreshHeroStatsList.jsp</result>
+		</action>
+
+		<!-- 好友拜访统计查询 -->
+		<action name="userFriendVisitStatsList" class="com.stats.action.UserFriendVisitStatsList">
+			<result>userFriendVisitStatsList.jsp</result>
+		</action>
+
+		<!-- 天梯排位赛统计查询 -->
+		<action name="ladderRankBattleStatsList" class="com.stats.action.LadderRankBattleStatsList">
+			<result>ladderRankBattleStatsList.jsp</result>
+		</action>
+
+		<!-- 英雄和宠物出战次数统计查询 -->
+		<action name="heroAndPetBattleTimesStatsList" class="com.stats.action.HeroAndPetBattleTimesStatsList">
+			<result>heroAndPetBattleTimesStatsList.jsp</result>
+		</action>
+
+		<!-- IP统计查询 -->
+		<action name="userIpStatsList" class="com.stats.action.UserIpStatsList">
+			<result>userIpStatsList.jsp</result>
+		</action>
+
+		<!-- 付费用户信息统计查询 -->
+		<action name="payUserInfoStatsList" class="com.stats.action.PayUserInfoStatsList">
+			<result>payUserInfoStatsList.jsp</result>
+		</action>
+
+		<!-- 玩家某段时间内登录统计查询 -->
+		<action name="userInSomeTimeLoginStatsList" class="com.stats.action.UserInSomeTimeLoginStatsList">
+			<result>userInSomeTimeLoginStatsList.jsp</result>
+		</action>
+
+		<!-- 玩家性别统计查询 -->
+		<action name="userSexStatsList" class="com.stats.action.UserSexStatsList">
+			<result>userSexStatsList.jsp</result>
+		</action>
+
+		<!-- 问卷统计查询 -->
+		<action name="userQuestionnaireStatsList" class="com.stats.action.UserQuestionnaireStatsList">
+			<result>userQuestionnaireStatsList.jsp</result>
+		</action>
+
+		<!-- 留存统计查询 -->
+		<action name="userRemainStatsList" class="com.stats.action.UserRemainStatsList">
+			<result>userRemainStatsList.jsp</result>
+		</action>
+		<!-- 留存统计查询(by idfa) -->
+		<action name="userRemainStatsByIdfaList" class="com.stats.action.UserRemainStatsByIdfaList">
+			<result>userRemainByIdfaStatsList.jsp</result>
+		</action>
+		<!-- 留存统计查询(by ip) -->
+		<action name="userRemainStatsByIpList" class="com.stats.action.UserRemainStatsByIpList">
+			<result>userRemainByIpStatsList.jsp</result>
+		</action>
+
+		<!-- task统计查询 -->
+		<action name="taskManagerStatsList" class="com.stats.action.TaskManagerStatsList">
+			<result>taskManagerStatsList.jsp</result>
+		</action>
+
+		<!-- msg统计查询 -->
+		<action name="msgStataManagerList" class="com.stats.action.MsgStataManagerList">
+			<result>msgStataManagerList.jsp</result>
+		</action>
+
+		<!--memcache使用记录查询 -->
+		<action name="memcacheUseRecord" class="com.stats.action.MemcacheUseRecord">
+			<result>memcacheUseRecordList.jsp</result>
+		</action>
+
+		<!--再登录率统计 -->
+		<action name="userReLoginStatsList" class="com.stats.action.UserReLoginStatsList">
+			<result>userReLoginStatsList.jsp</result>
+		</action>
+
+		<!-- 激活码各平台统计 -->
+		<action name="activationCodePlatformStats" class="com.stats.action.ActivationCodePlatformStats">
+			<result>activationCodePlatformStats.jsp</result>
+		</action>
+
+		<!-- 常规数据统计 -->
+		<action name="normalDataStatsList" class="com.stats.action.NormalDataStatsList">
+			<result>normalDataStatsList.jsp</result>
+		</action>
+
+		<!-- 充值统计 -->
+		<action name="rechargeStatsList" class="com.stats.action.RechargeStatsList">
+			<result>rechargeStatsList.jsp</result>
+		</action>
+
+		<!-- 玩家vip统计 -->
+		<action name="userVipStatsList" class="com.stats.action.UserVipStatsList">
+			<result>userVipStatsList.jsp</result>
+		</action>
+		
+		<!-- 玩家vip统计(汇总) -->
+		<action name="userVipTotalStatsList" class="com.stats.action.UserVipTotalStatsList">
+			<result>userVipTotalStatsList.jsp</result>
+		</action>
+
+		<!-- 商城TOP10统计 -->
+		<action name="userMallRankStatsList" class="com.stats.action.UserMallRankStatsList">
+			<result>userMallRankStatsList.jsp</result>
+		</action>
+
+		<!-- 银币统计 -->
+		<action name="userCopperStatsList" class="com.stats.action.UserCopperStatsList">
+			<result>userCopperStatsList.jsp</result>
+		</action>
+
+		<!-- 玩家等级统计 -->
+		<action name="userLevelStatsList" class="com.stats.action.UserLevelStatsList">
+			<result>userLevelStatsList.jsp</result>
+		</action>
+
+		<!-- 装备统计 -->
+		<action name="userEquipStatsList" class="com.stats.action.UserEquipStatsList">
+			<result>userEquipStatsList.jsp</result>
+		</action>
+
+		<!-- 联运统计 -->
+		<!--今日汇总 -->
+		<action name="summaryDataList" class="com.stats.action.SummaryDataList">
+			<result>summaryDataList.jsp</result>
+		</action>
+		<!--历史汇总 -->
+		<action name="summaryDataHistoryList" class="com.stats.action.SummaryDataHistoryList">
+			<result>summaryDataHistoryList.jsp</result>
+		</action>
+		<!--在线人数统计 -->
+		<action name="onlineDetailStatsList" class="com.stats.action.OnlineDetailStatsList">
+			<result>onlineDetailStatsList.jsp</result>
+		</action>
+		<!--充值数据分析 -->
+		<action name="payDataAnalyze" class="com.stats.action.PayDataAnalyze">
+			<result>payDataAnalyze.jsp</result>
+		</action>
+		<!--充值明细 -->
+		<action name="userPayDetailList" class="com.stats.action.UserPayDetailList">
+			<result>userPayDetailList.jsp</result>
+		</action>
+		<!--充值排行榜 -->
+		<action name="userPayRankList" class="com.stats.action.UserPayRankList">
+			<result>userPayRankList.jsp</result>
+		</action>
+		<!--今日注册 -->
+		<action name="registerStatsList" class="com.stats.action.RegisterStatsList">
+			<result>registerStatsList.jsp</result>
+		</action>
+		<!--历史注册 -->
+		<action name="registerStatsHistoryList" class="com.stats.action.RegisterStatsHistoryList">
+			<result>registerStatsHistoryList.jsp</result>
+		</action>
+
+		<!--今日登陆 -->
+		<action name="loginStatsList" class="com.stats.action.LoginStatsList">
+			<result>loginStatsList.jsp</result>
+		</action>
+		<!--历史登陆 -->
+		<action name="loginStatsHistoryList" class="com.stats.action.LoginStatsHistoryList">
+			<result>loginStatsHistoryList.jsp</result>
+		</action>
+
+		<!--今日商城数据 -->
+		<action name="mallStatsList" class="com.stats.action.MallStatsList">
+			<result>mallStatsList.jsp</result>
+		</action>
+		<!--历史商城数据 -->
+		<action name="mallStatsHistoryList" class="com.stats.action.MallStatsHistoryList">
+			<result>mallStatsHistoryList.jsp</result>
+		</action>
+		<!--等级分布数据数据 -->
+		<action name="levelStatsList" class="com.stats.action.LevelStatsList">
+			<result>levelStatsList.jsp</result>
+		</action>
+
+		<!--联运-今日汇总 -->
+		<action name="summaryDataAoList" class="com.stats.action.SummaryDataAoList">
+			<result>summaryDataAoList.jsp</result>
+		</action>
+		<!--联运-历史汇总 -->
+		<action name="summaryDataAoHistoryList" class="com.stats.action.SummaryDataAoHistoryList">
+			<result>summaryDataAoHistoryList.jsp</result>
+		</action>
+		<!--联运-在线人数分析 -->
+		<action name="onlineDetailStatsAoList" class="com.stats.action.OnlineDetailStatsAoList">
+			<result>onlineDetailStatsAoList.jsp</result>
+		</action>
+		<!--联运-充值数据分析 -->
+		<action name="payDataAnalyzeAo" class="com.stats.action.PayDataAnalyzeAo">
+			<result>payDataAnalyzeAo.jsp</result>
+		</action>
+		<!--联运-充值明细 -->
+		<action name="userPayDetailAoList" class="com.stats.action.UserPayDetailAoList">
+			<result>userPayDetailAoList.jsp</result>
+		</action>
+		<!--联运-充值排行榜 -->
+		<action name="userPayRankAoList" class="com.stats.action.UserPayRankAoList">
+			<result>userPayRankAoList.jsp</result>
+		</action>
+		<!--联运-今日注册数据 -->
+		<action name="registerStatsAoList" class="com.stats.action.RegisterStatsAoList">
+			<result>registerStatsAoList.jsp</result>
+		</action>
+		<!--联运-历史注册数据 -->
+		<action name="registerStatsAoHistoryList" class="com.stats.action.RegisterStatsAoHistoryList">
+			<result>registerStatsAoHistoryList.jsp</result>
+		</action>
+		<!--联运-等级分布数据数据 -->
+		<action name="levelStatsAoList" class="com.stats.action.LevelStatsAoList">
+			<result>levelStatsAoList.jsp</result>
+		</action>
+		<!--联运-今日登陆数据 -->
+		<action name="loginStatsAoList" class="com.stats.action.LoginStatsAoList">
+			<result>loginStatsAoList.jsp</result>
+		</action>
+		<!--联运-历史登陆数据 -->
+		<action name="loginStatsAoHistoryList" class="com.stats.action.LoginStatsAoHistoryList">
+			<result>loginStatsAoHistoryList.jsp</result>
+		</action>
+
+
+		<!--统计首页数据 -->
+		<action name="statsAction" class="com.stats.action.StatsAction">
+			<result>../../index.jsp</result>
+		</action>
+
+		<!--拆分英雄、道具、装备、资源、战斗表数据 -->
+		<action name="tableAction" class="com.stats.action.TableAction">
+			<result>../../index.jsp</result>
+		</action>
+		
+		<!-- 角色分布统计 -->
+		<action name="userDistributionList" class="com.stats.action.UserDistributionList">
+			<result>userDistributionList.jsp</result>
+		</action>
+		<!-- idfa统计 -->
+		<action name="idfaList" class="com.stats.action.IDFAList">
+			<result>idfaList.jsp</result>
+		</action>
+		<!-- mobile统计 -->
+		<action name="mobileList" class="com.stats.action.MOBILEList">
+			<result>mobileList.jsp</result>
+		</action>
+		<!-- 玩家每周登入统计 -->
+		<action name="userEveryWeekLoginStatsList" class="com.stats.action.UserEveryWeekLoginStatsList">
+			<result>userEveryWeekLoginStatsList.jsp</result>
+		</action>
+		<!-- 玩家每月登入统计 -->
+		<action name="userEveryMonthLoginStatsList" class="com.stats.action.UserEveryMonthLoginStatsList">
+			<result>userEveryMonthLoginStatsList.jsp</result>
+		</action>
+		<!-- 付费账号数统计 -->
+		<action name="payList" class="com.stats.action.PayList">
+			<result>payList.jsp</result>
+		</action>
+		<!-- 玩家登入实时查询统计 -->
+		<action name="userLoginSearchList" class="com.stats.action.UserLoginSearchList">
+			<result>userLoginSearchList.jsp</result>
+		</action>
+		<!-- 重新采集 -->
+		<action name="reCollector" class="com.stats.action.ReCollector">
+			<result>reCollector.jsp</result>
+		</action>
+		<!-- 留存统计 分渠道 -->
+		<action name="userRemainStatsByChannel" class="com.stats.action.UserRemainStatsByChannelList">
+			<result>userRemainByChannelStatsList.jsp</result>
+		</action>
+		<!-- 声望统计 -->
+		<action name="prestigeStatsList" class="com.stats.action.PrestigeStatsList">
+			<result>prestigeStatsList.jsp</result>
+		</action>
+		
+		<!-- 争霸统计 -->
+		<action name="zhengbaStatsList" class="com.stats.action.ZhengbaStatsList">
+			<result>userZhengbaStatsList.jsp</result>
+		</action>
+		
+		<!-- 夺宝统计 -->
+		<action name="plunderStatsList" class="com.stats.action.PlunderStatsList">
+			<result>userPlunderStatsList.jsp</result>
+		</action>
+		
+		<!-- 世界boss统计 -->
+		<action name="bossStatsList" class="com.stats.action.BossStatsList">
+			<result>bossStatsList.jsp</result>
+		</action>
+		
+		<!-- 大富翁 -->
+		<action name="userLoginDrawStatsList" class="com.stats.action.UserLoginDrawStatsList">
+			<result>userLoginDrawStatsList.jsp</result>
+		</action>
+		
+		<!-- 用户充值统计 -->
+		<action name="userPayLogStatsList" class="com.stats.action.UserPayLogStatsList">
+			<result>userPayLogStatsList.jsp</result>
+		</action>
+		
+		<!-- 玩家充值日志  供充值用户数据综合查询 用  -->
+		<action name="userPayHistoryLogListOrder" class="com.stats.action.UserPayHistoryLogListOrder">
+			<result name="success">userPayHistoryLogListOrder.jsp</result>
+		</action>
+		
+		<!-- 作弊统计 -->
+		<action name="cheatStatsList" class="com.stats.action.CheatStatsList">
+			<result name="success">cheatStatsList.jsp</result>
+		</action>
+		
+		<!-- VIP会员钻石统计 -->
+		<action name="vipUserDiamondStatsList" class="com.stats.action.VipUserDiamondStatsList">
+			<result name="success">vipUserDiamondStatsList.jsp</result>
+		</action>
+		
+		<!-- 军团统计 -->
+		<action name="legionStatsList" class="com.stats.action.LegionStatsList">
+			<result name="success">legionStatsList.jsp</result>
+		</action>
+		
+		<!-- 战魂统计 -->
+		<action name="equipStatsList" class="com.stats.action.EquipStatsList">
+			<result name="success">equipStatsList.jsp</result>
+		</action>
+		
+		<!-- 天界激斗统计 -->
+		<action name="competitionStatsList" class="com.stats.action.CompetitionStatsList">
+			<result name="success">competitionStatsList.jsp</result>
+		</action>
+	</package>
+</struts>

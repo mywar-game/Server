@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	 	http://www.springframework.org/schema/aop 
+	 	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+     	http://www.springframework.org/schema/tx 
+     	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	<!-- 下行消息发送器 -->
+	<bean id="serverMsgSender" class="com.fantingame.game.server.msg.ServerMsgSender">
+		<property name="pool" ref="serverWorkerThreadPoolBean" />
+	</bean>
+	<!-- 下行消息线程池 -->
+	<bean id="serverWorkerThreadPoolBean" class="com.fantingame.game.server.threadpool.ThreadPoolBean">
+		<!-- 线程名称 -->
+		<constructor-arg value="下行消息线程池(msg deal)"/>				
+		<!-- coreSize线程核心大小 -->
+		<constructor-arg value="30"/>
+		<!-- maxSize线程最大大小 -->
+		<constructor-arg value="50"/>
+		<!-- maxQueneLength最大队列长度 -->
+		<constructor-arg value="1000"/>
+		<!-- aliveTime超标线程存活时间 -->
+		<constructor-arg value="5000"/>
+	</bean>
+	<!-- 本地配置工具 -->
+	<bean id="LocalConfigTools" class="com.fantingame.game.server.config.LocalTools">
+		<property name="localConfig" ref="localConfig"/>
+	</bean>
+	<bean id="localConfig" class="com.fantingame.game.server.config.LocalConfig">
+	    <property name="serverType" value="${server.serverType}"></property>
+		<!-- 服务器与服务器间通讯MD5key -->
+		<property name="md5Key" value="${server.md5Str}" />
+	</bean>
+</beans>

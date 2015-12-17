@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-3-7 12:42:48 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.system.bo.GameWeb" table="game_web">
+        <id name="serverId" type="java.lang.Integer">
+            <column name="server_id" />
+            <generator class="identity" />
+        </id>
+        <property name="serverName" type="string">
+            <column name="server_name" length="64" not-null="true">
+                <comment>服务器名称</comment>
+            </column>
+        </property>
+        <property name="serverIp" type="string">
+            <column name="server_ip" length="32" not-null="true">
+                <comment>服务器IP</comment>
+            </column>
+        </property>
+        <property name="serverPort" type="int">
+            <column name="server_port" not-null="true">
+                <comment>服务器端口</comment>
+            </column>
+        </property>
+        <property name="dbIp" type="string">
+            <column name="db_ip" length="32" not-null="true">
+                <comment>数据库地址</comment>
+            </column>
+        </property>
+        <property name="dbPort" type="int">
+            <column name="db_port" not-null="true">
+                <comment>数据库端口</comment>
+            </column>
+        </property>
+        <property name="dbName" type="string">
+            <column name="db_name" length="64" not-null="true">
+                <comment>数据库名称</comment>
+            </column>
+        </property>
+        <property name="userName" type="string">
+            <column name="user_name" length="64" not-null="true">
+                <comment>用户名</comment>
+            </column>
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="64" not-null="true">
+                <comment>密码</comment>
+            </column>
+        </property>
+        <property name="giftDbIp" type="string">
+            <column name="gift_db_ip" length="32" not-null="true">
+                <comment>礼包码数据库地址</comment>
+            </column>
+        </property>
+        <property name="giftDbPort" type="int">
+            <column name="gift_db_port" not-null="true">
+                <comment>礼包码数据库端口</comment>
+            </column>
+        </property>
+        <property name="giftDbName" type="string">
+            <column name="gift_db_name" length="64" not-null="true">
+                <comment>礼包码数据库名称</comment>
+            </column>
+        </property>
+        <property name="giftUserName" type="string">
+            <column name="gift_user_name" length="64" not-null="true">
+                <comment>礼包码数据库用户名</comment>
+            </column>
+        </property>
+        <property name="giftPassword" type="string">
+            <column name="gift_password" length="64" not-null="true">
+                <comment>礼包码数据库密码</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

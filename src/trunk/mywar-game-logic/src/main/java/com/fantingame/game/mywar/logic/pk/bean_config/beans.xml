@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	 	http://www.springframework.org/schema/aop 
+	 	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+     	http://www.springframework.org/schema/tx 
+     	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+     
+     <bean id="pkAction" class="com.fantingame.game.mywar.logic.pk.action.PkAction"></bean>
+     <bean id="pkService" class="com.fantingame.game.mywar.logic.pk.service.PkService"></bean>
+     
+     <!-- 单线程配置 -->
+     <bean id ="enterPkThread" class="com.fantingame.game.mywar.logic.pk.action.EnterPkThread"></bean>
+     
+     <bean id="userPkInfoDaoMysqlImpl" class="com.fantingame.game.mywar.logic.pk.dao.mysql.UserPkInfoDaoMysqlImpl"></bean>
+     <bean id="userPkInfoDao" class="com.fantingame.game.mywar.logic.pk.dao.cache.UserPkInfoDaoCacheImpl">
+     	<property name="userPkInfoDaoMysqlImpl" ref="userPkInfoDaoMysqlImpl"></property>
+     </bean>
+     
+     <bean id="userPkDefenceHeroDaoMysqlImpl" class="com.fantingame.game.mywar.logic.pk.dao.mysql.UserPkDefenceHeroDaoMysqlImpl"></bean>
+     <bean id="userPkDefenceHeroDao" class="com.fantingame.game.mywar.logic.pk.dao.cache.UserPkDefenceHeroDaoCacheImpl">
+     	<property name="userPkDefenceHeroDaoMysqlImpl" ref="userPkDefenceHeroDaoMysqlImpl"></property>
+     </bean>
+     
+     <bean id="userPkLogDaoMysqlImpl" class="com.fantingame.game.mywar.logic.pk.dao.mysql.UserPkLogDaoMysqlImpl"></bean>
+     <bean id="userPkLogDao" class="com.fantingame.game.mywar.logic.pk.dao.cache.UserPkLogDaoCacheImpl">
+     	<property name="userPkLogDaoMysqlImpl" ref="userPkLogDaoMysqlImpl"></property>
+     </bean>
+     
+     <bean id="userPkMallLogDaoMysqlImpl" class="com.fantingame.game.mywar.logic.pk.dao.mysql.UserPkMallLogDaoMysqlImpl"></bean>
+     <bean id="userPkMallLogDao" class="com.fantingame.game.mywar.logic.pk.dao.cache.UserPkMallLogDaoCacheImpl">
+     	<property name="userPkMallLogDaoMysqlImpl" ref="userPkMallLogDaoMysqlImpl"></property>
+     </bean>
+     
+     <bean id="systemHonourExchangeDao" class="com.fantingame.game.mywar.logic.pk.dao.cache.SystemHonourExchangeDaoCache"></bean>
+     <bean id="systemPkRankRewardDao" class="com.fantingame.game.mywar.logic.pk.dao.cache.SystemPkRankRewardDaoCache"></bean>
+     
+     <!-- Hour values must be between 0 and 23 -->
+	 <bean id="rankRewardScheduler" class="com.fantingame.game.mywar.logic.pk.schduler.RankRewardScheduler">
+         <property name="cronExpression" value="0 0 23 * * ?"></property>	 
+     </bean>
+     
+</beans>

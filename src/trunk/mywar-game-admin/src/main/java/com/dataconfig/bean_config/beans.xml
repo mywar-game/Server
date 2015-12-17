@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- 配置常量dao -->
+	<bean id="sParamConfigDao" class="com.dataconfig.dao.SParamConfigDao"></bean>
+	<!-- 配置常量service -->
+	<bean id="sParamConfigService" class="com.dataconfig.service.SParamConfigService">
+		<property name="sParamConfigDao" ref="sParamConfigDao"></property>
+	</bean>
+	
+	<!-- 任务常量dao -->
+	<bean id="mMissionConstantDao" class="com.dataconfig.dao.MMissionConstantDao"></bean>
+	<!-- 任务常量service -->
+	<bean id="mMissionConstantService" class="com.dataconfig.service.MMissionConstantService">
+		<property name="mMissionConstantDao" ref="mMissionConstantDao"></property>
+	</bean>
+	
+	<!-- 英雄常量dao -->
+	<bean id="hHeroConstantDao" class="com.dataconfig.dao.HHeroConstantDAO"></bean>
+	<!-- 英雄常量service -->
+	<bean id="hHeroConstantService" class="com.dataconfig.service.HHeroConstantService">
+		<property name="hHeroConstantDAO" ref="hHeroConstantDao"></property>
+	</bean>
+
+	<!-- 装备常量dao -->
+	<bean id="systemEquipDao" class="com.dataconfig.dao.SystemEquipDao"></bean>
+	<bean id="eEquipmentConstantDao" class="com.dataconfig.dao.EEquipmentConstantDao"></bean>
+	<!-- 装备常量service -->
+	<bean id="eEquipmentConstantService" class="com.dataconfig.service.EEquipmentConstantService">
+		<property name="systemEquipDao" ref="systemEquipDao"></property>
+		<property name="eEquipmentConstantDao" ref="eEquipmentConstantDao"></property>
+	</bean>
+	
+	<!-- 技能常量dao -->
+	<bean id="sSkillConstantDao" class="com.dataconfig.dao.SSkillConstantDao"></bean>
+	<!-- 技能常量service -->
+	<bean id="sSkillConstantService" class="com.dataconfig.service.SSkillConstantService">
+		<property name="sSkillConstantDao" ref="sSkillConstantDao"></property>
+	</bean>
+	
+	<!-- 技能效果常量dao -->
+	<bean id="sEffectConstantDao" class="com.dataconfig.dao.SEffectConstantDao"></bean>
+	<!-- 技能效果常量service -->
+	<bean id="sEffectConstantService" class="com.dataconfig.service.SEffectConstantService">
+		<property name="sEffectConstantDao" ref="sEffectConstantDao"></property>
+	</bean>
+	
+	<!-- 怪物常量dao -->
+	<bean id="mMonsterConstantDao" class="com.dataconfig.dao.MMonsterConstantDao"></bean>
+	<!-- 怪物常量service -->
+	<bean id="mMonsterConstantService" class="com.dataconfig.service.MMonsterConstantService">
+		<property name="monsterConstantDao" ref="mMonsterConstantDao"></property>
+	</bean>
+	
+	<!-- 关卡常量dao -->
+	<bean id="baPveConstantDao" class="com.dataconfig.dao.BaPveConstantDao"></bean>
+	<bean id="systemforcesDao" class="com.dataconfig.dao.SystemforcesDao"></bean>
+	<bean id="systemSceneDao" class="com.dataconfig.dao.SystemSceneDao"></bean>
+	<!-- 关卡常量service -->
+	<bean id="baPveConstantService" class="com.dataconfig.service.BaPveConstantService">
+		<property name="baPveConstantDao" ref="baPveConstantDao"></property>
+		<property name="systemforcesDao" ref="systemforcesDao"></property>
+		<property name="systemSceneDao" ref="systemSceneDao"></property>
+	</bean>
+	
+	<!-- 建筑常量dao -->
+	<bean id="bBuildingConstantDao" class="com.dataconfig.dao.BBuildingConstantDao"></bean>
+	<!-- 建筑常量service -->
+	<bean id="bBuildingConstantService" class="com.dataconfig.service.BBuildingConstantService">
+		<property name="bBuildingConstantDao" ref="bBuildingConstantDao"></property>
+	</bean>
+	
+	<!-- 建筑约束常量dao -->
+	<bean id="bBuildingconstraintConstantDao" class="com.dataconfig.dao.BBuildingconstraintConstantDao"></bean>
+	<!-- 建筑约束常量service -->
+	<bean id="bBuildingconstraintConstantService" class="com.dataconfig.service.BBuildingconstraintConstantService">
+		<property name="bBuildingconstraintConstantDao" ref="bBuildingconstraintConstantDao"></property>
+	</bean>
+	
+	<!-- 训练假人常量dao -->
+	<bean id="bDummyDao" class="com.dataconfig.dao.BDummyDao"></bean>
+	<!-- 训练假人常量service -->
+	<bean id="bDummyService" class="com.dataconfig.service.BDummyService">
+		<property name="bDummyDao" ref="bDummyDao"></property>
+	</bean>
+	
+	<!-- npc常量dao -->
+	<bean id="bNpcConstantDao" class="com.dataconfig.dao.BNpcConstantDao"></bean>
+	<!-- npc假人常量service -->
+	<bean id="bNpcConstantService" class="com.dataconfig.service.BNpcConstantService">
+		<property name="bNpcConstantDao" ref="bNpcConstantDao"></property>
+	</bean>
+	
+	<!-- 科技常量dao -->
+	<bean id="bTechnologyConstantDao" class="com.dataconfig.dao.BTechnologyConstantDao"></bean>
+	<!-- 科技常量service -->
+	<bean id="bTechnologyConstantService" class="com.dataconfig.service.BTechnologyConstantService">
+		<property name="bTechnologyConstantDao" ref="bTechnologyConstantDao"></property>
+	</bean>
+	
+	<!-- 聊天屏蔽关键字常量dao -->
+	<bean id="cChatKeywordDao" class="com.dataconfig.dao.CChatKeywordDao"></bean>
+	<!-- 聊天屏蔽关键字常量service -->
+	<bean id="cChatKeywordService" class="com.dataconfig.service.CChatKeywordService">
+		<property name="cChatKeywordDao" ref="cChatKeywordDao"></property>
+	</bean>
+	
+	<!-- 军团科技常量dao -->
+	<bean id="guildTechnologyConstantDao" class="com.dataconfig.dao.GGuildTechnologyConstantDao"></bean>
+	<!-- 军团科技常量service -->
+	<bean id="guildTechnologyConstantService" class="com.dataconfig.service.GGuildTechnologyConstantService">
+		<property name="guildTechnologyConstantDao" ref="guildTechnologyConstantDao"></property>
+	</bean>
+	
+	<!-- 升级常量dao -->
+	<bean id="lLevelupConstantDao" class="com.dataconfig.dao.LLevelupConstantDao"></bean>
+	<!-- 升级常量service -->
+	<bean id="lLevelupConstantService" class="com.dataconfig.service.LLevelupConstantService">
+		<property name="lLevelupConstantDao" ref="lLevelupConstantDao"></property>
+	</bean>
+	
+	<!-- 世界地图区域常量dao -->
+	<bean id="mMapAreaDao" class="com.dataconfig.dao.MMapAreaDao"></bean>
+	<!-- 世界地图区域常量service -->
+	<bean id="mMapAreaService" class="com.dataconfig.service.MMapAreaService">
+		<property name="mMapAreaDao" ref="mMapAreaDao"></property>
+	</bean>
+	
+	<!-- 道具常量dao -->
+	<bean id="systemToolDao" class="com.dataconfig.dao.SystemToolDao"></bean>
+	<bean id="tTreasureConstantDao" class="com.dataconfig.dao.TTreasureConstantDao"></bean>
+	<!-- 道具常量service -->
+	<bean id="tTreasureConstantService" class="com.dataconfig.service.TTreasureConstantService">
+		<property name="tTreasureConstantDao" ref="tTreasureConstantDao"></property>
+		<property name="systemToolDao" ref="systemToolDao"></property>
+	</bean>
+	
+	<!-- 动作常量dao -->
+	<bean id="actionConstantDao" class="com.dataconfig.dao.AActionConstantDao"></bean>
+	<!-- 动作常量service -->
+	<bean id="actionConstantService" class="com.dataconfig.service.AActionConstantService">
+		<property name="actionConstantDao" ref="actionConstantDao"></property>
+	</bean>
+	
+	<!-- 国际化常量dao -->
+	<bean id="sGlobalParamDao" class="com.dataconfig.dao.SGlobalParamDao"></bean>
+	<!-- 动作常量service -->
+	<bean id="sGlobalParamService" class="com.dataconfig.service.SGlobalParamService">
+		<property name="sGlobalParamDao" ref="sGlobalParamDao"></property>
+	</bean>
+	
+	<!-- 装备合成常量dao -->
+	<bean id="tequipmentSynthesisConstantDao" class="com.dataconfig.dao.TEquipmentSynthesisConstantDao"></bean>
+	<!-- 动作常量service -->
+	<bean id="tequipmentSynthesisConstantService" class="com.dataconfig.service.TEquipmentSynthesisConstantService">
+		<property name="tEquipmentSynthesisConstantDao" ref="tequipmentSynthesisConstantDao"></property>
+	</bean>
+	
+	<!-- 商城常量dao -->
+	<bean id="tMallTreasureConstantDao" class="com.dataconfig.dao.TMallTreasureConstantDao"></bean>
+	<bean id="tMallTreasureConstantService" class="com.dataconfig.service.TMallTreasureConstantService">
+		<property name="tMallTreasureConstantDao" ref="tMallTreasureConstantDao"></property>
+	</bean>
+	
+	<!-- 玩家聊天dao -->
+	<bean id="playerTreatmentDao" class="com.dataconfig.dao.PlayerTreatmentDao"></bean>
+	<bean id="playerTreatmentService" class="com.dataconfig.service.PlayerTreatmentService">
+		<property name="playerTreatmentDao" ref="playerTreatmentDao"></property>
+	</bean>
+	
+	 <!-- 敏感词dao -->
+	<bean id="sensitiveDao" class="com.dataconfig.dao.SensitiveDao"></bean>
+	<!-- 敏感词service -->
+	<bean id="sensitiveService" class="com.dataconfig.service.SensitiveService">
+		<property name="sensitiveDao" ref="sensitiveDao"></property>
+	</bean>
+	
+	<!-- 连续登陆奖励dao -->
+	<bean id="uContinueLoginConstantDao" class="com.dataconfig.dao.UContinueLoginConstantDao"></bean>
+	<!-- 连续登陆奖励service -->
+	<bean id="uContinueLoginConstantService" class="com.dataconfig.service.UContinueLoginConstantService">
+		<property name="continueLoginConstantDao" ref="uContinueLoginConstantDao"></property>
+	</bean>
+	
+	<!-- 成就常量dao -->
+	<bean id="achievementConstantDao" class="com.dataconfig.dao.AchievementConstantDao"></bean>
+	<!-- 成就常量service -->
+	<bean id="achievementConstantService" class="com.dataconfig.service.AchievementConstantService">
+		<property name="achievementConstantDao" ref="achievementConstantDao"></property>
+	</bean>
+	
+	<!-- 成就常量dao -->
+	<bean id="instroductRewardDao" class="com.dataconfig.dao.InstroductRewardDao"></bean>
+	<!-- 成就常量service -->
+	<bean id="instroductRewardService" class="com.dataconfig.service.InstroductRewardService">
+		<property name="instroductRewardDao" ref="instroductRewardDao"></property>
+	</bean>
+	
+	<!-- 宠物常量dao -->
+	<bean id="petConstantDao" class="com.dataconfig.dao.PetConstantDao"></bean>
+	<!-- 宠物常量service -->
+	<bean id="petConstantService" class="com.dataconfig.service.PetConstantService">
+		<property name="petConstantDao" ref="petConstantDao"></property>
+	</bean>
+	
+	<!-- 宠物额外加成dao -->
+	<bean id="pPetExtraDao" class="com.dataconfig.dao.PPetExtraDao"></bean>
+	<!-- 宠物额外加成service -->
+	<bean id="pPetExtraService" class="com.dataconfig.service.PPetExtraService">
+		<property name="pPetExtraDao" ref="pPetExtraDao"></property>
+	</bean>
+	
+	<!-- 宠物装备加成ddao -->
+	<bean id="pPetEquipmentDao" class="com.dataconfig.dao.PPetEquipmentDao"></bean>
+	<!-- 宠物装备加成service -->
+	<bean id="pPetEquipmentService" class="com.dataconfig.service.PPetEquipmentService">
+		<property name="pPetEquipmentDao" ref="pPetEquipmentDao"></property>
+	</bean>
+	
+	<!-- 剧情常量dao -->
+	<bean id="storyConstantDao" class="com.dataconfig.dao.StoryConstantDao"></bean>
+	<!-- 剧情常量service -->
+	<bean id="storyConstantService" class="com.dataconfig.service.StoryConstantService">
+		<property name="storyConstantDao" ref="storyConstantDao"></property>
+	</bean>
+	
+	
+   <!-- 多倍活动配置dao  -->
+  <bean id="multipleActivityConfigDao" class="com.dataconfig.dao.MMultipleActivityConfigDao"></bean>
+   <!-- 多倍活动配置service  -->
+  <bean id="multipleActivityConfigService" class="com.dataconfig.service.MultipleActivityConfigService">
+  	<property name="multipleActivityConfigDao" ref="multipleActivityConfigDao"></property>
+  </bean>
+  
+   <!-- 问卷配置dao  -->
+  <bean id="questionnaireConstantDao" class="com.dataconfig.dao.QQuestionnaireConstantDao"></bean>
+   <!-- 问卷配置service  -->
+  <bean id="questionnaireConstantService" class="com.dataconfig.service.QuestionnaireConstantService">
+  	<property name="questionnaireConstantDao" ref="questionnaireConstantDao"></property>
+  </bean>
+  
+   <!-- 激活码dao  -->
+  <bean id="activationCodeDao" class="com.dataconfig.dao.ActivationCodeDao"></bean>
+   <!-- 激活码service  -->
+  <bean id="activationCodeService" class="com.dataconfig.service.ActivationCodeService">
+  	<property name="activationCodeDao" ref="activationCodeDao"></property>
+  </bean>
+  
+   <!-- 训练营常量dao  -->
+  <bean id="trainingConfigDao" class="com.dataconfig.dao.TrainingConfigDao"></bean>
+   <!-- 训练营常量service  -->
+  <bean id="trainingConfigService" class="com.dataconfig.service.TrainingConfigService">
+  	<property name="trainingConfigDao" ref="trainingConfigDao"></property>
+  </bean>
+  
+   <!-- 注册链接常量dao  -->
+  <bean id="regLinkDao" class="com.dataconfig.dao.RegLinkDao"></bean>
+   <!-- 注册链接常量service  -->
+  <bean id="regLinkService" class="com.dataconfig.service.RegLinkService">
+  	<property name="regLinkDao" ref="regLinkDao"></property>
+  </bean>
+  
+   <!-- 炼金术配置dao  -->
+  <bean id="alchemyConstantDao" class="com.dataconfig.dao.AlchemyConstantDao"></bean>
+   <!-- 炼金术配置service  -->
+  <bean id="alchemyConstantService" class="com.dataconfig.service.AlchemyConstantService">
+  	<property name="alchemyConstantDao" ref="alchemyConstantDao"></property>
+  </bean>
+  
+   <!-- 基因改造属性配置dao  -->
+  <bean id="attrConstantDao" class="com.dataconfig.dao.AttrConstantDao"></bean>
+   <!-- 基因改造属性配置service  -->
+  <bean id="attrConstantService" class="com.dataconfig.service.AttrConstantService">
+  	<property name="attrConstantDao" ref="attrConstantDao"></property>
+  </bean>
+  
+   <!-- 基因改造消费配置dao  -->
+  <bean id="geneCostConstantDao" class="com.dataconfig.dao.GeneCostConstantDao"></bean>
+   <!-- 基因改造消费配置service  -->
+  <bean id="geneCostConstantService" class="com.dataconfig.service.GeneCostConstantService">
+  	<property name="geneCostConstantDao" ref="geneCostConstantDao"></property>
+  </bean>
+  
+   <!-- 战斗地图配置dao  -->
+  <bean id="mapConstantDao" class="com.dataconfig.dao.MapConstantDao"></bean>
+   <!-- 战斗地图配置service  -->
+  <bean id="mapConstantService" class="com.dataconfig.service.MapConstantService">
+  	<property name="mapConstantDao" ref="mapConstantDao"></property>
+  </bean>
+  
+   <!-- 商店产出配置dao  -->
+  <bean id="shopConstantDao" class="com.dataconfig.dao.ShopConstantDao"></bean>
+   <!-- 商店产出配置service  -->
+  <bean id="shopConstantService" class="com.dataconfig.service.ShopConstantService">
+  	<property name="shopConstantDao" ref="shopConstantDao"></property>
+  </bean>
+  
+   <!-- 实验室开放科技配置dao  -->
+  <bean id="technologyOpenConstantDao" class="com.dataconfig.dao.TechnologyOpenConstantDao"></bean>
+   <!-- 实验室开放科技配置service  -->
+  <bean id="technologyOpenConstantService" class="com.dataconfig.service.TechnologyOpenConstantService">
+  	<property name="technologyOpenConstantDao" ref="technologyOpenConstantDao"></property>
+  </bean>
+  
+   <!-- 装备扩展常量dao  -->
+  <bean id="equipmentExtDao" class="com.dataconfig.dao.EquipmentExtDao"></bean>
+   <!-- 装备扩展常量service  -->
+  <bean id="equipmentExtService" class="com.dataconfig.service.EquipmentExtService">
+  	<property name="equipmentExtDao" ref="equipmentExtDao"></property>
+  </bean>
+  
+   <!-- 装备强化配置dao  -->
+  <bean id="equipmentStrengthDao" class="com.dataconfig.dao.EquipmentStrengthDao"></bean>
+   <!-- 装备强化配置service  -->
+  <bean id="equipmentStrengthService" class="com.dataconfig.service.EquipmentStrengthService">
+  	<property name="equipmentStrengthDao" ref="equipmentStrengthDao"></property>
+  </bean>
+  
+   <!-- 好友帮助常量dao  -->
+  <bean id="helpConstantDao" class="com.dataconfig.dao.HelpConstantDao"></bean>
+   <!-- 好友帮助常量service  -->
+  <bean id="helpConstantService" class="com.dataconfig.service.HelpConstantService">
+  	<property name="helpConstantDao" ref="helpConstantDao"></property>
+  </bean>
+  
+   <!-- 英雄亲密度配置dao  -->
+  <bean id="heroIntimacyConstantDao" class="com.dataconfig.dao.HeroIntimacyConstantDao"></bean>
+   <!-- 英雄亲密度配置service  -->
+  <bean id="heroIntimacyConstantService" class="com.dataconfig.service.HeroIntimacyConstantService">
+  	<property name="heroIntimacyConstantDao" ref="heroIntimacyConstantDao"></property>
+  </bean>
+  
+   <!-- 宝石常量dao  -->
+  <bean id="jewelConstantDao" class="com.dataconfig.dao.JewelConstantDao"></bean>
+   <!-- 宝石常量service  -->
+  <bean id="jewelConstantService" class="com.dataconfig.service.JewelConstantService">
+  	<property name="jewelConstantDao" ref="jewelConstantDao"></property>
+  </bean>
+  
+   <!-- 活跃事件常量dao  -->
+  <bean id="activeEventDao" class="com.dataconfig.dao.ActiveEventDao"></bean>
+   <!-- 活跃事件常量service  -->
+  <bean id="activeEventService" class="com.dataconfig.service.ActiveEventService">
+  	<property name="activeEventDao" ref="activeEventDao"></property>
+  </bean>
+  
+   <!-- 丧尸基因常量dao  -->
+  <bean id="monsterGeneConstantDao" class="com.dataconfig.dao.MonsterGeneConstantDao"></bean>
+   <!-- 丧尸基因常量service  -->
+  <bean id="monsterGeneConstantService" class="com.dataconfig.service.MonsterGeneConstantService">
+  	<property name="monsterGeneConstantDao" ref="monsterGeneConstantDao"></property>
+  </bean>
+  
+   <!-- 宠物进阶配置dao  -->
+  <bean id="evoutionGraphConstantDao" class="com.dataconfig.dao.EvoutionGraphConstantDao"></bean>
+   <!-- 宠物进阶配置service  -->
+  <bean id="evoutionGraphConstantService" class="com.dataconfig.service.EvoutionGraphConstantService">
+  	<property name="evoutionGraphConstantDao" ref="evoutionGraphConstantDao"></property>
+  </bean>
+  
+   <!-- 充值道具配置dao  -->
+  <bean id="payBuyPresentDao" class="com.dataconfig.dao.PayBuyPresentDao"></bean>
+   <!-- 充值道具配置service  -->
+  <bean id="payBuyPresentService" class="com.dataconfig.service.PayBuyPresentService">
+  	<property name="payBuyPresentDao" ref="payBuyPresentDao"></property>
+  </bean>
+  
+   <!-- 充值回馈配置dao  -->
+  <bean id="payFeedBackDao" class="com.dataconfig.dao.PayFeedBackDao"></bean>
+   <!-- 充值回馈配置service  -->
+  <bean id="payFeedBackService" class="com.dataconfig.service.PayFeedBackService">
+  	<property name="payFeedBackDao" ref="payFeedBackDao"></property>
+  </bean>
+  
+   <!-- 驯兽术常量dao  -->
+  <bean id="petTrainingDao" class="com.dataconfig.dao.PetTrainingDao"></bean>
+   <!-- 驯兽术常量service  -->
+  <bean id="petTrainingService" class="com.dataconfig.service.PetTrainingService">
+  	<property name="petTrainingDao" ref="petTrainingDao"></property>
+  </bean>
+  
+   <!-- 宠物解锁配置dao  -->
+  <bean id="petUnlockDao" class="com.dataconfig.dao.PetUnlockDao"></bean>
+   <!-- 宠物解锁配置service  -->
+  <bean id="petUnlockService" class="com.dataconfig.service.PetUnlockService">
+  	<property name="petUnlockDao" ref="petUnlockDao"></property>
+  </bean>
+  
+   <!-- 射箭掉落配置dao  -->
+  <bean id="rewardConstantDao" class="com.dataconfig.dao.RewardConstantDao"></bean>
+   <!-- 射箭掉落配置service  -->
+  <bean id="rewardConstantService" class="com.dataconfig.service.RewardConstantService">
+  	<property name="rewardConstantDao" ref="rewardConstantDao"></property>
+  </bean>
+  
+   <!-- 奖励配置dao  -->
+  <bean id="globalRewardConstantDao" class="com.dataconfig.dao.GlobalRewardConstantDao"></bean>
+   <!-- 奖励配置service  -->
+  <bean id="globalRewardConstantService" class="com.dataconfig.service.GlobalRewardConstantService">
+  	<property name="globalRewardConstantDao" ref="globalRewardConstantDao"></property>
+  </bean>
+  
+   <!-- 监狱常量dao  -->
+  <bean id="prisonConstantDao" class="com.dataconfig.dao.PrisonConstantDao"></bean>
+   <!-- 监狱常量service  -->
+  <bean id="prisonConstantService" class="com.dataconfig.service.PrisonConstantService">
+  	<property name="prisonConstantDao" ref="prisonConstantDao"></property>
+  </bean>
+  
+   <!-- 日常任务奖励配置dao  -->
+  <bean id="dailyConstantDao" class="com.dataconfig.dao.DailyConstantDao"></bean>
+   <!-- 日常任务奖励配置service  -->
+  <bean id="dailyConstantService" class="com.dataconfig.service.DailyConstantService">
+  	<property name="dailyConstantDao" ref="dailyConstantDao"></property>
+  </bean>
+  
+   <!-- 活动中心奖励dao  -->
+  <bean id="aRewardConstantDao" class="com.dataconfig.dao.ARewardConstantDao"></bean>
+   <!-- 活动中心奖励service  -->
+  <bean id="aRewardConstantService" class="com.dataconfig.service.ARewardConstantService">
+  	<property name="aRewardConstantDao" ref="aRewardConstantDao"></property>
+  </bean>
+  
+   <!-- 军团商城dao  -->
+  <bean id="guildMallDao" class="com.dataconfig.dao.GuildMallDao"></bean>
+   <!-- 军团商城service  -->
+  <bean id="guildMallService" class="com.dataconfig.service.GuildMallService">
+  	<property name="guildMallDao" ref="guildMallDao"></property>
+  </bean>
+  
+   <!-- 怪物图鉴dao  -->
+  <bean id="monsterAttributeDao" class="com.dataconfig.dao.MonsterAttributeDao"></bean>
+   <!-- 怪物图鉴service  -->
+  <bean id="monsterAttributeService" class="com.dataconfig.service.MonsterAttributeService">
+  	<property name="monsterAttributeDao" ref="monsterAttributeDao"></property>
+  </bean>
+  
+   <!-- 章节常量dao  -->
+  <bean id="sectionConstantDao" class="com.dataconfig.dao.SectionConstantDao"></bean>
+   <!-- 章节常量service  -->
+  <bean id="sectionConstantService" class="com.dataconfig.service.SectionConstantService">
+  	<property name="sectionConstantDao" ref="sectionConstantDao"></property>
+  </bean>
+  
+   <!-- 战斗提示dao  -->
+  <bean id="baTipsConstantDao" class="com.dataconfig.dao.BaTipsConstantDao"></bean>
+   <!-- 战斗提示service  -->
+  <bean id="baTipsConstantService" class="com.dataconfig.service.BaTipsConstantService">
+  	<property name="baTipsConstantDao" ref="baTipsConstantDao"></property>
+  </bean>
+  
+  <!-- 充值日志dao -->
+	<bean id="paymentLogDao" class="com.dataconfig.dao.PaymentLogDao"></bean>
+	<bean id="userPayService" class="com.dataconfig.service.UserPayService">
+	  <property name="paymentLogDao" ref="paymentLogDao"></property>	
+	</bean>
+	
+	<!-- 神器dao -->
+	<bean id="systemArtifactDao" class="com.dataconfig.dao.SystemArtifactDao"></bean>
+	<bean id="systemArtifactService" class="com.dataconfig.service.SystemArtifactService">
+		<property name="systemArtifactDao" ref="systemArtifactDao"></property>
+	</bean>
+	
+	<!-- 英雄dao -->
+	<bean id="systemHeroDao" class="com.dataconfig.dao.SystemHeroDao" ></bean>
+	<bean id="systemHeroService" class="com.dataconfig.service.SystemHeroService">
+		<property name="systemHeroDao" ref="systemHeroDao" ></property>
+	</bean>
+
+	
+</beans>

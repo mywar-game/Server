@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-2-27 12:28:20 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.adminTool.bo.Activity" table="system_activity">
+		<id name="activityId" type="java.lang.Integer">
+			<column name="activity_id" />
+			<generator class="assigned" />
+		</id>
+		<property name="activityShowType" type="java.lang.Integer">
+			<column name="activity_show_type" />
+		</property>
+		<property name="activityType" type="java.lang.Integer">
+			<column name="activity_type" />
+		</property>
+		<property name="activityName" type="java.lang.String">
+			<column name="activity_name" length="50"/>
+		</property>
+		<property name="activityTitle" type="java.lang.String">
+			<column name="activity_title" length="128"/>
+		</property>
+		<property name="activityDesc" type="java.lang.String">
+			<column name="activity_desc" length="200"/>
+		</property>
+		<property name="startTime" type="java.sql.Timestamp">
+			<column name="start_time" />
+		</property>
+		<property name="endTime" type="java.sql.Timestamp">
+			<column name="end_time" />
+		</property>
+		<property name="openWeeks" type="java.lang.String">
+			<column name="open_weeks" length="50"/>
+		</property>
+		<property name="openTime" type="java.lang.String">
+			<column name="open_time" length="128"/>
+		</property>
+		<property name="param" type="java.lang.String">
+			<column name="PARAM" length="50"/>
+		</property>
+		<property name="display" type="java.lang.Integer">
+			<column name="DISPLAY" />
+		</property>
+		<property name="status" type="java.lang.Integer">
+			<column name="STATUS" />
+		</property>
+		<property name="sort" type="java.lang.Integer">
+			<column name="SORT" />
+		</property>
+		<property name="imgId" type="java.lang.Integer">
+			<column name="img_id" />
+		</property>
+	</class>
+</hibernate-mapping>

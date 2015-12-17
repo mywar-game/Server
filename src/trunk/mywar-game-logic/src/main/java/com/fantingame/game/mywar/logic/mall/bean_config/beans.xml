@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	 	http://www.springframework.org/schema/aop 
+	 	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+     	http://www.springframework.org/schema/tx 
+     	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+               
+     <bean id="userBuyBackInfoDaoMysql" class="com.fantingame.game.mywar.logic.mall.dao.mysql.UserBuyBackInfoDaoMysql"></bean>
+     <bean id="userBuyBackInfoDao" class="com.fantingame.game.mywar.logic.mall.dao.cache.UserBuyBackInfoDaoCache">
+     	<property name="userBuyBackInfoDaoMysql" ref="userBuyBackInfoDaoMysql"></property>
+     </bean>   
+     
+     <bean id="userMysteriousMallMapDaoMysqlImpl" class="com.fantingame.game.mywar.logic.mall.dao.mysql.UserMysteriousMallMapDaoMysqlImpl"></bean>
+     <bean id="userMysteriousMallMapDao" class="com.fantingame.game.mywar.logic.mall.dao.cache.UserMysteriousMallMapDaoCacheImpl">
+     	<property name="userMysteriousMallMapDaoMysqlImpl" ref="userMysteriousMallMapDaoMysqlImpl"></property>
+     </bean>
+     
+     <bean id="userMysteriousMallLogDaoMysqlImpl" class="com.fantingame.game.mywar.logic.mall.dao.mysql.UserMysteriousMallLogDaoMysqlImpl"></bean>
+     <bean id="userMysteriousMallLogDao" class="com.fantingame.game.mywar.logic.mall.dao.cache.UserMysteriousMallLogDaoCacheImpl">
+     	<property name="userMysteriousMallLogDaoMysqlImpl" ref="userMysteriousMallLogDaoMysqlImpl"></property>
+     </bean>            
+     
+     <!-- 
+     <bean id="systemMysteriousMapDaoCache" class="com.fantingame.game.mywar.logic.mall.dao.cache.SystemMysteriousMapDaoCache"></bean>
+      -->
+     <bean id="systemMysteriousMallDaoCache" class="com.fantingame.game.mywar.logic.mall.dao.cache.SystemMysteriousMallDaoCache"></bean>
+     <bean id="systemEquipToolMallDaoCache" class="com.fantingame.game.mywar.logic.mall.dao.cache.SystemEquipToolMallDaoCache"></bean>
+     <bean id="mallService" class="com.fantingame.game.mywar.logic.mall.service.MallService"></bean>
+     <bean id="mallAction" class="com.fantingame.game.mywar.logic.mall.action.MallAction"></bean>
+     
+     <!-- Hour values must be between 0 and 23 
+	 <bean id="refreshMysteriousMallScheduler" class="com.fantingame.game.mywar.logic.mall.schduler.RefreshMysteriousMallScheduler">
+         <property name="cronExpression" value="0 0 23 * * ?"></property>	 
+     </bean>
+     -->
+</beans>

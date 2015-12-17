@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-3-28 13:07:45 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.adminTool.bo.ToolExchange" table="system_tool_exchange">
+		<id name="exchangeId" type="java.lang.Integer">
+			<column name="exchange_id" />
+			<generator class="identity" />
+		</id>
+		<property name="activityId" type="int">
+			<column name="activity_id" not-null="true">
+				<comment>&#187;&#238;&#182;&#175;id</comment>
+			</column>
+		</property>
+		<property name="preExchangeItems" type="string">
+			<column name="pre_exchange_items" not-null="true" />
+		</property>
+		<property name="postExchangeItems" type="string">
+			<column name="post_exchange_items" not-null="true" />
+		</property>
+		<property name="description" type="string">
+			<column name="description" length="32" />
+		</property>
+		<property name="times" type="int">
+			<column name="times" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>
